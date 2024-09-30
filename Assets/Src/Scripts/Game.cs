@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-    [SerializeField] protected internal AudioManager audioManager;
+    [SerializeField] protected AudioManager audioManager;
 }
