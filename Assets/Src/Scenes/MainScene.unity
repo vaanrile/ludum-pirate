@@ -1055,7 +1055,10 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   sfxObjectsList: {fileID: 528509141}
   sfxSourcesList: []
-  musicSourcesList: []
+  musicSourcesList:
+  - {fileID: 228357000}
+  - {fileID: 264007866}
+  - {fileID: 872825798}
   audioClipsArray:
   - audioClip: {fileID: 8300000, guid: 8290a2c4d51c7544eb0ea7dd4159c6d8, type: 3}
     audioClipName: lol

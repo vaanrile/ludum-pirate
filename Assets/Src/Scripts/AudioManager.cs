@@ -33,8 +33,20 @@ public class AudioManager : Game
         /*if (Input.GetKeyDown(KeyCode.Space))
         {
             FadeSound(musicSourcesList[_musicIndex], 1, 0);
-            _musicIndex++;
+            if (_musicIndex<musicSourcesList.Count-1) 
+            {
+                _musicIndex++;
+            }
+            else
+            {
+                _musicIndex = 0;
+            }           
             FadeSound(musicSourcesList[_musicIndex], 1, 1);
+        }*/
+
+        /*if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlaySound2DByName("lol");
         }*/
     }
     private void StartSound(AudioSource audioToStart)
