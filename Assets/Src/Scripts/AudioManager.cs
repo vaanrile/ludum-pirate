@@ -10,7 +10,7 @@ public struct AudioClips
     public AudioClip audioClip;
     public string audioClipName;
 }
-public class AudioManager : Game
+public class AudioManager : MonoBehaviour
 {
     private AudioSource _2DAudioSource;
     public Transform sfxObjectsList;
@@ -18,10 +18,26 @@ public class AudioManager : Game
     public List<AudioSource> musicSourcesList;
     private int _musicIndex;
 
-    public AudioClips[] audioClipsArray; 
+    public static AudioManager instance;
+
+
+    public AudioClips[] audioClipsArray;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.LogError("There is already an instance of AudioManager in the scene, only one can be instanciated.");
+        }
+    }
+
     void Start()
     {
-        _2DAudioSource =GetComponent<AudioSource>();
+        _2DAudioSource = GetComponent<AudioSource>();
         foreach (Transform obj in sfxObjectsList) 
         {
             sfxSourcesList.Add(obj.GetComponent<AudioSource>());
@@ -48,6 +64,11 @@ public class AudioManager : Game
         {
             PlaySound2DByName("lol");
         }*/
+    }
+
+    public void PlayLol()
+    {
+        PlaySound2DByName("lol");
     }
     private void StartSound(AudioSource audioToStart)
     {
