@@ -524,6 +524,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onEffect: {fileID: 2528611550899278591}
+  tvScreen: {fileID: 6025663393802653396}
+  tvAnimDelay: 0.1
 --- !u!1 &4427185798985589180
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,6 +631,7 @@ GameObject:
   - component: {fileID: 6025663393802653396}
   - component: {fileID: 2447445705114524932}
   - component: {fileID: 9005012752980230662}
+  - component: {fileID: 6920174189930600661}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -693,3 +696,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!111 &6920174189930600661
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4882229948651378989}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 26041429d54085f45b4ea6da88eae5b2, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 26041429d54085f45b4ea6da88eae5b2, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

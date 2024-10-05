@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1750901122925232986
 Transform:
   m_ObjectHideFlags: 0
@@ -364,6 +364,8 @@ MonoBehaviour:
   speed: 4
   mouseSensitivityX: 10
   mouseSensitivityY: 10
+  repulseForce: 50
+  hitBox: 2
   tapetteAnimator: {fileID: 1503061939556972256}
 --- !u!54 &6191973622443011719
 Rigidbody:
@@ -441,7 +443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af011e74aa557e49917524c634cde86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moskito: {fileID: 0}
   controller: {fileID: 8901772240675661107}
   status: 0
   rb: {fileID: 0}
@@ -460,6 +461,7 @@ GameObject:
   - component: {fileID: 8591504790855006313}
   - component: {fileID: 4214770833156219518}
   - component: {fileID: 1503061939556972256}
+  - component: {fileID: 5390636661784720147}
   m_Layer: 0
   m_Name: Tapette
   m_TagString: Untagged
@@ -554,6 +556,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5390636661784720147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3957373812136771800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a2d8280d28a6542bd77cb2a6918c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 8901772240675661107}
 --- !u!1 &4892739924363494939
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,7 +755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7796503658390178259
 Transform:
   m_ObjectHideFlags: 0

@@ -101,11 +101,11 @@ public class PlayerController : MonoBehaviour
         {
             tapetteAnimator.SetTrigger("Tap");
             player.OnTryingToHit();
-            ApplyRepulseForce();
+            //ApplyRepulseForce();
             Debug.DrawLine(transform.position, transform.position + transform.forward * hitBox, Color.red, 1f);
         }
     }
-    private void ApplyRepulseForce()
+    public void ApplyRepulseForce()
     {
         //Ou ki son les rigidbody ? 
         Collider[] colliders = Physics.OverlapSphere(transform.position, hitBox);
