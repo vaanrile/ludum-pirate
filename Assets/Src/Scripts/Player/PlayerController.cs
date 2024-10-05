@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
     private float repulseForce = 50f;
 
     [SerializeField] 
-    private float hitBox = 2f; //Hitbox
+    private float hitBox = 2f; 
+    //Hitbox
 
 
     private PlayerMotor motor;
@@ -105,7 +106,7 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyRepulseForce()
     {
-        // Trouver tous les objets avec un Rigidbody dans le rayon
+        //Ou ki son les rigidbody ? 
         Collider[] colliders = Physics.OverlapSphere(transform.position, hitBox);
 
         foreach (Collider collider in colliders)
@@ -113,11 +114,11 @@ public class PlayerController : MonoBehaviour
             Rigidbody rb = collider.attachedRigidbody;
             if (rb != null && rb != GetComponent<Rigidbody>())
             {
-                // Calculer la direction de la force
+                //dire force
                 Vector3 direction = collider.transform.position - transform.position;
                 direction.Normalize();
 
-                // Appliquer la force de repoussement
+                //Force
                 rb.AddForce(direction * repulseForce, ForceMode.Impulse);
             }
         }
@@ -127,4 +128,5 @@ public class PlayerController : MonoBehaviour
     {
         return velocity;
     }
+
 }
