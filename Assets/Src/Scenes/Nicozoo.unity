@@ -490,6 +490,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1136070603059926023, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
+      propertyPath: far clip plane
+      value: 94.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136070603059926023, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
+      propertyPath: near clip plane
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1448193145154321366, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3241637514031509915, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -536,6 +548,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6955866900880213331, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360463201558301206, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -927,6 +943,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Encens
       objectReference: {fileID: 0}
+    - target: {fileID: 8262180386753121224, guid: 1f36a1e46aeda404489820dfb98f2c55, type: 3}
+      propertyPath: isActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -988,10 +1008,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3711395422875521745, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
-      propertyPath: Encens
-      value: 
-      objectReference: {fileID: 83185716}
     - target: {fileID: 3711395422875521745, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
       propertyPath: encens
       value: 

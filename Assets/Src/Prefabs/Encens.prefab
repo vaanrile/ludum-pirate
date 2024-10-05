@@ -147,5 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 12.43
-  isActive: 0
+  isActive: 1
   duration: 0

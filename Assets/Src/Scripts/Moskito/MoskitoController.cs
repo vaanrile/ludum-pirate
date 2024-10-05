@@ -8,11 +8,21 @@ using UnityEngine;
 
 public class MoskitoController : MonoBehaviour
 {
+    [Header("__Game Design Variables")]
     [SerializeField]
     private float speed = 3;
 
+    [Header("__Dev Variables")]
     [SerializeField]
-    private float rotationSpeed = 3f;
+    private bool isFrenetic;
+    [SerializeField]
+    [Range(0,100)]
+    private float randomMoveIntensity;
+    [SerializeField]
+    [Range(0, 1)]
+    private float freneticIntensity;
+    [SerializeField]
+    private Vector3 randomDirection;
 
     private Transform target;
 
@@ -67,8 +77,17 @@ public class MoskitoController : MonoBehaviour
                 break;
         }
 
-        
         direction = (target.position - transform.position).normalized;
+        if (isFrenetic)
+        {
+            if(Random.Range(0f,1f) > 0.98)
+            {
+                randomDirection = Vector3.zero;
+            }
+            randomDirection += new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+            direction = Vector3.Lerp(direction, randomDirection, randomMoveIntensity* Time.deltaTime);
+        }
+
 
         //DETERMINE IF SHUOLD AVOID OR GO TO TARGET
         switch (moskito.GetMoskitoStatus())
@@ -90,7 +109,7 @@ public class MoskitoController : MonoBehaviour
         transform.forward = direction.normalized;
         float yMov = Random.Range(-0.2f, 0.2f);
 
-        Vector3 velocity = (direction) * speed;
+        Vector3 velocity = (direction.normalized) * speed;
 
         //Move
         motor.Move(velocity);

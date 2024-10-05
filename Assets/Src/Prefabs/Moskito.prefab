@@ -90,7 +90,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  rotationSpeed: 3
+  isFrenetic: 1
+  randomMoveIntensity: 32.1
+  freneticIntensity: 0.555
+  randomDirection: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
 --- !u!135 &5635989886794446379
 SphereCollider:
@@ -133,12 +136,17 @@ MonoBehaviour:
   moskitoStatus: 3
   playerDirection: 1
   player: {fileID: 0}
+  encens: {fileID: 0}
   distanceZoneDanger: 4
   distanceZoneConfort: 10
   timePreparingAttack: 2
   timeAfterAttack: 2
   timeBeforeGoingBackWhenFarMin: 3
   timeBeforeGoingBackWhenFarMax: 7
+  timeSneakingMin: 5
+  timeSneakingMax: 15
+  forceStatus: 0
+  closeToEncens: 0
 --- !u!1 &4994833413022078462
 GameObject:
   m_ObjectHideFlags: 0
