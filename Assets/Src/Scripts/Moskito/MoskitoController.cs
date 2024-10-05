@@ -28,6 +28,7 @@ public class MoskitoController : MonoBehaviour
     {
         moskito = GetComponent<Moskito>();
         motor = GetComponent<MoskitoMotor>();
+        target = transform;
     }
 
     private void Update()
@@ -40,6 +41,7 @@ public class MoskitoController : MonoBehaviour
             return;
         }
 
+        //BEFORE SETTING DIRECTION
         switch (moskito.GetMoskitoStatus())
         {
             case Moskito.MoskitoStatus.GoClose:
@@ -51,24 +53,27 @@ public class MoskitoController : MonoBehaviour
             case Moskito.MoskitoStatus.GoSafe:
                 UpdateTarget(player.transform);
                 break;
+            case Moskito.MoskitoStatus.AfterAttack:
+                UpdateTarget(player.transform);
+                break;
             case Moskito.MoskitoStatus.PrepareToAttack:
                 UpdateTarget(player.transform);
-                break;
-            case Moskito.MoskitoStatus.Attack:
-                UpdateTarget(player.transform);
-                break;
+                break;            
         }
 
         
         direction = (target.position - transform.position).normalized;
 
-
+        //DETERMINE IF SHUOLD AVOID OR GO TO TARGET
         switch (moskito.GetMoskitoStatus())
         {
             case Moskito.MoskitoStatus.Sneak:
                 direction = Vector3.zero;
                 break;
             case Moskito.MoskitoStatus.GoSafe:
+                direction = -direction;
+                break;
+            case Moskito.MoskitoStatus.AfterAttack:
                 direction = -direction;
                 break;
         }

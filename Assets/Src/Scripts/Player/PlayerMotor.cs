@@ -8,7 +8,7 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 rotation;
 
     [SerializeField]
-    private Camera cam;
+    private Transform playerHead;
 
     private float cameraRotationX = 0f;
     private float currentCameraRotationX = 0f;
@@ -64,7 +64,7 @@ public class PlayerMotor : MonoBehaviour
         currentCameraRotationX -= cameraRotationX;
         currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
         //on applique la rotation de la caméra
-        cam.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
+        playerHead.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
     }
 
 }
