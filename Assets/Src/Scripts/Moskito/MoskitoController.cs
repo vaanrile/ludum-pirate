@@ -62,6 +62,9 @@ public class MoskitoController : MonoBehaviour
             case Moskito.MoskitoStatus.StayFar:
                 UpdateTarget(player.transform);
                 break;
+            case Moskito.MoskitoStatus.Encens:
+                UpdateTarget(moskito.GetEncens().transform);
+                break;
         }
 
         
