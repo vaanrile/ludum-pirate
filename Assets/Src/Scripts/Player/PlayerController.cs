@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMotor))]
-
+[RequireComponent(typeof(Player))]
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,10 +16,18 @@ public class PlayerController : MonoBehaviour
 
     private PlayerMotor motor;
 
+    private Vector3 velocity;
+
+    [SerializeField]
+    private Animator tapetteAnimator;
+
+    private Player player;
+
     private bool _canMoveCamera=true;
     private void Start()
     {
         motor = GetComponent<PlayerMotor>();
+        player = GetComponent<Player>();
     }
 
     private void Update()
@@ -63,7 +71,7 @@ public class PlayerController : MonoBehaviour
         Vector3 moveHorizontal = transform.right * xMov;
         Vector3 moveVertical = transform.forward * zMov;
 
-        Vector3 velocity = (moveHorizontal + moveVertical) * speed;
+        velocity = (moveHorizontal + moveVertical) * speed;
 
         //jouer animation thruster
         motor.Move(velocity);
@@ -80,6 +88,15 @@ public class PlayerController : MonoBehaviour
 
         motor.RotateCamera(cameraRotationX);
 
-        
+        if (Input.GetButtonDown("Fire1"))
+        {
+            tapetteAnimator.SetTrigger("Tap");
+            player.OnTryingToHit();
+        }
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return velocity;
     }
 }

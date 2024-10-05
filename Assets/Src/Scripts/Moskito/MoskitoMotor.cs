@@ -14,9 +14,6 @@ public class MoskitoMotor : MonoBehaviour
     private float currentRotationX = 0f; 
     private float rotationX = 0f;
 
-    [SerializeField]
-    private Transform graphicsTransform;
-
 
     private void Start()
     {
@@ -59,10 +56,6 @@ public class MoskitoMotor : MonoBehaviour
     {
         //On calcule la rotation de la camera
         rb.MoveRotation(rb.rotation * Quaternion.Euler(rotation));
-        currentRotationX -= rotationX;
-        currentRotationX = Mathf.Clamp(currentRotationX, -rotationLimit, rotationLimit);
-        //on applique la rotation de la caméra
-        graphicsTransform.localEulerAngles = new Vector3(currentRotationX, 0f, 0f);
     }
 
 }
