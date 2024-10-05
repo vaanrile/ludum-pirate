@@ -2,20 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class S_TV : MonoBehaviour
+public class S_TV : S_AbsInteractive
 {
     public GameObject onEffect;
     void Update()
     {
         
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Tapette")
-        {
-            Off();
-        }
     }
 
     public void On()
@@ -26,5 +18,10 @@ public class S_TV : MonoBehaviour
     private void Off()
     {
         onEffect.SetActive(false);
+    }
+
+    public override void Kicked()
+    {
+        Off();
     }
 }

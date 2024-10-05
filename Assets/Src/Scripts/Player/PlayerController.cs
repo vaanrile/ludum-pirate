@@ -103,7 +103,6 @@ public class PlayerController : MonoBehaviour
             player.OnTryingToHit();
             ApplyRepulseForce();
             Debug.DrawLine(transform.position, transform.position + transform.forward * hitBox, Color.red, 1f);
-
         }
     }
     private void ApplyRepulseForce()
@@ -122,6 +121,12 @@ public class PlayerController : MonoBehaviour
 
                 //Force
                 rb.AddForce(direction * repulseForce, ForceMode.Impulse);
+
+                S_AbsInteractive interactive = rb.GetComponent<S_AbsInteractive>();
+                if (interactive != null)
+                {
+                    interactive.Kicked();
+                }
             }
         }
     }

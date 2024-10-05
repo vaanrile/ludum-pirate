@@ -42867,11 +42867,15 @@ PrefabInstance:
       objectReference: {fileID: 1531230124}
     - target: {fileID: 2830221275656604138, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_VersionIndex
-      value: 2039
+      value: 2042
       objectReference: {fileID: 0}
     - target: {fileID: 3236200168658682752, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_Name
       value: TV
+      objectReference: {fileID: 0}
+    - target: {fileID: 3236200168658682752, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
+      propertyPath: m_TagString
+      value: Interactive
       objectReference: {fileID: 0}
     - target: {fileID: 3353617145100786124, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_Mesh
@@ -42915,6 +42919,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4874848919988624272, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6775557556251343917, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6775557556251343917, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
+      propertyPath: m_Constraints
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6775557556251343917, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8361384101574397577, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
