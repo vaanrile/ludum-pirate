@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-
+using TMPro;
 public class WatchScript : MonoBehaviour
 {
     //Digital Time
     public float timing = 0.1f;
+    private int hours = 0;
+    private int minutes = 0;
     //Digital Time
     [Header("Digital Watch")]
-    public Text timeText;
-    private int remainingMinutes, remainingSeconds;
+    public TextMeshProUGUI timeText;
+    private int remainingHours, remainingMinutes, remainingSeconds;
 
 
     //Analog Time
@@ -21,8 +23,7 @@ public class WatchScript : MonoBehaviour
 
     void Start()
     {
-        remainingMinutes = 10;
-        //StartTime();
+        StartTime();
     }
 
     public void StartTime()
@@ -36,36 +37,58 @@ public class WatchScript : MonoBehaviour
     {
         while (true)
         {
-            remainingSeconds--;
-            if (remainingSeconds < 0)
+            remainingSeconds++;
+            if (remainingSeconds > 59)
             {
-                remainingSeconds = 59;
-                remainingMinutes--;
+                remainingSeconds = 0;
+                remainingMinutes++;
             }
-            if (remainingSeconds < 10)
+            if(remainingMinutes > 59)
             {
-                timeText.text = remainingMinutes.ToString() + " :0" + remainingSeconds.ToString();
+                remainingMinutes = 0;
+                remainingHours++;
+            }
+
+            string minutesText = "";
+            if (remainingMinutes < 10)
+            {
+                minutesText = " :0" + remainingMinutes.ToString();
             }
             else
             {
-                timeText.text = remainingMinutes.ToString() + " :" + remainingSeconds.ToString();
+                minutesText = " :" + remainingMinutes.ToString();
             }
+            string hoursText = "";
+            if (remainingHours < 10)
+            {
+                hoursText = "0" + remainingHours.ToString();
+            }
+            else
+            {
+                hoursText = remainingHours.ToString();
+            }
+
+            timeText.text = hoursText + minutesText;
+
+
             yield return new WaitForSeconds(timing);
         }
     }
     IEnumerator AnalogTime()
     {
-        remainingSeconds = 60;
         while (true)
         {       
             yield return new WaitForSeconds(timing);
             _secondsArrow.DOLocalRotate(new Vector3(0, _secondsArrow.localEulerAngles.y + 6, 0), 0.05f);
-            remainingSeconds--;
             if (remainingSeconds == 0)
             {
                 _minutesArrow.DOLocalRotate(new Vector3(0, _minutesArrow.localEulerAngles.y + 6, 0), 0.1f);
                 _secondsArrow.localEulerAngles = Vector3.zero;
-                remainingSeconds = 60;
+            }
+            if (remainingMinutes == 0)
+            {
+                _hourArrow.DOLocalRotate(new Vector3(0, _hourArrow.localEulerAngles.y + 6, 0), 0.1f);
+                _hourArrow.localEulerAngles = Vector3.zero;
             }
         }
     }
