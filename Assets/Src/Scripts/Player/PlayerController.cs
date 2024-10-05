@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMotor))]
 
 
-public class PlayerControler : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private float speed = 3;
@@ -70,7 +70,7 @@ public class PlayerControler : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            AudioManager.instance.PlayLol();
+            // AudioManager.instance?.PlayLol();
         }
     }
 }
