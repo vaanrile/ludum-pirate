@@ -36,8 +36,7 @@ public class Moskito : MonoBehaviour
     private float timeSincePreparingAttack;
     private float timeSinceItAttacked;
     private float timeSinceBeingFar;
-    private float timeBeforeGoingBackMin;
-    private float timeBeforeGoingBackMax;
+    private float timeBeforeGoingBack;
 
 
 
@@ -59,7 +58,8 @@ public class Moskito : MonoBehaviour
         GoBehind,
         Encens,
         LightMod,
-        GoOutsidePhoneLight
+        GoOutsidePhoneLight,
+        StayFar
 
     }
 
@@ -131,10 +131,7 @@ public class Moskito : MonoBehaviour
             timeSinceItAttacked += Time.deltaTime;
             return;
         }
-        else
-        {
-            timeSinceItAttacked = 0;
-        }
+
         switch (moskitoZone)
         {
             case MoskitoZone.Confort:
@@ -184,7 +181,7 @@ public class Moskito : MonoBehaviour
                 }
                 break;
             case MoskitoZone.Far:
-                SetMoskitoStatus(MoskitoStatus.GoClose);
+                PrepareToComeBack();
                 break;
             default:
                 break;
@@ -193,9 +190,22 @@ public class Moskito : MonoBehaviour
 
     private void SetMoskitoStatus(MoskitoStatus _newStatus)
     {
+
         if (moskitoStatus == _newStatus)
         {
             return;
+        }
+        if (moskitoStatus != MoskitoStatus.AfterAttack) {
+            timeSinceItAttacked = 0;
+        }
+
+        if(moskitoStatus != MoskitoStatus.PrepareToAttack)
+        {
+            timeSincePreparingAttack = 0;
+        }
+        if (moskitoStatus != MoskitoStatus.StayFar)
+        {
+            timeSinceBeingFar = 0;
         }
         moskitoStatus = _newStatus;
 
@@ -203,18 +213,37 @@ public class Moskito : MonoBehaviour
 
     private void PrepareToAttack()
     {
-        Debug.Log($"Hello {timeSincePreparingAttack}");
         timeSincePreparingAttack += Time.deltaTime;
 
         if (timeSincePreparingAttack > timePreparingAttack)
         {
-            timeSincePreparingAttack = 0;
             SetMoskitoStatus(MoskitoStatus.AfterAttack);
             // HERE DEAL POSSIBLE DAMAGE => THE MOSKITO A PIQUé !
+                // ...
         }
         else
         {
             SetMoskitoStatus(MoskitoStatus.PrepareToAttack);
+        }
+    }
+
+    private void PrepareToComeBack()
+    {
+        if(moskitoStatus == MoskitoStatus.GoClose)
+        {
+            return;
+        }
+        
+        if(moskitoStatus != MoskitoStatus.StayFar)
+        {
+            SetMoskitoStatus(MoskitoStatus.StayFar);
+            timeBeforeGoingBack = UnityEngine.Random.Range(timeBeforeGoingBackWhenFarMin, timeBeforeGoingBackWhenFarMax);
+            return;
+        }
+        timeSinceBeingFar += Time.deltaTime;
+        if(timeSinceBeingFar > timeBeforeGoingBack)
+        {
+            SetMoskitoStatus(MoskitoStatus.GoClose);
         }
     }
 
