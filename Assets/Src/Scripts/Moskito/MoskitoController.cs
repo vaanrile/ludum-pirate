@@ -58,7 +58,13 @@ public class MoskitoController : MonoBehaviour
                 break;
             case Moskito.MoskitoStatus.PrepareToAttack:
                 UpdateTarget(player.transform);
-                break;            
+                break;
+            case Moskito.MoskitoStatus.StayFar:
+                UpdateTarget(player.transform);
+                break;
+            case Moskito.MoskitoStatus.Encens:
+                UpdateTarget(moskito.GetEncens().transform);
+                break;
         }
 
         
@@ -74,6 +80,9 @@ public class MoskitoController : MonoBehaviour
                 direction = -direction;
                 break;
             case Moskito.MoskitoStatus.AfterAttack:
+                direction = -direction;
+                break;
+            case Moskito.MoskitoStatus.StayFar:
                 direction = -direction;
                 break;
         }

@@ -8,9 +8,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private Moskito moskito;
-
-    [SerializeField]
     private PlayerController controller;
 
     [SerializeField]
@@ -40,19 +37,9 @@ public class Player : MonoBehaviour
     public enum PlayerStatus
     {
         Idle,
-        WalkingOppositeMoskito,
-        WalkingTowardsMoskito,
         TouchingObjects,
         Shaking,
         Hitting
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position,moskito.GetDangerZoneRadius());
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, moskito.GetConfortZoneRadius());
     }
 
     public PlayerStatus GetCurrentPlayerStatus()
@@ -106,20 +93,16 @@ public class Player : MonoBehaviour
             status = PlayerStatus.Idle;
             return;
         }
-
-        if (Vector3.Dot(controller.GetVelocity(), transform.position - moskito.transform.position) < 0)
-        {
-            status = PlayerStatus.WalkingTowardsMoskito;
-        }
-        else
-        {
-            status = PlayerStatus.WalkingOppositeMoskito;
-        }
     }
 
     public Transform GetBehindPlayerTransform()
     {
         return behindPlayer;
+    }
+
+    public PlayerController GetPlayerController()
+    {
+        return controller;
     }
 
 
