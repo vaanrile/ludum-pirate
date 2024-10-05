@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerMotor motor;
 
-
+    private bool _canMoveCamera=true;
     private void Start()
     {
         motor = GetComponent<PlayerMotor>();
@@ -43,6 +43,18 @@ public class PlayerController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            // AudioManager.instance?.PlayLol();
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _canMoveCamera = !_canMoveCamera;
+        }
+        if (!_canMoveCamera)
+        {
+            return;   
+        }
 
         //Calculer la vélocité du mouvement de notre joueur
         float xMov = Input.GetAxis("Horizontal");
@@ -68,9 +80,6 @@ public class PlayerController : MonoBehaviour
 
         motor.RotateCamera(cameraRotationX);
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            // AudioManager.instance?.PlayLol();
-        }
+        
     }
 }
