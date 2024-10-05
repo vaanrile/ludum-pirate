@@ -24,8 +24,21 @@ public class Moskito : MonoBehaviour
     
     [SerializeField]
     private float timePreparingAttack = 2f;
+    [SerializeField]
+    private float timeAfterAttack = 2f;
+
+    [SerializeField]
+    private float timeBeforeGoingBackWhenFarMin = 5f;
+
+    [SerializeField]
+    private float timeBeforeGoingBackWhenFarMax = 15f;
 
     private float timeSincePreparingAttack;
+    private float timeSinceItAttacked;
+    private float timeSinceBeingFar;
+    private float timeBeforeGoingBackMin;
+    private float timeBeforeGoingBackMax;
+
 
 
 
@@ -40,7 +53,7 @@ public class Moskito : MonoBehaviour
     {
         GoClose,
         PrepareToAttack,
-        Attack,
+        AfterAttack,
         Sneak,
         GoSafe,
         GoBehind,
@@ -114,6 +127,14 @@ public class Moskito : MonoBehaviour
 
     private void UpdateMoskitoStatus()
     {
+        if (moskitoStatus == MoskitoStatus.AfterAttack && timeSinceItAttacked < timeAfterAttack) {
+            timeSinceItAttacked += Time.deltaTime;
+            return;
+        }
+        else
+        {
+            timeSinceItAttacked = 0;
+        }
         switch (moskitoZone)
         {
             case MoskitoZone.Confort:
@@ -182,16 +203,14 @@ public class Moskito : MonoBehaviour
 
     private void PrepareToAttack()
     {
-        if(moskitoStatus == MoskitoStatus.Attack)
-        {
-            return;
-        }
+        Debug.Log($"Hello {timeSincePreparingAttack}");
         timeSincePreparingAttack += Time.deltaTime;
 
         if (timeSincePreparingAttack > timePreparingAttack)
         {
             timeSincePreparingAttack = 0;
-            SetMoskitoStatus(MoskitoStatus.Attack);
+            SetMoskitoStatus(MoskitoStatus.AfterAttack);
+            // HERE DEAL POSSIBLE DAMAGE => THE MOSKITO A PIQUé !
         }
         else
         {
