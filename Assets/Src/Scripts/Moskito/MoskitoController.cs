@@ -1,7 +1,9 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(MoskitoMotor))]
+[RequireComponent(typeof(Moskito))]
 
 
 public class MoskitoController : MonoBehaviour
@@ -9,20 +11,22 @@ public class MoskitoController : MonoBehaviour
     [SerializeField]
     private float speed = 3;
 
-    private MoskitoMotor motor;
-
     [SerializeField]
     private float rotationSpeed = 3f;
 
-    [SerializeField]
-    private Transform graphics;
-
-    [SerializeField]
     private Transform target;
 
+    [SerializeField]
+    private Player player;
 
-    private void Start()
+    private Moskito moskito;
+    private MoskitoMotor motor;
+
+    private Vector3 direction;
+
+    private void Awake()
     {
+        moskito = GetComponent<Moskito>();
         motor = GetComponent<MoskitoMotor>();
     }
 
@@ -36,36 +40,51 @@ public class MoskitoController : MonoBehaviour
             return;
         }
 
-        Debug.DrawLine(transform.position, transform.position + transform.forward * 100, Color.green);
-        Debug.DrawLine(transform.position, (transform.position + (target.position - transform.position)).normalized * 100, Color.yellow);
+        switch (moskito.GetMoskitoStatus())
+        {
+            case Moskito.MoskitoStatus.GoClose:
+                UpdateTarget(player.transform);
+                break;
+            case Moskito.MoskitoStatus.GoBehind: 
+                UpdateTarget(player.GetBehindPlayerTransform()); 
+                break;
+            case Moskito.MoskitoStatus.GoSafe:
+                UpdateTarget(player.transform);
+                break;
+            case Moskito.MoskitoStatus.PrepareToAttack:
+                UpdateTarget(player.transform);
+                break;
+            case Moskito.MoskitoStatus.Attack:
+                UpdateTarget(player.transform);
+                break;
+        }
 
-        //Calculer la vélocité du mouvement de notre joueur
-        float xMov = Random.Range(-3f, 3f);
-        float zMov = Random.Range(-2f, 2f);
-        float yMov = Random.Range(-2f, 2f);
-
-        Vector3 moveHorizontal = transform.right * xMov;
-        Vector3 moveVertical = transform.forward * zMov;
-        Vector3 moveUp = graphics.forward * yMov;
+        
+        direction = (target.position - transform.position).normalized;
 
 
-        Vector3 velocity = (moveHorizontal + moveVertical + moveUp) * speed;
+        switch (moskito.GetMoskitoStatus())
+        {
+            case Moskito.MoskitoStatus.Sneak:
+                direction = Vector3.zero;
+                break;
+            case Moskito.MoskitoStatus.GoSafe:
+                direction = -direction;
+                break;
+        }
+        
+        transform.forward = direction.normalized;
+        float yMov = Random.Range(-0.2f, 0.2f);
+
+        Vector3 velocity = (direction) * speed;
 
         //Move
         motor.Move(velocity);
+    }
 
-        // on calcule la rotation du moustique
-        float yRot = 2f;
-        Vector3 rotation = new Vector3(0, yRot, 0) * rotationSpeed;
-
-        motor.Rotate(rotation);
-
-        // on calcule la rotation de du graphics
-        float cameraRotationX = yMov;
-
-
-        motor.RotateCamera(cameraRotationX);
-
+    public void UpdateTarget(Transform _newTarget)
+    {
+        target = _newTarget;
     }
 }
 
