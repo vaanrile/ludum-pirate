@@ -102,6 +102,8 @@ public class PlayerController : MonoBehaviour
             tapetteAnimator.SetTrigger("Tap");
             player.OnTryingToHit();
             ApplyRepulseForce();
+            Debug.DrawLine(transform.position, transform.position + transform.forward * hitBox, Color.red, 1f);
+
         }
     }
     private void ApplyRepulseForce()
