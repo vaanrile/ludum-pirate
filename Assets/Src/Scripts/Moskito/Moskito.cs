@@ -454,11 +454,6 @@ public class Moskito : MonoBehaviour
         }
         switch (patrollingZone) { 
             case MoskitoZone.Far:
-                if (moskitoStatus == MoskitoStatus.GoClose)
-                {
-                    return;
-                }
-
                 if (moskitoStatus != MoskitoStatus.StayFar)
                 {
                     SetMoskitoStatus(MoskitoStatus.StayFar);
