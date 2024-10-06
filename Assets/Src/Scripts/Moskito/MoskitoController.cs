@@ -57,7 +57,8 @@ public class MoskitoController : MonoBehaviour
 
     private void Update()
     {
-
+        direction = Vector3.zero;
+        motor.Move(Vector3.zero);
         if (GameManager.IsOn)
         {  
             motor.Move(Vector3.zero);
@@ -70,7 +71,6 @@ public class MoskitoController : MonoBehaviour
             motor.Move(Vector3.zero);
             return;
         }
-
         //BEFORE SETTING DIRECTION
         switch (moskito.GetMoskitoStatus())
         {
@@ -90,6 +90,7 @@ public class MoskitoController : MonoBehaviour
                 UpdateTarget(moskito.GetEncens().transform);
                 break;
         }
+
 
         direction = (target.position - transform.position).normalized;
         if (isFrenetic)
@@ -144,13 +145,16 @@ public class MoskitoController : MonoBehaviour
                     direction = randomNormalizedVector;
                 } // else we go closer
                 break;
+            case Moskito.MoskitoStatus.PrepareToAttack:
+                direction = Vector3.zero;
+                break;
         }
         
-        transform.forward = direction.normalized;
-        float yMov = Random.Range(-0.2f, 0.2f);
-
+        if(direction != Vector3.zero)
+        {
+            transform.forward = direction.normalized;
+        }
         velocity = (direction.normalized) * speed;
-
         //Move
         motor.Move(velocity);
     }
