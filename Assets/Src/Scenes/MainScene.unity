@@ -11040,7 +11040,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 098b9f573e8bb8d4ba98aef0e9ecc84f, type: 3}
   - {fileID: 8300000, guid: 881c094d066e55642acdaba93dd1086c, type: 3}
   swatterArray:
-  - {fileID: 8300000, guid: c656052a33e0797479202e9055bff49d, type: 3}
   - {fileID: 8300000, guid: 52d025bb6cd4be048a0b71c90d4ba90b, type: 3}
   - {fileID: 8300000, guid: 067f56871d0f81145b3f891378deedbc, type: 3}
   - {fileID: 8300000, guid: 0eb2c456471a984469f847943e66330e, type: 3}
@@ -21743,63 +21742,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a82f976a6a50cbf45bb996016d6e144d, type: 3}
---- !u!1001 &8906875722024530797
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1534584510427590756, guid: 08f3901fef1c34e4fa077898f645e769, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 1534584510427590756, guid: 08f3901fef1c34e4fa077898f645e769, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 1534584510427590756, guid: 08f3901fef1c34e4fa077898f645e769, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.93
-      objectReference: {fileID: 0}
-    - target: {fileID: 1534584510427590756, guid: 08f3901fef1c34e4fa077898f645e769, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1534584510427590756, guid: 08f3901fef1c34e4fa077898f645e769, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1534584510427590756, guid: 08f3901fef1c34e4fa077898f645e769, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1534584510427590756, guid: 08f3901fef1c34e4fa077898f645e769, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1534584510427590756, guid: 08f3901fef1c34e4fa077898f645e769, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1534584510427590756, guid: 08f3901fef1c34e4fa077898f645e769, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1534584510427590756, guid: 08f3901fef1c34e4fa077898f645e769, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6136749636017550298, guid: 08f3901fef1c34e4fa077898f645e769, type: 3}
-      propertyPath: m_Name
-      value: MoskitoPlacHolder
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 08f3901fef1c34e4fa077898f645e769, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -21808,7 +21750,6 @@ SceneRoots:
   - {fileID: 2047225080}
   - {fileID: 382118971}
   - {fileID: 1844780059}
-  - {fileID: 8906875722024530797}
   - {fileID: 42495930}
   - {fileID: 709489446}
   - {fileID: 1343206458}
