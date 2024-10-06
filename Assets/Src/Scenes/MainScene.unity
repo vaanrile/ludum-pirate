@@ -12081,6 +12081,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 526b927668a04174fb6f30485aaea6ce, type: 3}
   m_PrefabInstance: {fileID: 97813161}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &867048292 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8901772240675661107, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
+  m_PrefabInstance: {fileID: 2047225080}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b05b447e4c8f114408bc97b6f19909e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &872825796
 GameObject:
   m_ObjectHideFlags: 0
@@ -17859,6 +17870,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 526b927668a04174fb6f30485aaea6ce, type: 3}
   m_PrefabInstance: {fileID: 1826458100}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1319957487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2592893632704658731, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
+  m_PrefabInstance: {fileID: 2047225080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1323234232 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7c36c19d522884a43a9d2764fc9c9419, type: 3}
@@ -18674,6 +18690,14 @@ PrefabInstance:
     - target: {fileID: 8043650525752367238, guid: 1f36a1e46aeda404489820dfb98f2c55, type: 3}
       propertyPath: m_Name
       value: Encens
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212668895055748595, guid: 1f36a1e46aeda404489820dfb98f2c55, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212668895055748595, guid: 1f36a1e46aeda404489820dfb98f2c55, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22209,6 +22233,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1343206458}
     m_Modifications:
     - target: {fileID: 642276449129997351, guid: 9781a57bf9be40147a6557d243fbecf3, type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 867048292}
+    - target: {fileID: 642276449129997351, guid: 9781a57bf9be40147a6557d243fbecf3, type: 3}
       propertyPath: lumiere
       value: 
       objectReference: {fileID: 515261079}
@@ -22218,7 +22246,7 @@ PrefabInstance:
       objectReference: {fileID: 1141873785}
     - target: {fileID: 2056938011804383516, guid: 9781a57bf9be40147a6557d243fbecf3, type: 3}
       propertyPath: m_VersionIndex
-      value: 486
+      value: 489
       objectReference: {fileID: 0}
     - target: {fileID: 2530340494583544905, guid: 9781a57bf9be40147a6557d243fbecf3, type: 3}
       propertyPath: m_Mesh
@@ -22228,6 +22256,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1141873785}
+    - target: {fileID: 5868684858907188542, guid: 9781a57bf9be40147a6557d243fbecf3, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5868684858907188542, guid: 9781a57bf9be40147a6557d243fbecf3, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7405214077344345240, guid: 9781a57bf9be40147a6557d243fbecf3, type: 3}
       propertyPath: m_Name
       value: Lumiere
@@ -27876,9 +27912,17 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8901772240675661107, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
+      propertyPath: cameraLight
+      value: 
+      objectReference: {fileID: 2047225081}
+    - target: {fileID: 8901772240675661107, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
       propertyPath: repulseForce
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8901772240675661107, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
+      propertyPath: cameraUnlight
+      value: 
+      objectReference: {fileID: 1319957487}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27887,6 +27931,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1832692237}
   m_SourcePrefab: {fileID: 100100000, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
+--- !u!1 &2047225081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3259311311887757623, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
+  m_PrefabInstance: {fileID: 2047225080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2064253275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29405,11 +29454,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6775557556251343917, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_Constraints
-      value: 14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6775557556251343917, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8361384101574397577, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_Camera
