@@ -1,9 +1,8 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class S_Telephone : S_AbsInteractive
+public class S_Pïege : S_AbsInteractive
 {
     [Header("Game Design Variables")]
     [SerializeField]
@@ -15,21 +14,15 @@ public class S_Telephone : S_AbsInteractive
     [SerializeField]
     private float duration;
 
-    [SerializeField]
-    private int nbDringSound;
+    public Material matActif;
+    public Material matInactif;
+    public GameObject objetEmissive;
 
-    public ParticleSystem particle;
 
-    private float timeBetweenDring;
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, radius);
-    }
-
-    private void Awake()
-    {
-        timeBetweenDring = duration / (nbDringSound-1);
     }
 
     public float GetRadius()
@@ -47,8 +40,9 @@ public class S_Telephone : S_AbsInteractive
         if (!isActive)
         {
             isActive = true;
+            Debug.Log("Piege Actif");
+            objetEmissive.GetComponent<Renderer>().material = matActif;
             StartCoroutine(WaitForEndOfEncens());
-            particle.Play();
         }
     }
 
@@ -58,23 +52,11 @@ public class S_Telephone : S_AbsInteractive
         SetActive();
     }
 
-
-    private void dring()
-    {
-        Debug.Log("Son : Dring");
-        transform.DOShakeRotation(1f, 10, 10, 10, true, ShakeRandomnessMode.Harmonic);
-    }
-
     IEnumerator WaitForEndOfEncens()
     {
-        dring();
-        for (int i = 0; i < nbDringSound-1; i++)
-        {
-            yield return new WaitForSeconds(timeBetweenDring);
-            dring();
-        }
+        yield return new WaitForSeconds(duration);
         isActive = false;
-        Debug.Log("Son : Fin dring");
-        particle.Stop();
+        Debug.Log("Piege Stop");
+        objetEmissive.GetComponent<Renderer>().material = matInactif;
     }
 }
