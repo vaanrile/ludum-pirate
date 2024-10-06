@@ -27002,6 +27002,8 @@ MonoBehaviour:
   audioClipsArray:
   - audioClip: {fileID: 8300000, guid: 8290a2c4d51c7544eb0ea7dd4159c6d8, type: 3}
     audioClipName: lol
+  footstepArray: []
+  swatterArray: []
 --- !u!82 &994672472
 AudioSource:
   m_ObjectHideFlags: 0
