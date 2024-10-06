@@ -5,11 +5,18 @@ using UnityEngine;
 public class S_Telecommande : MonoBehaviour
 {
     public S_TV tv;
+    private AudioSource _audioSource;
+
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         tv.On();
-        //AudioManager.audioMana
+        _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Remote_Click"));
+
     }
 
 }

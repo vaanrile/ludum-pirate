@@ -13,6 +13,11 @@ public class S_Radiateur : S_AbsInteractive
 
     [SerializeField]
     private float duration;
+
+    public GameObject screenInactif;
+    public GameObject screenActif;
+    public ParticleSystem hotTrails;
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -34,7 +39,9 @@ public class S_Radiateur : S_AbsInteractive
         if (!isActive)
         {
             isActive = true;
-            Debug.Log("Radiateur Actif");
+            screenInactif.SetActive(false);
+            screenActif.SetActive(true);
+            hotTrails.Play();
             StartCoroutine(WaitForEndOfEncens());
         }
     }
@@ -49,6 +56,9 @@ public class S_Radiateur : S_AbsInteractive
     {
         yield return new WaitForSeconds(duration);
         isActive = false;
+        screenInactif.SetActive(true);
+        screenActif.SetActive(false);
+        hotTrails.Stop();
         Debug.Log("Radiateur Stop");
     }
 }

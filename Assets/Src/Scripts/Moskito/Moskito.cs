@@ -75,6 +75,8 @@ public class Moskito : MonoBehaviour
     [SerializeField]
     private float timePatrollingMax = 6f;
 
+    BoxCollider moskitoBox;
+
 
 
 
@@ -562,5 +564,25 @@ public class Moskito : MonoBehaviour
 
     public MoskitoTouchDetector GetTouchDetector() {
         return moskitoTouchDetector;
+    }
+
+    public void SetPlayer(Player _player)
+    {
+        player = _player;
+    }
+
+    public void SetEncens(Encens _encens)
+    {
+        encens = _encens;
+    }
+
+    public void SetMoskitoBox(BoxCollider _moskitoBox)
+    {
+        moskitoBox = _moskitoBox;
+    }
+
+    public BoxCollider GetMoskitoBox()
+    {
+        return moskitoBox;
     }
 }

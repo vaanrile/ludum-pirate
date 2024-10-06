@@ -683,6 +683,7 @@ MonoBehaviour:
   lightTV: {fileID: 0}
   tvScreen: {fileID: 6025663393802653396}
   tvAnimDelay: 0.1
+  _audioSource: {fileID: 8867260035885534790}
 --- !u!1 &4427185798985589180
 GameObject:
   m_ObjectHideFlags: 0

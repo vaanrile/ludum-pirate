@@ -13,6 +13,10 @@ public class Encens : S_AbsInteractive
 
     [SerializeField]
     private float duration;
+
+    public ParticleSystem actifTrait;
+    public ParticleSystem actifSmoke;
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -34,7 +38,8 @@ public class Encens : S_AbsInteractive
         if (!isActive)
         {
             isActive = true;
-            Debug.Log("Encens Actif");
+            actifTrait.Play();
+            actifSmoke.Play();
             StartCoroutine(WaitForEndOfEncens());
         }
 
@@ -50,7 +55,8 @@ public class Encens : S_AbsInteractive
     {
         yield return new WaitForSeconds(duration);
         isActive = false;
-        Debug.Log("Encens Stop");
+        actifTrait.Stop();
+        actifSmoke.Stop();
     }
 
 }

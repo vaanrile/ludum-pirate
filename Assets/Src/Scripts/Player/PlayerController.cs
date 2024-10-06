@@ -37,11 +37,17 @@ public class PlayerController : MonoBehaviour
 
     private S_Tapette tapette;
 
+    private AudioSource _audioSource;
+    public float footstepTimerInit;
+    private float _footstepCurrent;
+
     private void Start()
     {
         motor = GetComponent<PlayerMotor>();
         player = GetComponent<Player>();
         tapette = GetComponentInChildren<S_Tapette>();
+        _audioSource = GetComponent<AudioSource>();
+        _footstepCurrent = footstepTimerInit;
     }
 
     private void Update()
@@ -109,11 +115,21 @@ public class PlayerController : MonoBehaviour
             //ApplyRepulseForce();
             //Debug.DrawLine(transform.position, transform.position + transform.forward * hitBox, Color.red, 1f);
         }
+        if (velocity.magnitude != 0)
+        {
+            _footstepCurrent -= Time.deltaTime;
+            if (_footstepCurrent <= 0)
+            {
+                _audioSource.PlayOneShot(AudioManager.instance.footstepArray[Random.Range(0, AudioManager.instance.footstepArray.Length - 1)]);
+                _footstepCurrent = footstepTimerInit;
+            }
+        }
     }
     public void ApplyRepulseForce()
     {
         //Ou ki son les rigidbody ? 
         tapette.kick(hitBox, repulseForce);
+        _audioSource.PlayOneShot(AudioManager.instance.swatterArray[Random.Range(0, AudioManager.instance.swatterArray.Length - 1)]);
     }
 
     public Vector3 GetVelocity()

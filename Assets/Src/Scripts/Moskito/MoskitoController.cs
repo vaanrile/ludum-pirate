@@ -1,4 +1,5 @@
 
+using DG.Tweening.Core.Easing;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -26,9 +27,6 @@ public class MoskitoController : MonoBehaviour
     private Vector3 randomDirection;
 
     private Transform target;
-
-    [SerializeField]
-    private Player player;
 
     private Moskito moskito;
     private MoskitoMotor motor;
@@ -65,6 +63,10 @@ public class MoskitoController : MonoBehaviour
             motor.Rotate(Vector3.zero);
             return;
         }
+        if (!moskito.GetMoskitoBox().bounds.Contains(moskito.transform.position))
+        {
+            moskito.transform.position = RandomLocInMoskitoBox();
+        }
 
         if (moskito.GetTouchDetector().IsAttachedToObject())
         {
@@ -75,7 +77,7 @@ public class MoskitoController : MonoBehaviour
         switch (moskito.GetMoskitoStatus())
         {
             case Moskito.MoskitoStatus.GoBehind: 
-                UpdateTarget(player.GetBehindPlayerTransform()); 
+                UpdateTarget(moskito.GetPlayer().GetBehindPlayerTransform()); 
                 break;
             case Moskito.MoskitoStatus.GoClose:
             case Moskito.MoskitoStatus.GoSafe:
@@ -84,7 +86,7 @@ public class MoskitoController : MonoBehaviour
             case Moskito.MoskitoStatus.StayFar:
             case Moskito.MoskitoStatus.StayConfort:
             case Moskito.MoskitoStatus.StayDanger:
-                UpdateTarget(player.transform);
+                UpdateTarget(moskito.GetPlayer().transform);
                 break;
             case Moskito.MoskitoStatus.Encens:
                 UpdateTarget(moskito.GetEncens().transform);
@@ -162,6 +164,15 @@ public class MoskitoController : MonoBehaviour
     public void UpdateTarget(Transform _newTarget)
     {
         target = _newTarget;
+    }
+
+    private Vector3 RandomLocInMoskitoBox()
+    {
+        var bounds = moskito.GetMoskitoBox().bounds;
+        return new Vector3(
+            Random.Range(bounds.min.x, bounds.max.x),
+            Random.Range(bounds.min.y, bounds.max.y),
+            Random.Range(bounds.min.z, bounds.max.z));
     }
 }
 
