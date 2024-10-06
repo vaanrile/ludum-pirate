@@ -18,9 +18,11 @@ public class PlayerController : MonoBehaviour
     private float repulseForce = 50f;
 
     [SerializeField] 
-    private float hitBox = 2f; 
+    private float hitBox = 2f;
     //Hitbox
 
+    public GameObject cameraLight;
+    public GameObject cameraUnlight;
 
     private PlayerMotor motor;
 
@@ -118,5 +120,20 @@ public class PlayerController : MonoBehaviour
     {
         return velocity;
     }
+
+    public void setCamera(bool lightOn)
+    {
+        if (lightOn)
+        {
+            cameraLight.SetActive(true);
+            cameraUnlight.SetActive(false);
+        }
+        else
+        {
+            cameraLight.SetActive(false);
+            cameraUnlight.SetActive(true);
+        }
+    }
+
 
 }
