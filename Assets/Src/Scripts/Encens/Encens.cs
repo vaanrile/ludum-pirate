@@ -33,6 +33,7 @@ public class Encens : S_AbsInteractive
     {
         if (!isActive)
         {
+            Debug.Log("Test");
             isActive = true;
             StartCoroutine(WaitForEndOfEncens());
         }
@@ -42,6 +43,7 @@ public class Encens : S_AbsInteractive
     public override void Kicked()
     {
         base.Kicked();
+        Debug.Log("Test");
         SetActive();
     }
 
