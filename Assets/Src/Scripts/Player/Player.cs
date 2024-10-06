@@ -105,6 +105,9 @@ public class Player : MonoBehaviour
         return controller;
     }
 
-
+    public void Cri()
+    {
+        Debug.Log("son : Aaaaargh ! Fuck !");
+    }
 
 }
