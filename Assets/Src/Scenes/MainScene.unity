@@ -11015,7 +11015,11 @@ MonoBehaviour:
   - audioClip: {fileID: 8300000, guid: 8290a2c4d51c7544eb0ea7dd4159c6d8, type: 3}
     audioClipName: lol
   - audioClip: {fileID: 8300000, guid: 15a4bf2e98184be439dec32176dc3296, type: 3}
-    audioClipName: Tv Turning On
+    audioClipName: Tv_Turning_On
+  - audioClip: {fileID: 8300000, guid: 5bc244e637eab3c45b0eeb8f94a53d74, type: 3}
+    audioClipName: Remote_Click
+  - audioClip: {fileID: 8300000, guid: b6f266809bccc6948b1e936d42d31da3, type: 3}
+    audioClipName: Light_Click
   footstepArray:
   - {fileID: 8300000, guid: d246a9e7b18c10c44bdae5c78d5cf84b, type: 3}
   - {fileID: 8300000, guid: 4ad9b672abbf3474598db0c23c7fc273, type: 3}
@@ -17265,7 +17269,7 @@ PrefabInstance:
       objectReference: {fileID: 1141873785}
     - target: {fileID: 2056938011804383516, guid: 9781a57bf9be40147a6557d243fbecf3, type: 3}
       propertyPath: m_VersionIndex
-      value: 489
+      value: 504
       objectReference: {fileID: 0}
     - target: {fileID: 2530340494583544905, guid: 9781a57bf9be40147a6557d243fbecf3, type: 3}
       propertyPath: m_Mesh
@@ -21575,7 +21579,7 @@ PrefabInstance:
       objectReference: {fileID: 1531230124}
     - target: {fileID: 2830221275656604138, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_VersionIndex
-      value: 2063
+      value: 2069
       objectReference: {fileID: 0}
     - target: {fileID: 3236200168658682752, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_Name
@@ -21724,7 +21728,7 @@ PrefabInstance:
       objectReference: {fileID: 1085309613}
     - target: {fileID: 5560918741783279419, guid: a82f976a6a50cbf45bb996016d6e144d, type: 3}
       propertyPath: m_VersionIndex
-      value: 2538
+      value: 2559
       objectReference: {fileID: 0}
     - target: {fileID: 6038240090495317203, guid: a82f976a6a50cbf45bb996016d6e144d, type: 3}
       propertyPath: m_Name

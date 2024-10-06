@@ -96,7 +96,7 @@ public class AudioManager : MonoBehaviour
     {
         DOTween.To(() => audioToFade.volume, x => audioToFade.volume = x, targetVolume, timeToFade);
     }
-    private AudioClip findAudioClip(string soundName)
+    public AudioClip findAudioClip(string soundName)
     {
         AudioClip audioClipToPlay = null;
         foreach(AudioClips aud in audioClipsArray)

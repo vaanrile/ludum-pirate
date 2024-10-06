@@ -9,15 +9,21 @@ public class S_TV : S_AbsInteractive
     private Coroutine _screenCoroutine;
     public Transform tvScreen;
     public float tvAnimDelay;
+    [SerializeField]private AudioSource _audioSource;
+
     void Update()
     {
         
     }
 
     public void On()
-    {
-        onEffect.SetActive(true);
-        _screenCoroutine = StartCoroutine(ScreenAnim());
+    {       
+        if (!onEffect.activeSelf)
+        {
+            onEffect.SetActive(true);
+            _screenCoroutine = StartCoroutine(ScreenAnim());
+            _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Tv_Turning_On"));
+        }       
     }
 
     private void Off()
