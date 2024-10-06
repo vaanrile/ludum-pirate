@@ -4600,6 +4600,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 649fcc70a4fef2248a6642ea5672a995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nbMoskitos: 0
+  mostikoPrefab: {fileID: 0}
+  player: {fileID: 0}
+  encens: {fileID: 0}
+  moskitoBox: {fileID: 0}
+  nbStingBeforeLose: 3
 --- !u!43 &383709838
 Mesh:
   m_ObjectHideFlags: 0
@@ -17098,7 +17104,7 @@ PrefabInstance:
       objectReference: {fileID: 1942582262}
     - target: {fileID: 6945835584899103220, guid: e3fb540517782c44590e6fec04299e59, type: 3}
       propertyPath: m_VersionIndex
-      value: 3913
+      value: 3916
       objectReference: {fileID: 0}
     - target: {fileID: 6974177902087414476, guid: e3fb540517782c44590e6fec04299e59, type: 3}
       propertyPath: duration
@@ -27250,7 +27256,7 @@ PrefabInstance:
       objectReference: {fileID: 923983100}
     - target: {fileID: 5339359396512805140, guid: 5a953f8757186e148b0c0310cd41f303, type: 3}
       propertyPath: m_VersionIndex
-      value: 14
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8465754475909808724, guid: 5a953f8757186e148b0c0310cd41f303, type: 3}
       propertyPath: m_Mesh
@@ -27262,7 +27268,7 @@ PrefabInstance:
       objectReference: {fileID: 874337530}
     - target: {fileID: 8955753135957381343, guid: 5a953f8757186e148b0c0310cd41f303, type: 3}
       propertyPath: m_VersionIndex
-      value: 2938
+      value: 2941
       objectReference: {fileID: 0}
     - target: {fileID: 9045029136678381617, guid: 5a953f8757186e148b0c0310cd41f303, type: 3}
       propertyPath: m_Mesh
