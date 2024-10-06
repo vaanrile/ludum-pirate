@@ -1,4 +1,5 @@
 
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -33,12 +34,25 @@ public class MoskitoController : MonoBehaviour
     private MoskitoMotor motor;
 
     private Vector3 direction;
+    private Vector3 randomNormalizedVector;
+
+    private Vector3 velocity;
 
     private void Awake()
     {
         moskito = GetComponent<Moskito>();
         motor = GetComponent<MoskitoMotor>();
         target = transform;
+        randomNormalizedVector = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+
+        StartCoroutine(GenerateRandomNormalizedVector3EachXseconds(2));
+    }
+
+    IEnumerator GenerateRandomNormalizedVector3EachXseconds(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        randomNormalizedVector = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        StartCoroutine(GenerateRandomNormalizedVector3EachXseconds(Random.Range(.2f,.7f)));
     }
 
     private void Update()
@@ -51,25 +65,25 @@ public class MoskitoController : MonoBehaviour
             return;
         }
 
+        if (moskito.GetTouchDetector().IsAttachedToObject())
+        {
+            motor.Move(Vector3.zero);
+            return;
+        }
+
         //BEFORE SETTING DIRECTION
         switch (moskito.GetMoskitoStatus())
         {
-            case Moskito.MoskitoStatus.GoClose:
-                UpdateTarget(player.transform);
-                break;
             case Moskito.MoskitoStatus.GoBehind: 
                 UpdateTarget(player.GetBehindPlayerTransform()); 
                 break;
+            case Moskito.MoskitoStatus.GoClose:
             case Moskito.MoskitoStatus.GoSafe:
-                UpdateTarget(player.transform);
-                break;
             case Moskito.MoskitoStatus.AfterAttack:
-                UpdateTarget(player.transform);
-                break;
             case Moskito.MoskitoStatus.PrepareToAttack:
-                UpdateTarget(player.transform);
-                break;
             case Moskito.MoskitoStatus.StayFar:
+            case Moskito.MoskitoStatus.StayConfort:
+            case Moskito.MoskitoStatus.StayDanger:
                 UpdateTarget(player.transform);
                 break;
             case Moskito.MoskitoStatus.Encens:
@@ -80,7 +94,7 @@ public class MoskitoController : MonoBehaviour
         direction = (target.position - transform.position).normalized;
         if (isFrenetic)
         {
-            if(Random.Range(0f,1f) > 0.98)
+            if(Random.Range(0f,1f) > 0.99)
             {
                 randomDirection = Vector3.zero;
             }
@@ -102,14 +116,40 @@ public class MoskitoController : MonoBehaviour
                 direction = -direction;
                 break;
             case Moskito.MoskitoStatus.StayFar:
-                direction = -direction;
+                if(moskito.GetMoskitoZone() == Moskito.MoskitoZone.Far)
+                {
+                    direction = randomNormalizedVector;
+                }
+                else
+                {
+                    direction = -direction;
+                }
+                break;
+            case Moskito.MoskitoStatus.StayConfort:
+                switch (moskito.GetMoskitoZone())
+                {
+                    case Moskito.MoskitoZone.Confort:
+                        direction = randomNormalizedVector;
+                        break;
+                    case Moskito.MoskitoZone.Danger:
+                        direction = -direction;
+                        break;
+                    case Moskito.MoskitoZone.Far: // go closer
+                        break;
+                }
+                break;
+            case Moskito.MoskitoStatus.StayDanger:
+                if (moskito.GetMoskitoZone() == Moskito.MoskitoZone.Danger)
+                {
+                    direction = randomNormalizedVector;
+                } // else we go closer
                 break;
         }
         
         transform.forward = direction.normalized;
         float yMov = Random.Range(-0.2f, 0.2f);
 
-        Vector3 velocity = (direction.normalized) * speed;
+        velocity = (direction.normalized) * speed;
 
         //Move
         motor.Move(velocity);
