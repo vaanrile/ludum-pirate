@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Encens : MonoBehaviour
+public class Encens : S_AbsInteractive
 {
     [Header("Game Design Variables")]
     [SerializeField]
@@ -33,9 +33,16 @@ public class Encens : MonoBehaviour
     {
         if (!isActive)
         {
+            isActive = true;
             StartCoroutine(WaitForEndOfEncens());
         }
 
+    }
+
+    public override void Kicked()
+    {
+        base.Kicked();
+        SetActive();
     }
 
     IEnumerator WaitForEndOfEncens()
