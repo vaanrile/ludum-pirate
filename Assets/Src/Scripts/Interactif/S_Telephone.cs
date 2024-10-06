@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Encens : S_AbsInteractive
+public class S_Telephone : S_AbsInteractive
 {
     [Header("Game Design Variables")]
     [SerializeField]
@@ -13,15 +13,26 @@ public class Encens : S_AbsInteractive
 
     [SerializeField]
     private float duration;
+
+    [SerializeField]
+    private int nbDringSound;
+
+
+    private float timeBetweenDring;
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position,radius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
+    private void Awake()
+    {
+        timeBetweenDring = duration / (nbDringSound-1);
     }
 
     public float GetRadius()
     {
-        return radius; 
+        return radius;
     }
 
     public bool IsActive()
@@ -34,10 +45,9 @@ public class Encens : S_AbsInteractive
         if (!isActive)
         {
             isActive = true;
-            Debug.Log("Encens Actif");
+            Debug.Log("Tel Actif");
             StartCoroutine(WaitForEndOfEncens());
         }
-
     }
 
     public override void Kicked()
@@ -48,9 +58,13 @@ public class Encens : S_AbsInteractive
 
     IEnumerator WaitForEndOfEncens()
     {
-        yield return new WaitForSeconds(duration);
-        isActive = false;
-        Debug.Log("Encens Stop");
+        Debug.Log("Dring");
+        for (int i = 0; i < nbDringSound-1; i++)
+        {
+            yield return new WaitForSeconds(timeBetweenDring);
+            Debug.Log("Dring");
+        }
+        isActive = false; 
+        Debug.Log("Tel Stop");
     }
-
 }

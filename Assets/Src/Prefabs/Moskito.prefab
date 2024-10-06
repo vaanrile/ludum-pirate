@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 677868877209438416}
   - component: {fileID: 5635989886794446379}
   - component: {fileID: 3711395422875521745}
+  - component: {fileID: 7701588272984354719}
   m_Layer: 0
   m_Name: Moskito
   m_TagString: Untagged
@@ -114,7 +115,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.22
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3711395422875521745
 MonoBehaviour:
@@ -135,18 +136,41 @@ MonoBehaviour:
   moskitoZone: 2
   moskitoStatus: 3
   playerDirection: 1
+  playerOrientation: 0
+  patrollingZone: 4
+  lastPatrollingZone: 4
   player: {fileID: 0}
   encens: {fileID: 0}
   distanceZoneDanger: 4
   distanceZoneConfort: 10
-  timePreparingAttack: 2
+  faceMoskitoAngle: 0
   timeAfterAttack: 2
   timeBeforeGoingBackWhenFarMin: 3
   timeBeforeGoingBackWhenFarMax: 7
   timeSneakingMin: 5
   timeSneakingMax: 15
+  timePreparingAttackMin: 4
+  timePreparingAttackMax: 6
+  timePatrollingMin: 4
+  timePatrollingMax: 6
   forceStatus: 0
   closeToEncens: 0
+--- !u!114 &7701588272984354719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2914310192392344847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3f6f363208e99489527f48b48a12fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachToObjectProbability: 1
+  isAttachedToObject: 0
+  timeAttachedMin: 5
+  timeAttachedMax: 10
 --- !u!1 &4994833413022078462
 GameObject:
   m_ObjectHideFlags: 0
