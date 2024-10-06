@@ -5,6 +5,7 @@ using UnityEngine;
 public class S_TV : S_AbsInteractive
 {
     public GameObject onEffect;
+    public Light lightTV;
     private Coroutine _screenCoroutine;
     public Transform tvScreen;
     public float tvAnimDelay;
@@ -37,12 +38,16 @@ public class S_TV : S_AbsInteractive
         {
             tvScreen.localScale = new Vector3(-1, 1, 1);
             yield return new WaitForSeconds(tvAnimDelay);
+            lightTV.intensity = 0.9f;
             tvScreen.localScale = new Vector3(-1, -1, 1);
             yield return new WaitForSeconds(tvAnimDelay);
+            lightTV.intensity = 1f;
             tvScreen.localScale = new Vector3(1, -1, 1);
             yield return new WaitForSeconds(tvAnimDelay);
+            lightTV.intensity = 0.9f;
             tvScreen.localScale = new Vector3(1, 1, 1);
             yield return new WaitForSeconds(tvAnimDelay);
+            lightTV.intensity = 1f;
         }
         
     }
