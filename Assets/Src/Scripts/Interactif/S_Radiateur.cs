@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Encens : S_AbsInteractive
+public class S_Radiateur : S_AbsInteractive
 {
     [Header("Game Design Variables")]
     [SerializeField]
@@ -15,13 +15,13 @@ public class Encens : S_AbsInteractive
     private float duration;
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position,radius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 
     public float GetRadius()
     {
-        return radius; 
+        return radius;
     }
 
     public bool IsActive()
@@ -34,10 +34,9 @@ public class Encens : S_AbsInteractive
         if (!isActive)
         {
             isActive = true;
-            Debug.Log("Encens Actif");
+            Debug.Log("Radiateur Actif");
             StartCoroutine(WaitForEndOfEncens());
         }
-
     }
 
     public override void Kicked()
@@ -50,7 +49,6 @@ public class Encens : S_AbsInteractive
     {
         yield return new WaitForSeconds(duration);
         isActive = false;
-        Debug.Log("Encens Stop");
+        Debug.Log("Radiateur Stop");
     }
-
 }
