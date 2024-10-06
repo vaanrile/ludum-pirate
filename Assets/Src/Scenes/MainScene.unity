@@ -35987,6 +35987,11 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!108 &1671651294 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 9119442823497754562, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
+  m_PrefabInstance: {fileID: 3410844453412266175}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1672903728 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 526b927668a04174fb6f30485aaea6ce, type: 3}
@@ -43266,13 +43271,17 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1531230124}
+    - target: {fileID: 2601422853175656119, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
+      propertyPath: lightTV
+      value: 
+      objectReference: {fileID: 1671651294}
     - target: {fileID: 2830221275656604138, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1531230124}
     - target: {fileID: 2830221275656604138, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_VersionIndex
-      value: 2042
+      value: 2045
       objectReference: {fileID: 0}
     - target: {fileID: 3236200168658682752, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_Name
@@ -43342,6 +43351,18 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 705357785}
+    - target: {fileID: 9119442823497754562, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6103151
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119442823497754562, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6103151
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119442823497754562, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6132076
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
