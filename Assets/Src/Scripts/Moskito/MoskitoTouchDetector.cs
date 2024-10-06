@@ -80,7 +80,7 @@ public class MoskitoTouchDetector : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         alreadyAttachedObjects.Clear();
-        FlushAllAttachedObjectEveryXseconds(20);
+        FlushAllAttachedObjectEveryXseconds(30);
     }
 
 
