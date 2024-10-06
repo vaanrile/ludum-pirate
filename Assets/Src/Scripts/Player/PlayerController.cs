@@ -33,10 +33,13 @@ public class PlayerController : MonoBehaviour
 
     private bool _canMoveCamera=true;
 
+    private S_Tapette tapette;
+
     private void Start()
     {
         motor = GetComponent<PlayerMotor>();
         player = GetComponent<Player>();
+        tapette = GetComponentInChildren<S_Tapette>();
     }
 
     private void Update()
@@ -102,33 +105,13 @@ public class PlayerController : MonoBehaviour
             tapetteAnimator.SetTrigger("Tap");
             player.OnTryingToHit();
             //ApplyRepulseForce();
-            Debug.DrawLine(transform.position, transform.position + transform.forward * hitBox, Color.red, 1f);
+            //Debug.DrawLine(transform.position, transform.position + transform.forward * hitBox, Color.red, 1f);
         }
     }
     public void ApplyRepulseForce()
     {
         //Ou ki son les rigidbody ? 
-        Collider[] colliders = Physics.OverlapSphere(transform.position, hitBox);
-
-        foreach (Collider collider in colliders)
-        {
-            Rigidbody rb = collider.attachedRigidbody;
-            if (rb != null && rb != GetComponent<Rigidbody>())
-            {
-                //dire force
-                Vector3 direction = collider.transform.position - transform.position;
-                direction.Normalize();
-
-                //Force
-                rb.AddForce(direction * repulseForce, ForceMode.Impulse);
-
-                S_AbsInteractive interactive = rb.GetComponent<S_AbsInteractive>();
-                if (interactive != null)
-                {
-                    interactive.Kicked();
-                }
-            }
-        }
+        tapette.kick(hitBox, repulseForce);
     }
 
     public Vector3 GetVelocity()
