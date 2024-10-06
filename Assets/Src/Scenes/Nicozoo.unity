@@ -1811,38 +1811,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &1462664676 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2914310192392344847, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
-  m_PrefabInstance: {fileID: 4693274243623099827}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1596624219 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3711395422875521745, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
   m_PrefabInstance: {fileID: 4693274243623099827}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462664676}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61fb2261b5a17a64fa803af92a5fed1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1596624225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462664676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c3f6f363208e99489527f48b48a12fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attachToObjectProbability: 1
-  isAttachedToObject: 0
-  timeAttachedMin: 5
-  timeAttachedMax: 10
 --- !u!1 &1976784530
 GameObject:
   m_ObjectHideFlags: 0
@@ -2178,10 +2157,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 914697704}
-    - target: {fileID: 677868877209438416, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
-      propertyPath: isFrenetic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2914310192392344847, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
       propertyPath: m_Name
       value: Moskito
@@ -2234,37 +2209,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 914697704}
-    - target: {fileID: 3711395422875521745, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
-      propertyPath: FaceMoskitoAngle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5635989886794446379, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
-      propertyPath: m_Radius
-      value: 0.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 5635989886794446379, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
-      propertyPath: m_Center.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5635989886794446379, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5635989886794446379, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
-      propertyPath: m_ProvidesContacts
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6355479176864179271, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2914310192392344847, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1596624225}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

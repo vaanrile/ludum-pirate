@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  isFrenetic: 1
+  isFrenetic: 0
   randomMoveIntensity: 32.1
   freneticIntensity: 0.555
   randomDirection: {x: 0, y: 0, z: 0}
@@ -111,7 +111,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -133,7 +133,7 @@ MonoBehaviour:
   moskitoDanger: {fileID: 2100000, guid: 770e98a357da7e34eb83b726b41b0cf5, type: 2}
   moskitoFar: {fileID: 2100000, guid: 3a115c34f618a524294fa2c29a4116fd, type: 2}
   meshRenderer: {fileID: 2359689140821624206}
-  moskitoZone: 2
+  moskitoZone: 0
   moskitoStatus: 3
   playerDirection: 1
   playerOrientation: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c3f6f363208e99489527f48b48a12fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachToObjectProbability: 1
+  attachToObjectProbability: 0.001
   isAttachedToObject: 0
   timeAttachedMin: 5
   timeAttachedMax: 10
@@ -232,7 +232,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3a115c34f618a524294fa2c29a4116fd, type: 2}
+  - {fileID: 2100000, guid: 37a6007f64fde644e8e47f3b083b782e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

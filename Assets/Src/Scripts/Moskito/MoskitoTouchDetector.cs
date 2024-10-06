@@ -33,7 +33,7 @@ public class MoskitoTouchDetector : MonoBehaviour
         StartCoroutine(FlushAllAttachedObjectEveryXseconds(30));
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (alreadyAttachedObjects.Contains(collision.gameObject))
         {
@@ -80,7 +80,7 @@ public class MoskitoTouchDetector : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         alreadyAttachedObjects.Clear();
-        FlushAllAttachedObjectEveryXseconds(20);
+        FlushAllAttachedObjectEveryXseconds(30);
     }
 
 

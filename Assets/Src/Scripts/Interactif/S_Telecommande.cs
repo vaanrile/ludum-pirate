@@ -9,6 +9,7 @@ public class S_Telecommande : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         tv.On();
+        //AudioManager.audioMana
     }
 
 }
