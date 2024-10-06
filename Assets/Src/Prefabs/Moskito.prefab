@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7701588272984354719}
   m_Layer: 0
   m_Name: Moskito
-  m_TagString: Untagged
+  m_TagString: Moskito
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,6 @@ MonoBehaviour:
   randomMoveIntensity: 32.1
   freneticIntensity: 0.555
   randomDirection: {x: 0, y: 0, z: 0}
-  player: {fileID: 0}
 --- !u!135 &5635989886794446379
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -169,8 +168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachToObjectProbability: 0.001
   isAttachedToObject: 0
-  timeAttachedMin: 5
-  timeAttachedMax: 10
+  timeAttachedMin: 1
+  timeAttachedMax: 3
 --- !u!1 &4994833413022078462
 GameObject:
   m_ObjectHideFlags: 0

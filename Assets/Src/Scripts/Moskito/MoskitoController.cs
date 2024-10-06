@@ -63,16 +63,14 @@ public class MoskitoController : MonoBehaviour
             motor.Rotate(Vector3.zero);
             return;
         }
+        if (!moskito.GetMoskitoBox().bounds.Contains(moskito.transform.position))
+        {
+            moskito.transform.position = RandomLocInMoskitoBox();
+        }
 
         if (moskito.GetTouchDetector().IsAttachedToObject())
         {
             motor.Move(Vector3.zero);
-            return;
-        }
-
-        if (moskito.GetMoskitoBox().bounds.Contains(moskito.transform.position))
-        {
-            moskito.transform.position = RandomLocInMoskitoBox();
             return;
         }
         //BEFORE SETTING DIRECTION
