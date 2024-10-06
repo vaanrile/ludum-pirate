@@ -14,6 +14,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float mouseSensitivityY = 3f;
 
+    [SerializeField]
+    private float repulseForce = 50f;
+
+    [SerializeField] 
+    private float hitBox = 2f; 
+    //Hitbox
+
+
     private PlayerMotor motor;
 
     private Vector3 velocity;
@@ -24,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private Player player;
 
     private bool _canMoveCamera=true;
+
     private void Start()
     {
         motor = GetComponent<PlayerMotor>();
@@ -92,6 +101,33 @@ public class PlayerController : MonoBehaviour
         {
             tapetteAnimator.SetTrigger("Tap");
             player.OnTryingToHit();
+            //ApplyRepulseForce();
+            Debug.DrawLine(transform.position, transform.position + transform.forward * hitBox, Color.red, 1f);
+        }
+    }
+    public void ApplyRepulseForce()
+    {
+        //Ou ki son les rigidbody ? 
+        Collider[] colliders = Physics.OverlapSphere(transform.position, hitBox);
+
+        foreach (Collider collider in colliders)
+        {
+            Rigidbody rb = collider.attachedRigidbody;
+            if (rb != null && rb != GetComponent<Rigidbody>())
+            {
+                //dire force
+                Vector3 direction = collider.transform.position - transform.position;
+                direction.Normalize();
+
+                //Force
+                rb.AddForce(direction * repulseForce, ForceMode.Impulse);
+
+                S_AbsInteractive interactive = rb.GetComponent<S_AbsInteractive>();
+                if (interactive != null)
+                {
+                    interactive.Kicked();
+                }
+            }
         }
     }
 
@@ -99,4 +135,5 @@ public class PlayerController : MonoBehaviour
     {
         return velocity;
     }
+
 }

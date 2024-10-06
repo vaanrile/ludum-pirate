@@ -2,20 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Player;
 
 public class Moskito : MonoBehaviour
 {
+    [Header("__MATERIALS")]
     [SerializeField] Material moskitoConfort;
     [SerializeField] Material moskitoDanger;
     [SerializeField] Material moskitoFar;
-
     [SerializeField] MeshRenderer meshRenderer;
 
+    [Header("__Enum")]
     [SerializeField] MoskitoZone moskitoZone = MoskitoZone.Far;
     [SerializeField] MoskitoStatus moskitoStatus = MoskitoStatus.GoSafe;
+    [SerializeField] PlayerDirection playerDirection = PlayerDirection.WalkingToward;
+    [Header("__OTHER GameObjects")]
     [SerializeField] Player player;
+    [SerializeField] Encens encens;
 
-    [Header("GameDesignVariables")]
+    private Rigidbody rb;
+
+    [Header("__GameDesignVariables")]
     [SerializeField]
     private float distanceZoneDanger = 15f;
 
@@ -33,14 +40,30 @@ public class Moskito : MonoBehaviour
     [SerializeField]
     private float timeBeforeGoingBackWhenFarMax = 15f;
 
+    [SerializeField]
+    private float timeSneakingMin = 5f;
+
+    [SerializeField]
+    private float timeSneakingMax = 15f;
+
+
+    [Header("__DEV VARIABLES")]
     private float timeSincePreparingAttack;
     private float timeSinceItAttacked;
     private float timeSinceBeingFar;
-    private float timeBeforeGoingBackMin;
-    private float timeBeforeGoingBackMax;
+    private float timeBeforeGoingBack;
+    private float timeSinceSneaking;
+    private float timeBeforeStopSneaking;
 
 
 
+    [SerializeField]
+    private bool forceStatus;
+
+    [SerializeField]
+    private bool closeToEncens;
+
+    private Coroutine forceStatusCoroutine;
 
     public enum MoskitoZone
     {
@@ -59,8 +82,40 @@ public class Moskito : MonoBehaviour
         GoBehind,
         Encens,
         LightMod,
-        GoOutsidePhoneLight
+        GoOutsidePhoneLight,
+        StayFar
 
+    }
+
+    public enum PlayerDirection
+    {
+        WalkingBackward,
+        WalkingToward,
+        Idle
+    }
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        UpdateEncensZone();
+        UpdateMoskitoZone();
+        UpdateMoskitoStatus();
+        UpdatePlayerDirection();
+    }
+
+    private void UpdateEncensZone()
+    {
+        if ((transform.position - encens.transform.position).magnitude < encens.GetRadius())
+        {
+            closeToEncens = true;
+        }
+        else { 
+            closeToEncens = false;
+        }
     }
 
     public void ChangeMoskitoZone(MoskitoZone _moskitoZone)
@@ -86,6 +141,7 @@ public class Moskito : MonoBehaviour
         }
     }
 
+
     public float GetConfortZoneRadius()
     {
         return distanceZoneConfort;
@@ -96,10 +152,16 @@ public class Moskito : MonoBehaviour
         return distanceZoneDanger;
     }
 
-    private void Update()
+    private void UpdatePlayerDirection()
     {
-       UpdateMoskitoZone();
-       UpdateMoskitoStatus();
+        if (Vector3.Dot(player.GetPlayerController().GetVelocity(), transform.position - player.transform.position) < 0)
+        {
+            playerDirection = PlayerDirection.WalkingBackward;
+        }
+        else
+        {
+            playerDirection = PlayerDirection.WalkingToward;
+        }
     }
 
     private void UpdateMoskitoZone()
@@ -127,23 +189,36 @@ public class Moskito : MonoBehaviour
 
     private void UpdateMoskitoStatus()
     {
+        if (forceStatus) {
+            return;
+        }
+
+        if (closeToEncens && encens.IsActive())
+        {
+            SetMoskitoStatus(MoskitoStatus.Encens);
+            return;
+        }
+
         if (moskitoStatus == MoskitoStatus.AfterAttack && timeSinceItAttacked < timeAfterAttack) {
             timeSinceItAttacked += Time.deltaTime;
             return;
         }
-        else
+        if (moskitoStatus == MoskitoStatus.Sneak && timeSinceSneaking < timeBeforeStopSneaking)
         {
-            timeSinceItAttacked = 0;
+            timeSinceSneaking += Time.deltaTime;
+            if(timeSinceSneaking > timeBeforeStopSneaking)
+            {
+                ForceStatusForXSeconds(MoskitoStatus.GoSafe,3);
+            }
+            return;
         }
+
         switch (moskitoZone)
         {
             case MoskitoZone.Confort:
                 switch (player.GetCurrentPlayerStatus())
                 {
                     case Player.PlayerStatus.Idle:
-                        SetMoskitoStatus(MoskitoStatus.GoClose);
-                        break;
-                    case Player.PlayerStatus.WalkingOppositeMoskito:
                         SetMoskitoStatus(MoskitoStatus.GoClose);
                         break;
                     case Player.PlayerStatus.TouchingObjects:
@@ -164,10 +239,23 @@ public class Moskito : MonoBehaviour
                 switch (player.GetCurrentPlayerStatus())
                 {
                     case Player.PlayerStatus.Idle:
-                        PrepareToAttack();
-                        break;
-                    case Player.PlayerStatus.WalkingOppositeMoskito:
-                        PrepareToAttack();
+                        if(rb.velocity.sqrMagnitude >= player.GetPlayerController().GetVelocity().sqrMagnitude)
+                        {
+                            PrepareToAttack();
+                        }
+                        else
+                        {
+                            switch (playerDirection)
+                            {
+                                case PlayerDirection.WalkingToward:
+                                    PrepareToSneak();
+                                    break;
+                                case PlayerDirection.WalkingBackward:
+                                    PrepareToAttack();
+                                    break;
+                            }
+                        }
+                        
                         break;
                     case Player.PlayerStatus.TouchingObjects:
                         SetMoskitoStatus(MoskitoStatus.GoSafe);
@@ -184,7 +272,7 @@ public class Moskito : MonoBehaviour
                 }
                 break;
             case MoskitoZone.Far:
-                SetMoskitoStatus(MoskitoStatus.GoClose);
+                PrepareToComeBack();
                 break;
             default:
                 break;
@@ -193,24 +281,39 @@ public class Moskito : MonoBehaviour
 
     private void SetMoskitoStatus(MoskitoStatus _newStatus)
     {
+
         if (moskitoStatus == _newStatus)
         {
             return;
         }
-        moskitoStatus = _newStatus;
+        if (moskitoStatus != MoskitoStatus.AfterAttack) {
+            timeSinceItAttacked = 0;
+        }
 
+        if(moskitoStatus != MoskitoStatus.PrepareToAttack)
+        {
+            timeSincePreparingAttack = 0;
+        }
+        if (moskitoStatus != MoskitoStatus.StayFar)
+        {
+            timeSinceBeingFar = 0;
+        }
+        if (moskitoStatus != MoskitoStatus.Sneak)
+        {
+            timeSinceSneaking = 0;
+        }
+        moskitoStatus = _newStatus;
     }
 
     private void PrepareToAttack()
     {
-        Debug.Log($"Hello {timeSincePreparingAttack}");
         timeSincePreparingAttack += Time.deltaTime;
 
         if (timeSincePreparingAttack > timePreparingAttack)
         {
-            timeSincePreparingAttack = 0;
             SetMoskitoStatus(MoskitoStatus.AfterAttack);
             // HERE DEAL POSSIBLE DAMAGE => THE MOSKITO A PIQUé !
+                // ...
         }
         else
         {
@@ -218,8 +321,66 @@ public class Moskito : MonoBehaviour
         }
     }
 
+    private void PrepareToComeBack()
+    {
+        if(moskitoStatus == MoskitoStatus.GoClose)
+        {
+            return;
+        }
+        
+        if(moskitoStatus != MoskitoStatus.StayFar)
+        {
+            SetMoskitoStatus(MoskitoStatus.StayFar);
+            timeBeforeGoingBack = UnityEngine.Random.Range(timeBeforeGoingBackWhenFarMin, timeBeforeGoingBackWhenFarMax);
+            return;
+        }
+        timeSinceBeingFar += Time.deltaTime;
+        if(timeSinceBeingFar > timeBeforeGoingBack)
+        {
+            SetMoskitoStatus(MoskitoStatus.GoClose);
+        }
+    }
+
+    private void PrepareToSneak()
+    {
+        if (moskitoStatus != MoskitoStatus.Sneak)
+        {
+            SetMoskitoStatus(MoskitoStatus.Sneak);
+            timeBeforeStopSneaking = UnityEngine.Random.Range(timeSneakingMin, timeSneakingMax);
+            return;
+        }
+    }
+
+    private void ForceStatusForXSeconds(MoskitoStatus status,float duration)
+    {
+        if(forceStatusCoroutine != null)
+        {
+            StopCoroutine(forceStatusCoroutine);
+        }
+        forceStatusCoroutine = StartCoroutine(ForceStatusCoroutine(status,duration));
+        
+    }
+
+    private IEnumerator ForceStatusCoroutine(MoskitoStatus status, float duration)
+    {
+        moskitoStatus = status;
+        forceStatus = true;
+        yield return new WaitForSeconds(duration);
+        forceStatus = false;
+    }
+
+
     private void OnDrawGizmos()
     {
         UpdateMoskitoZone();
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, GetDangerZoneRadius());
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, GetConfortZoneRadius());
+    }
+
+    public Encens GetEncens()
+    {
+        return encens;
     }
 }
