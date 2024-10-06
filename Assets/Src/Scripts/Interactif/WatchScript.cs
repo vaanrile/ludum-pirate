@@ -8,7 +8,7 @@ using System.Xml;
 public class WatchScript : MonoBehaviour
 {
     //Digital Time
-    public float timing = 0.1f;
+    public float timing;
     private int hours = 0;
     private int minutes = 0;
     //Digital Time
@@ -29,14 +29,25 @@ public class WatchScript : MonoBehaviour
 
     public void StartTime()
     {
-        StartCoroutine(DigitalTime());
+        //StartCoroutine(DigitalTime());
+        AnalogTimeFunction();
+        AnalogSecond();
     }
 
     private void AnalogTimeFunction()
     {
-        _secondsArrow.DOLocalRotate(new Vector3(0, _secondsArrow.localEulerAngles.y + 6, 0), 0.05f);
-        _minutesArrow.DOLocalRotate(new Vector3(0, _minutesArrow.localEulerAngles.y + 6, 0), 0.01f);
-        _hourArrow.DOLocalRotate(new Vector3(0, _hourArrow.localEulerAngles.y + 30, 0), 0.01f);
+        //Debug.Log("World Seconds = " + timing * 600);
+        
+        _minutesArrow.DOLocalRotate(new Vector3(0, 360, 0), timing*60, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart);
+        _hourArrow.DOLocalRotate(new Vector3(0, 360, 0), timing*720, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).SetLoops(-1,LoopType.Restart);
+    }
+    private void AnalogSecond()
+    {
+        _secondsArrow.DOLocalRotate(new Vector3(0, 360, 0), timing, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            AnalogSecond();
+            SetDigitalTime();
+        });
     }
 
 
@@ -44,21 +55,15 @@ public class WatchScript : MonoBehaviour
     {
         while (true)
         {
-            remainingSeconds++;
-            //_secondsArrow.DOLocalRotate(new Vector3(0, _secondsArrow.localEulerAngles.y + 6, 0), 0.05f);
-            if (remainingSeconds > 59)
-            {
-                remainingSeconds = 0;
-                remainingMinutes++;
-                //_minutesArrow.DOLocalRotate(new Vector3(0, _minutesArrow.localEulerAngles.y + 6, 0), 0.01f);
-            }
-            if(remainingMinutes > 59)
+            yield return new WaitForSeconds(timing);
+            remainingMinutes++;
+            if (remainingMinutes > 59)
             {
                 remainingMinutes = 0;
                 remainingHours++;
                 //_hourArrow.DOLocalRotate(new Vector3(0, _hourArrow.localEulerAngles.y + 30, 0), 0.01f);
             }
-
+            
             string minutesText = "";
             if (remainingMinutes < 10)
             {
@@ -79,9 +84,38 @@ public class WatchScript : MonoBehaviour
             }
 
             timeText.text = "<mspace=0.5em>"+ hoursText + minutesText;
-
-
-            yield return new WaitForSeconds(timing);
+          
         }
+    }
+    private void SetDigitalTime()
+    {
+        remainingMinutes++;
+        if (remainingMinutes > 59)
+        {
+            remainingMinutes = 0;
+            remainingHours++;
+            //_hourArrow.DOLocalRotate(new Vector3(0, _hourArrow.localEulerAngles.y + 30, 0), 0.01f);
+        }
+
+        string minutesText = "";
+        if (remainingMinutes < 10)
+        {
+            minutesText = ":0" + remainingMinutes.ToString();
+        }
+        else
+        {
+            minutesText = ":" + remainingMinutes.ToString();
+        }
+        string hoursText = "";
+        if (remainingHours < 10)
+        {
+            hoursText = "0" + remainingHours.ToString();
+        }
+        else
+        {
+            hoursText = remainingHours.ToString();
+        }
+
+        timeText.text = "<mspace=0.5em>" + hoursText + minutesText;
     }
 }
