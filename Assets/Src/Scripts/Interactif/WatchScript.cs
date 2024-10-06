@@ -29,7 +29,6 @@ public class WatchScript : MonoBehaviour
     public void StartTime()
     {
         StartCoroutine(DigitalTime());
-        StartCoroutine(AnalogTime());
     }
 
 
@@ -38,15 +37,18 @@ public class WatchScript : MonoBehaviour
         while (true)
         {
             remainingSeconds++;
+            _secondsArrow.DOLocalRotate(new Vector3(0, _secondsArrow.localEulerAngles.y + 6, 0), 0.05f);
             if (remainingSeconds > 59)
             {
                 remainingSeconds = 0;
                 remainingMinutes++;
+                _minutesArrow.DOLocalRotate(new Vector3(0, _minutesArrow.localEulerAngles.y + 6, 0), 0.01f);
             }
             if(remainingMinutes > 59)
             {
                 remainingMinutes = 0;
                 remainingHours++;
+                _hourArrow.DOLocalRotate(new Vector3(0, _hourArrow.localEulerAngles.y + 6, 0), 0.01f);
             }
 
             string minutesText = "";
@@ -72,24 +74,6 @@ public class WatchScript : MonoBehaviour
 
 
             yield return new WaitForSeconds(timing);
-        }
-    }
-    IEnumerator AnalogTime()
-    {
-        while (true)
-        {       
-            yield return new WaitForSeconds(timing);
-            _secondsArrow.DOLocalRotate(new Vector3(0, _secondsArrow.localEulerAngles.y + 6, 0), 0.05f);
-            if (remainingSeconds == 0)
-            {
-                _minutesArrow.DOLocalRotate(new Vector3(0, _minutesArrow.localEulerAngles.y + 6, 0), 0.1f);
-                _secondsArrow.localEulerAngles = Vector3.zero;
-            }
-            if (remainingMinutes == 0)
-            {
-                _hourArrow.DOLocalRotate(new Vector3(0, _hourArrow.localEulerAngles.y + 6, 0), 0.1f);
-                _hourArrow.localEulerAngles = Vector3.zero;
-            }
         }
     }
 }
