@@ -35,7 +35,7 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 0.4
+  m_ReflectionIntensity: 0.3
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_UseRadianceAmbientProbe: 0
@@ -5351,8 +5351,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 10:10
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ba17363039ac8254fad40d4899267b95, type: 2}
-  m_sharedMaterial: {fileID: -2682387703621414640, guid: ba17363039ac8254fad40d4899267b95, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b4908e9b6a6c29848a80122850d2225b, type: 2}
+  m_sharedMaterial: {fileID: -2477390115307721269, guid: b4908e9b6a6c29848a80122850d2225b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10143,11 +10143,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 67d4f1cce9079204eba98e6428893a76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.82102
+      value: -25.891
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 67d4f1cce9079204eba98e6428893a76, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.831
+      value: 11.749
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 67d4f1cce9079204eba98e6428893a76, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10183,7 +10183,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 732625300669537598, guid: 67d4f1cce9079204eba98e6428893a76, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 732625300669537598, guid: 67d4f1cce9079204eba98e6428893a76, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 732625300669537598, guid: 67d4f1cce9079204eba98e6428893a76, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 67d4f1cce9079204eba98e6428893a76, type: 3}
       propertyPath: m_Name
@@ -10203,19 +10211,27 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: de0e160a170d2d546bdfbadee8e4797f, type: 2}
     - target: {fileID: 7818750227509542892, guid: 67d4f1cce9079204eba98e6428893a76, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818750227509542892, guid: 67d4f1cce9079204eba98e6428893a76, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7818750227509542892, guid: 67d4f1cce9079204eba98e6428893a76, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8727298160719224535, guid: 67d4f1cce9079204eba98e6428893a76, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8727298160719224535, guid: 67d4f1cce9079204eba98e6428893a76, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8727298160719224535, guid: 67d4f1cce9079204eba98e6428893a76, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10998,6 +11014,36 @@ MonoBehaviour:
   audioClipsArray:
   - audioClip: {fileID: 8300000, guid: 8290a2c4d51c7544eb0ea7dd4159c6d8, type: 3}
     audioClipName: lol
+  - audioClip: {fileID: 8300000, guid: 15a4bf2e98184be439dec32176dc3296, type: 3}
+    audioClipName: Tv_Turning_On
+  - audioClip: {fileID: 8300000, guid: 5bc244e637eab3c45b0eeb8f94a53d74, type: 3}
+    audioClipName: Remote_Click
+  - audioClip: {fileID: 8300000, guid: b6f266809bccc6948b1e936d42d31da3, type: 3}
+    audioClipName: Light_Click
+  footstepArray:
+  - {fileID: 8300000, guid: d246a9e7b18c10c44bdae5c78d5cf84b, type: 3}
+  - {fileID: 8300000, guid: 4ad9b672abbf3474598db0c23c7fc273, type: 3}
+  - {fileID: 8300000, guid: 44ec2eae6a756654889f5e9b616afd10, type: 3}
+  - {fileID: 8300000, guid: ff5a90d4ea6f07d4ea544c798a6c95fd, type: 3}
+  - {fileID: 8300000, guid: 5e633cf37cb35d4408f4e36f23346030, type: 3}
+  - {fileID: 8300000, guid: 47629c29ac022d94486b25750cd7a639, type: 3}
+  - {fileID: 8300000, guid: 5b7fc73efc1fbde4a80339a087827cd5, type: 3}
+  - {fileID: 8300000, guid: ebde6276bde435040ab60ced946b2e55, type: 3}
+  - {fileID: 8300000, guid: 956606286f4d66b4987e78b524f2620f, type: 3}
+  - {fileID: 8300000, guid: cf1450e689929db43a5a1d76e12f24fc, type: 3}
+  - {fileID: 8300000, guid: 61e9e3f9c150821418c254291ccef662, type: 3}
+  - {fileID: 8300000, guid: 12747898c96fe0244bb8527300888e4d, type: 3}
+  - {fileID: 8300000, guid: e054a8da335cb5144a5698fb9c0c50ba, type: 3}
+  - {fileID: 8300000, guid: 7b98938eabd6ba54fa3df24d72e48267, type: 3}
+  - {fileID: 8300000, guid: a81d6db33d23dbd4f82ed4eb5f56c7bd, type: 3}
+  - {fileID: 8300000, guid: 4f3f42087ea1f554a83bb17cd2004e38, type: 3}
+  - {fileID: 8300000, guid: 098b9f573e8bb8d4ba98aef0e9ecc84f, type: 3}
+  - {fileID: 8300000, guid: 881c094d066e55642acdaba93dd1086c, type: 3}
+  swatterArray:
+  - {fileID: 8300000, guid: c656052a33e0797479202e9055bff49d, type: 3}
+  - {fileID: 8300000, guid: 52d025bb6cd4be048a0b71c90d4ba90b, type: 3}
+  - {fileID: 8300000, guid: 067f56871d0f81145b3f891378deedbc, type: 3}
+  - {fileID: 8300000, guid: 0eb2c456471a984469f847943e66330e, type: 3}
 --- !u!82 &994672472
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14384,7 +14430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc195a70cf40b6408f1fb0f66daa2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timing: 0.01
+  timing: 2
   timeText: {fileID: 452683801}
   _hourArrow: {fileID: 2035976332}
   _minutesArrow: {fileID: 1500535089}
@@ -17292,7 +17338,7 @@ PrefabInstance:
       objectReference: {fileID: 1141873785}
     - target: {fileID: 2056938011804383516, guid: 9781a57bf9be40147a6557d243fbecf3, type: 3}
       propertyPath: m_VersionIndex
-      value: 489
+      value: 504
       objectReference: {fileID: 0}
     - target: {fileID: 2530340494583544905, guid: 9781a57bf9be40147a6557d243fbecf3, type: 3}
       propertyPath: m_Mesh
@@ -21602,7 +21648,7 @@ PrefabInstance:
       objectReference: {fileID: 1531230124}
     - target: {fileID: 2830221275656604138, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_VersionIndex
-      value: 2045
+      value: 2069
       objectReference: {fileID: 0}
     - target: {fileID: 3236200168658682752, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_Name
@@ -21751,7 +21797,7 @@ PrefabInstance:
       objectReference: {fileID: 1085309613}
     - target: {fileID: 5560918741783279419, guid: a82f976a6a50cbf45bb996016d6e144d, type: 3}
       propertyPath: m_VersionIndex
-      value: 2538
+      value: 2559
       objectReference: {fileID: 0}
     - target: {fileID: 6038240090495317203, guid: a82f976a6a50cbf45bb996016d6e144d, type: 3}
       propertyPath: m_Name

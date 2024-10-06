@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class S_Telephone : S_AbsInteractive
     [SerializeField]
     private int nbDringSound;
 
+    public ParticleSystem particle;
 
     private float timeBetweenDring;
     private void OnDrawGizmos()
@@ -45,8 +47,8 @@ public class S_Telephone : S_AbsInteractive
         if (!isActive)
         {
             isActive = true;
-            Debug.Log("Tel Actif");
             StartCoroutine(WaitForEndOfEncens());
+            particle.Play();
         }
     }
 
@@ -56,15 +58,23 @@ public class S_Telephone : S_AbsInteractive
         SetActive();
     }
 
+
+    private void dring()
+    {
+        Debug.Log("Son : Dring");
+        transform.DOShakeRotation(1f, 10, 10, 10, true, ShakeRandomnessMode.Harmonic);
+    }
+
     IEnumerator WaitForEndOfEncens()
     {
-        Debug.Log("Dring");
+        dring();
         for (int i = 0; i < nbDringSound-1; i++)
         {
             yield return new WaitForSeconds(timeBetweenDring);
-            Debug.Log("Dring");
+            dring();
         }
-        isActive = false; 
-        Debug.Log("Tel Stop");
+        isActive = false;
+        Debug.Log("Son : Fin dring");
+        particle.Stop();
     }
 }

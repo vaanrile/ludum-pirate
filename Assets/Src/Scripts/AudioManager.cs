@@ -22,6 +22,8 @@ public class AudioManager : MonoBehaviour
 
 
     public AudioClips[] audioClipsArray;
+    public AudioClip[] footstepArray;
+    public AudioClip[] swatterArray;
 
     private void Awake()
     {
@@ -94,7 +96,7 @@ public class AudioManager : MonoBehaviour
     {
         DOTween.To(() => audioToFade.volume, x => audioToFade.volume = x, targetVolume, timeToFade);
     }
-    private AudioClip findAudioClip(string soundName)
+    public AudioClip findAudioClip(string soundName)
     {
         AudioClip audioClipToPlay = null;
         foreach(AudioClips aud in audioClipsArray)
