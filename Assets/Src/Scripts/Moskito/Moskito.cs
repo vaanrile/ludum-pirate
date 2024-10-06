@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static Player;
 
@@ -16,9 +17,13 @@ public class Moskito : MonoBehaviour
     [SerializeField] MoskitoZone moskitoZone = MoskitoZone.Far;
     [SerializeField] MoskitoStatus moskitoStatus = MoskitoStatus.GoSafe;
     [SerializeField] PlayerDirection playerDirection = PlayerDirection.WalkingToward;
+    [SerializeField] PlayerOrientation playerOrientation = PlayerOrientation.FacingMoskito;
+    [SerializeField] MoskitoZone patrollingZone = MoskitoZone.None;
+    [SerializeField] MoskitoZone lastPatrollingZone = MoskitoZone.None;
     [Header("__OTHER GameObjects")]
     [SerializeField] Player player;
     [SerializeField] Encens encens;
+    MoskitoTouchDetector moskitoTouchDetector;
 
     private Rigidbody rb;
 
@@ -28,9 +33,12 @@ public class Moskito : MonoBehaviour
 
     [SerializeField]
     private float distanceZoneConfort = 30f;
-    
+
     [SerializeField]
-    private float timePreparingAttack = 2f;
+    [Tooltip("-1 will always be BackToMoskito, 1 will always be FaceToMoskito, 0 is 180°")]
+    [Range(-1, 1)]
+    private float faceMoskitoAngle = 0f;
+
     [SerializeField]
     private float timeAfterAttack = 2f;
 
@@ -46,7 +54,6 @@ public class Moskito : MonoBehaviour
     [SerializeField]
     private float timeSneakingMax = 15f;
 
-
     [Header("__DEV VARIABLES")]
     private float timeSincePreparingAttack;
     private float timeSinceItAttacked;
@@ -54,6 +61,20 @@ public class Moskito : MonoBehaviour
     private float timeBeforeGoingBack;
     private float timeSinceSneaking;
     private float timeBeforeStopSneaking;
+
+    private float timePreparingAttack = 2f;
+    [SerializeField]
+    private float timePreparingAttackMin = 4f;
+    [SerializeField]
+    private float timePreparingAttackMax = 6f;
+
+    private float timeSincePatrolling;
+    private float timeBeforeStopPatrolling;
+    [SerializeField]
+    private float timePatrollingMin = 4f;
+    [SerializeField]
+    private float timePatrollingMax = 6f;
+
 
 
 
@@ -69,7 +90,9 @@ public class Moskito : MonoBehaviour
     {
         Confort,
         Danger,
-        Far
+        Far,
+        Encens,
+        None
     }
 
     public enum MoskitoStatus
@@ -83,7 +106,9 @@ public class Moskito : MonoBehaviour
         Encens,
         LightMod,
         GoOutsidePhoneLight,
-        StayFar
+        StayFar,
+        StayConfort,
+        StayDanger
 
     }
 
@@ -94,17 +119,38 @@ public class Moskito : MonoBehaviour
         Idle
     }
 
+    public enum PlayerOrientation
+    {
+        FacingMoskito,
+        BackToMoskito
+    }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        moskitoTouchDetector = GetComponent<MoskitoTouchDetector>();
     }
 
     private void Update()
     {
         UpdateEncensZone();
         UpdateMoskitoZone();
-        UpdateMoskitoStatus();
         UpdatePlayerDirection();
+        UpdatePlayerOrientation();
+        UpdateMoskitoStatus();
+
+    }
+
+    private void UpdatePlayerOrientation()
+    {
+        if (Vector3.Dot(player.transform.forward, (player.transform.position - transform.position).normalized) < faceMoskitoAngle)
+        {
+            playerOrientation = PlayerOrientation.FacingMoskito;
+        }
+        else
+        {
+            playerOrientation = PlayerOrientation.BackToMoskito;
+        }
     }
 
     private void UpdateEncensZone()
@@ -193,9 +239,28 @@ public class Moskito : MonoBehaviour
             return;
         }
 
+        if (player.GetCurrentPlayerStatus() == PlayerStatus.Hitting)
+        {
+            SetMoskitoStatus(MoskitoStatus.GoSafe);
+            lastPatrollingZone = MoskitoZone.None;
+            moskitoTouchDetector.StopAttachingObject();
+            return;
+        }
+
+        if (moskitoTouchDetector.IsAttachedToObject())
+        {
+           
+            return;
+        }
+        else
+        {
+          
+        }
+
         if (closeToEncens && encens.IsActive())
         {
             SetMoskitoStatus(MoskitoStatus.Encens);
+            patrollingZone = MoskitoZone.Encens;
             return;
         }
 
@@ -203,6 +268,14 @@ public class Moskito : MonoBehaviour
             timeSinceItAttacked += Time.deltaTime;
             return;
         }
+
+        if (player.GetCurrentPlayerStatus() == PlayerStatus.Hitting)
+        {
+            SetMoskitoStatus(MoskitoStatus.GoSafe);
+            lastPatrollingZone = MoskitoZone.None;
+            return;
+        }
+
         if (moskitoStatus == MoskitoStatus.Sneak && timeSinceSneaking < timeBeforeStopSneaking)
         {
             timeSinceSneaking += Time.deltaTime;
@@ -216,66 +289,90 @@ public class Moskito : MonoBehaviour
         switch (moskitoZone)
         {
             case MoskitoZone.Confort:
-                switch (player.GetCurrentPlayerStatus())
+                if (patrollingZone == MoskitoZone.None && lastPatrollingZone != MoskitoZone.Confort)
                 {
-                    case Player.PlayerStatus.Idle:
-                        SetMoskitoStatus(MoskitoStatus.GoClose);
-                        break;
-                    case Player.PlayerStatus.TouchingObjects:
-                        SetMoskitoStatus(MoskitoStatus.GoBehind);
-                        break;
-                    case Player.PlayerStatus.Shaking:
-                        SetMoskitoStatus(MoskitoStatus.GoBehind);
-                        break;
-                    case Player.PlayerStatus.Hitting:
-                        SetMoskitoStatus(MoskitoStatus.GoSafe);
-                        break;
-                    default:
-                        SetMoskitoStatus(MoskitoStatus.GoBehind);
-                        break;
+                    PatrolInZone(MoskitoZone.Confort);
                 }
-                break;
-            case MoskitoZone.Danger:
-                switch (player.GetCurrentPlayerStatus())
-                {
-                    case Player.PlayerStatus.Idle:
-                        if(rb.velocity.sqrMagnitude >= player.GetPlayerController().GetVelocity().sqrMagnitude)
+                else {
+                    if (patrollingZone != MoskitoZone.None)
+                    {
+                        PatrolInZone(patrollingZone);
+                        return;
+                    }
+                    if(player.GetCurrentPlayerStatus() == PlayerStatus.Idle)
+                    {
+                        SetPatrolMinAndMaxTime(3, 5);
+                        SetMoskitoStatus(MoskitoStatus.GoClose);
+                    }
+                    else
+                    {
+                        if(playerOrientation == PlayerOrientation.BackToMoskito)
                         {
-                            PrepareToAttack();
+                            SetMoskitoStatus(MoskitoStatus.GoClose);
+                            SetPatrolMinAndMaxTime(4, 6);
                         }
                         else
                         {
-                            switch (playerDirection)
-                            {
-                                case PlayerDirection.WalkingToward:
-                                    PrepareToSneak();
-                                    break;
-                                case PlayerDirection.WalkingBackward:
-                                    PrepareToAttack();
-                                    break;
-                            }
+                            SetPatrolMinAndMaxTime(4, 6);
+                            SetMoskitoStatus(MoskitoStatus.GoSafe);
+                            lastPatrollingZone = MoskitoZone.Danger; // du coup il peut recommencer à patroller dans la zone COnfort
                         }
-                        
-                        break;
-                    case Player.PlayerStatus.TouchingObjects:
-                        SetMoskitoStatus(MoskitoStatus.GoSafe);
-                        break;
-                    case Player.PlayerStatus.Shaking:
-                        SetMoskitoStatus(MoskitoStatus.GoBehind);
-                        break;
-                    case Player.PlayerStatus.Hitting:
-                        SetMoskitoStatus(MoskitoStatus.GoSafe);
-                        break;
-                    default:
+                    }
+                }
+                break;
+            case MoskitoZone.Danger:
+                if (patrollingZone == MoskitoZone.None && lastPatrollingZone != MoskitoZone.Danger)
+                {
+                    PatrolInZone(MoskitoZone.Danger);
+                }
+                else
+                {
+                    if(patrollingZone != MoskitoZone.None)
+                    {
+                        SetPatrolMinAndMaxTime(2, 3);
+                        PatrolInZone(patrollingZone);
+                        return;
+                    }
+                    if(player.GetCurrentPlayerStatus() == Player.PlayerStatus.Idle)
+                    {
+                        SetPreparingAttackMinAndMaxTime(2,4);
                         PrepareToAttack();
-                        break;
+                    }
+                    else
+                    {
+                        if(playerOrientation == PlayerOrientation.FacingMoskito)
+                        {
+                            SetMoskitoStatus(MoskitoStatus.GoSafe);
+                        }
+                        else
+                        {
+                            SetPreparingAttackMinAndMaxTime(3, 5);
+                            PrepareToAttack();
+                        }
+                    }
                 }
                 break;
             case MoskitoZone.Far:
-                PrepareToComeBack();
+                if (patrollingZone == MoskitoZone.None && lastPatrollingZone != MoskitoZone.Far)
+                {
+                    SetPatrolMinAndMaxTime(2, 3);
+                    PatrolInZone(MoskitoZone.Far);
+                }
+                else
+                {
+                    if (patrollingZone != MoskitoZone.None)
+                    {
+                        SetPatrolMinAndMaxTime(2, 3);
+                        PatrolInZone(patrollingZone);
+
+                        return;
+                    }
+                    SetMoskitoStatus(MoskitoStatus.GoClose);
+                }
                 break;
             default:
                 break;
+
         }
     }
 
@@ -302,11 +399,20 @@ public class Moskito : MonoBehaviour
         {
             timeSinceSneaking = 0;
         }
+
+        if(moskitoStatus != MoskitoStatus.StayConfort && moskitoStatus != MoskitoStatus.StayDanger && moskitoStatus != MoskitoStatus.StayFar)
+        {
+            patrollingZone = MoskitoZone.None;
+        }
         moskitoStatus = _newStatus;
     }
 
     private void PrepareToAttack()
     {
+        if(timeSincePreparingAttack == 0)
+        {
+            timePreparingAttack = UnityEngine.Random.Range(timePreparingAttackMin, timePreparingAttackMax);
+        }
         timeSincePreparingAttack += Time.deltaTime;
 
         if (timeSincePreparingAttack > timePreparingAttack)
@@ -321,26 +427,6 @@ public class Moskito : MonoBehaviour
         }
     }
 
-    private void PrepareToComeBack()
-    {
-        if(moskitoStatus == MoskitoStatus.GoClose)
-        {
-            return;
-        }
-        
-        if(moskitoStatus != MoskitoStatus.StayFar)
-        {
-            SetMoskitoStatus(MoskitoStatus.StayFar);
-            timeBeforeGoingBack = UnityEngine.Random.Range(timeBeforeGoingBackWhenFarMin, timeBeforeGoingBackWhenFarMax);
-            return;
-        }
-        timeSinceBeingFar += Time.deltaTime;
-        if(timeSinceBeingFar > timeBeforeGoingBack)
-        {
-            SetMoskitoStatus(MoskitoStatus.GoClose);
-        }
-    }
-
     private void PrepareToSneak()
     {
         if (moskitoStatus != MoskitoStatus.Sneak)
@@ -349,6 +435,86 @@ public class Moskito : MonoBehaviour
             timeBeforeStopSneaking = UnityEngine.Random.Range(timeSneakingMin, timeSneakingMax);
             return;
         }
+    }
+
+    private void PatrolInZone(MoskitoZone zone)
+    {
+        if(zone != patrollingZone)
+        {
+            if(zone == lastPatrollingZone)
+            {
+                return;
+            }
+            else
+            {
+                lastPatrollingZone = MoskitoZone.None;
+            }
+            timeSincePatrolling = 0;
+            patrollingZone = zone;
+        }
+        switch (patrollingZone) { 
+            case MoskitoZone.Far:
+                if (moskitoStatus == MoskitoStatus.GoClose)
+                {
+                    return;
+                }
+
+                if (moskitoStatus != MoskitoStatus.StayFar)
+                {
+                    SetMoskitoStatus(MoskitoStatus.StayFar);
+                    timeBeforeStopPatrolling = UnityEngine.Random.Range(timePatrollingMin, timePatrollingMax);
+                    return;
+                }
+                timeSincePatrolling += Time.deltaTime;
+                if (timeSincePatrolling > timeBeforeStopPatrolling)
+                {
+                    SetMoskitoStatus(MoskitoStatus.GoClose);
+                    lastPatrollingZone = patrollingZone;
+                    patrollingZone = MoskitoZone.None;
+                }
+                break;
+            case MoskitoZone.Confort:
+                if (moskitoStatus != MoskitoStatus.StayConfort )
+                {
+                    SetMoskitoStatus(MoskitoStatus.StayConfort);
+                    timeBeforeStopPatrolling = UnityEngine.Random.Range(timePatrollingMin, timePatrollingMax);
+                    return;
+                }
+                timeSincePatrolling += Time.deltaTime;
+                if (timeSincePatrolling > timeBeforeStopPatrolling)
+                {
+                    SetMoskitoStatus(MoskitoStatus.GoClose);
+                    lastPatrollingZone = patrollingZone;
+                    patrollingZone = MoskitoZone.None;
+                }
+                break;
+            case MoskitoZone.Danger:
+                if (moskitoStatus != MoskitoStatus.StayDanger)
+                {
+                    SetMoskitoStatus(MoskitoStatus.StayDanger);
+                    timeBeforeStopPatrolling = UnityEngine.Random.Range(timePatrollingMin, timePatrollingMax);
+                    return;
+                }
+                timeSincePatrolling += Time.deltaTime;
+                if (timeSincePatrolling > timeBeforeStopPatrolling)
+                {
+                    SetMoskitoStatus(MoskitoStatus.PrepareToAttack);
+                    lastPatrollingZone = patrollingZone;
+                    patrollingZone = MoskitoZone.None;
+                }
+                break;
+        }   
+    }
+
+    private void SetPatrolMinAndMaxTime(float durationMin,float durationMax)
+    {
+        timePatrollingMin = durationMin;
+        timePatrollingMax = durationMax;
+    }
+    private void SetPreparingAttackMinAndMaxTime(float durationMin, float durationMax)
+    {
+        timePreparingAttackMin = durationMin;
+        timePreparingAttackMax = durationMax;
     }
 
     private void ForceStatusForXSeconds(MoskitoStatus status,float duration)
@@ -370,6 +536,7 @@ public class Moskito : MonoBehaviour
     }
 
 
+
     private void OnDrawGizmos()
     {
         UpdateMoskitoZone();
@@ -382,5 +549,23 @@ public class Moskito : MonoBehaviour
     public Encens GetEncens()
     {
         return encens;
+    }
+    public MoskitoZone GetMoskitoZone()
+    {
+        return moskitoZone;
+    }
+
+    public MoskitoZone GetPatrollingZone()
+    {
+        return patrollingZone;
+    }
+
+    public Player GetPlayer()
+    {
+        return player;
+    }
+
+    public MoskitoTouchDetector GetTouchDetector() {
+        return moskitoTouchDetector;
     }
 }
