@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
 
 
     public AudioClips[] audioClipsArray;
+    public AudioClip[] footstepArray;
 
     private void Awake()
     {
