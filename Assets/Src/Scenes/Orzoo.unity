@@ -19027,6 +19027,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1942582262}
+    - target: {fileID: 6945835584899103220, guid: e3fb540517782c44590e6fec04299e59, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3898
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974177902087414476, guid: e3fb540517782c44590e6fec04299e59, type: 3}
+      propertyPath: duration
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974177902087414476, guid: e3fb540517782c44590e6fec04299e59, type: 3}
+      propertyPath: nbDringSound
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7448077404051936745, guid: e3fb540517782c44590e6fec04299e59, type: 3}
       propertyPath: m_Mesh
       value: 
