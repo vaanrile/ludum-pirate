@@ -4389,12 +4389,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 649fcc70a4fef2248a6642ea5672a995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbMoskitos: 5
+  nbMoskitos: 1
   mostikoPrefab: {fileID: 2914310192392344847, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
   player: {fileID: 2117208842}
   encens: {fileID: 1351848377}
   moskitoBox: {fileID: 937160506}
-  nbStingBeforeLose: 3
+  nbStingBeforeLose: 1
 --- !u!1001 &382300486
 PrefabInstance:
   m_ObjectHideFlags: 0
