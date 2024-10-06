@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using System.Xml;
 public class WatchScript : MonoBehaviour
 {
     //Digital Time
@@ -31,34 +32,41 @@ public class WatchScript : MonoBehaviour
         StartCoroutine(DigitalTime());
     }
 
+    private void AnalogTimeFunction()
+    {
+        _secondsArrow.DOLocalRotate(new Vector3(0, _secondsArrow.localEulerAngles.y + 6, 0), 0.05f);
+        _minutesArrow.DOLocalRotate(new Vector3(0, _minutesArrow.localEulerAngles.y + 6, 0), 0.01f);
+        _hourArrow.DOLocalRotate(new Vector3(0, _hourArrow.localEulerAngles.y + 30, 0), 0.01f);
+    }
+
 
     IEnumerator DigitalTime()
     {
         while (true)
         {
             remainingSeconds++;
-            _secondsArrow.DOLocalRotate(new Vector3(0, _secondsArrow.localEulerAngles.y + 6, 0), 0.05f);
+            //_secondsArrow.DOLocalRotate(new Vector3(0, _secondsArrow.localEulerAngles.y + 6, 0), 0.05f);
             if (remainingSeconds > 59)
             {
                 remainingSeconds = 0;
                 remainingMinutes++;
-                _minutesArrow.DOLocalRotate(new Vector3(0, _minutesArrow.localEulerAngles.y + 6, 0), 0.01f);
+                //_minutesArrow.DOLocalRotate(new Vector3(0, _minutesArrow.localEulerAngles.y + 6, 0), 0.01f);
             }
             if(remainingMinutes > 59)
             {
                 remainingMinutes = 0;
                 remainingHours++;
-                _hourArrow.DOLocalRotate(new Vector3(0, _hourArrow.localEulerAngles.y + 6, 0), 0.01f);
+                //_hourArrow.DOLocalRotate(new Vector3(0, _hourArrow.localEulerAngles.y + 30, 0), 0.01f);
             }
 
             string minutesText = "";
             if (remainingMinutes < 10)
             {
-                minutesText = " :0" + remainingMinutes.ToString();
+                minutesText = ":0" + remainingMinutes.ToString();
             }
             else
             {
-                minutesText = " :" + remainingMinutes.ToString();
+                minutesText = ":" + remainingMinutes.ToString();
             }
             string hoursText = "";
             if (remainingHours < 10)
@@ -70,7 +78,7 @@ public class WatchScript : MonoBehaviour
                 hoursText = remainingHours.ToString();
             }
 
-            timeText.text = hoursText + minutesText;
+            timeText.text = "<mspace=0.5em>"+ hoursText + minutesText;
 
 
             yield return new WaitForSeconds(timing);
