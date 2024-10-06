@@ -15,7 +15,7 @@ public class S_Radiateur : S_AbsInteractive
     private float duration;
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.grey;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 
@@ -34,6 +34,7 @@ public class S_Radiateur : S_AbsInteractive
         if (!isActive)
         {
             isActive = true;
+            Debug.Log("Radiateur Actif");
             StartCoroutine(WaitForEndOfEncens());
         }
     }
@@ -48,5 +49,6 @@ public class S_Radiateur : S_AbsInteractive
     {
         yield return new WaitForSeconds(duration);
         isActive = false;
+        Debug.Log("Radiateur Stop");
     }
 }
