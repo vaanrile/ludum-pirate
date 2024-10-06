@@ -16168,7 +16168,7 @@ PrefabInstance:
     - target: {fileID: 2359689140821624206, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 37a6007f64fde644e8e47f3b083b782e, type: 2}
+      objectReference: {fileID: 2100000, guid: 3a115c34f618a524294fa2c29a4116fd, type: 2}
     - target: {fileID: 2914310192392344847, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
       propertyPath: m_Name
       value: Moskito
@@ -16221,6 +16221,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2117208842}
+    - target: {fileID: 3711395422875521745, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
+      propertyPath: moskitoZone
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711395422875521745, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
+      propertyPath: distanceZoneDanger
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711395422875521745, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
+      propertyPath: distanceZoneConfort
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7701588272984354719, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
       propertyPath: attachToObjectProbability
       value: 0.001
@@ -21817,6 +21829,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1435043863}
   - {fileID: 2047225080}
+  - {fileID: 1474562061}
   - {fileID: 382118971}
   - {fileID: 1844780059}
   - {fileID: 8906875722024530797}
@@ -21825,4 +21838,3 @@ SceneRoots:
   - {fileID: 709489446}
   - {fileID: 1343206458}
   - {fileID: 719181477}
-  - {fileID: 1474562061}
