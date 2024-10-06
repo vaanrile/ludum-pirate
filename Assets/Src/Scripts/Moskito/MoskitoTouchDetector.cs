@@ -43,6 +43,10 @@ public class MoskitoTouchDetector : MonoBehaviour
         {
             return;
         }
+        if (collision.gameObject.CompareTag("Moskito"))
+        {
+            return;
+        }
         alreadyAttachedObjects.Add(collision.gameObject);
         if (UnityEngine.Random.Range(0,1) < attachToObjectProbability)
         {

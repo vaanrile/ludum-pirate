@@ -892,8 +892,8 @@ ParticleSystem:
     startRotation:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 6.283185
-      minScalar: 0
+      scalar: 2.0943952
+      minScalar: -2.0943952
       maxCurve:
         serializedVersion: 2
         m_Curve:

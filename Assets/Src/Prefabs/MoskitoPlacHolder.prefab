@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1534584510427590756}
   - component: {fileID: 5233073631102102999}
-  - component: {fileID: 1967817596221267440}
   m_Layer: 0
   m_Name: MoskitoPlacHolder
   m_TagString: Untagged
@@ -156,18 +155,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1967817596221267440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6136749636017550298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94216e1aba225f448a27524810c432f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distanceToPlayer: 0
-  volumeDistance: 0
-  listener: {fileID: 0}
