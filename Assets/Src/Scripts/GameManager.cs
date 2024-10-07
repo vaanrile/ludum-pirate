@@ -95,6 +95,13 @@ public class GameManager : MonoBehaviour
         });
     }
 
+    public void lightSet(bool isOn)
+    {
+        foreach(Moskito kito in moskitoList)
+        {
+            kito.setParticle(isOn);
+        }
+    }
     public void GameQuit()
     {
 
