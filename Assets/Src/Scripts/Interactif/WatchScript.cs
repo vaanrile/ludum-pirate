@@ -9,12 +9,12 @@ public class WatchScript : MonoBehaviour
 {
     //Digital Time
     public float timing;
-    private int hours = 0;
-    private int minutes = 0;
+    public int hours = 0;
+    public int minutes = 0;
     //Digital Time
     [Header("Digital Watch")]
     public TextMeshProUGUI timeText;
-    private int remainingHours, remainingMinutes, remainingSeconds;
+    public int remainingHours, remainingMinutes, remainingSeconds;
 
 
     //Analog Time
@@ -47,6 +47,7 @@ public class WatchScript : MonoBehaviour
             SetDigitalTime();
         });
     }
+
 
 
     IEnumerator DigitalTime()

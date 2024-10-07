@@ -528,15 +528,15 @@ public class Moskito : MonoBehaviour
     }
     private void FadeInAudio()
     {
-        if(!isInvisible)
+        /*if(!isInvisible)
         {
             bzzbzz.Play();
-        }
+        }*/
         AudioManager.instance.FadeSound(_audioSource, fadeAudioDuration, 1);
     }
     private void FadeOutAudio()
     {
-        bzzbzz.Stop();
+        //bzzbzz.Stop();
         AudioManager.instance.FadeSound(_audioSource, fadeAudioDuration, 0);
     }
 
@@ -721,7 +721,15 @@ public class Moskito : MonoBehaviour
 
     public void setParticle(bool isOn)
     {
-        isInvisible = isOn;
+        //isInvisible = isOn;
+        if (isOn)
+        {
+            bzzbzz.Stop();
+        }
+        else
+        {
+            bzzbzz.Play();
+        }
     }
 
     public BoxCollider GetMoskitoBox()
@@ -746,8 +754,8 @@ public class Moskito : MonoBehaviour
     }
     IEnumerator WaitToDie()
     {
-        yield return new WaitForSeconds(5f);
         GameManager.instance.MoskitoKill(this);
+        yield return new WaitForSeconds(4f);
         Destroy(gameObject);
     }
 

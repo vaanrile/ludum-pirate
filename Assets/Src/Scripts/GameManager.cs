@@ -2,6 +2,7 @@ using BBX.Dialogue.GUI;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,6 +29,9 @@ public class GameManager : MonoBehaviour
     private S_Radiateur radiateur;
 
     [SerializeField]
+    private WatchScript Time;
+
+    [SerializeField]
     private S_Telephone tel;
 
     [SerializeField]
@@ -44,7 +48,13 @@ public class GameManager : MonoBehaviour
     public TextMeshAnimator textMeshAnimator;
     private bool _leftMainMenu;
     public CanvasGroup canvasGroupMainMenu;
+    public CanvasGroup canvasGroupWin;
+    public CanvasGroup canvasGroupLose;
     public Animator playerAnim;
+
+    public TextMeshProUGUI textStat;
+    public TextMeshProUGUI textFun;
+    public List<string> resultText;
 
 
     private void Awake()
@@ -145,7 +155,37 @@ public class GameManager : MonoBehaviour
         moskitoList.Remove(kito);
         if(nbMoskitos == 0)
         {
-            Debug.Log("WIN CONDITION");
+
+            Debug.Log("WINNNNN");
+            var heure = Time.remainingHours;
+            var minutes = Time.remainingMinutes;
+
+            var minutesTmp = heure * 60 + minutes;
+
+            minutesTmp = 420 - minutesTmp;
+
+            int heureRestante = (int)(minutesTmp / 60);
+            int minutesRestante = minutesTmp%60;
+
+            textStat.text = "Hours slept : " + heureRestante + "h" + minutesRestante + "\r\nMosquitos bites : " + nbPiqure + "\r\n";
+
+            if (heure < 1)
+            {
+                textFun.text = resultText[0];
+            }
+            else if (heure < 3)
+            {
+                textFun.text = resultText[1];
+            }
+            else if (heure < 5)
+            {
+                textFun.text = resultText[2];
+            }
+            else
+            {
+                textFun.text = resultText[3];
+            }
+            canvasGroupWin.DOFade(1, 1);
         }
     }
 
@@ -170,7 +210,7 @@ public class GameManager : MonoBehaviour
 
     public void LoseCondition()
     {
-        Debug.Log("WIN CONDITION");
+        canvasGroupLose.DOFade(1, 1);
     }
 
 }
