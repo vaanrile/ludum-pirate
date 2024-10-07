@@ -98,6 +98,7 @@ MonoBehaviour:
   randomMoveIntensity: 30
   freneticIntensity: 0.555
   randomDirection: {x: 0, y: 0, z: 0}
+  prefabInstantiate: {fileID: 5185746501886016120, guid: 667c1012dd9a4e94db1114b1b7c86e80, type: 3}
 --- !u!135 &5635989886794446379
 SphereCollider:
   m_ObjectHideFlags: 0
