@@ -47,13 +47,17 @@ public class AudioManager : MonoBehaviour
         {
             sfxSourcesList.Add(obj.GetComponent<AudioSource>());
         }
-        PlaySound2DByName("Moskito_Init");
-        Invoke("DelayStart", 0.5f);
+        
     }
 
     private void DelayStart()
     {
         PlaySound2DByName("Wake_Up");
+    }
+    public void StartSound()
+    {
+        PlaySound2DByName("Moskito_Init");
+        Invoke("DelayStart", 0.5f);
     }
 
     private void Update()
