@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 namespace BBX.Dialogue.GUI
 {
@@ -14,14 +15,20 @@ namespace BBX.Dialogue.GUI
         private int _visibleCount;
         private int _frameCount;
 
-        private const float WaveAmount = 0.1f;
-        private const float WaveSpeed = 0.1f;
-        private const float WaveSeparation = 20f;
-        private const float DefaultShakeAmount = 1f;
+        private const float WaveAmount = 0.5f;
+        private const float WaveSpeed = 0.5f;
+        private const float WaveSeparation = 40;
+        private const float DefaultShakeAmount = 3f;
 
         private readonly Dictionary<int, Vector3[]> _defaultShakeVertices = new Dictionary<int, Vector3[]>();
 
         public float textParseSpeed =6;
+
+        public string[] DialogueArray;
+        private int _currentDialogueCount;
+        public float nextDialogueDelay;
+
+        private CanvasGroup _canvasGroup;
 
         /// <summary>
         /// 1. Parse text and find characters with tags
@@ -30,6 +37,19 @@ namespace BBX.Dialogue.GUI
         /// </summary>
         private void Start()
         {
+            _canvasGroup = GetComponent<CanvasGroup>();
+            _canvasGroup.DOFade(1, 0.5f).From(0);
+            StartTextRead();
+        }
+
+        private void StartTextRead()
+        {
+            if (_currentDialogueCount > (DialogueArray.Length - 1))
+            {
+                Debug.Log("End Dialogue");
+                _canvasGroup.DOFade(0, 0.5f);
+                return;
+            }
             Parse();
             TMProText.alpha = 0;
             StartCoroutine(RunText());
@@ -41,7 +61,8 @@ namespace BBX.Dialogue.GUI
         /// </summary>
         private void Parse()
         {
-            var inputText = TMProText.text;
+            _defaultShakeVertices.Clear();
+            var inputText = DialogueArray[_currentDialogueCount];
 
             const string re1 = "(<)";
             const string re2 = "(shake|wave)";
@@ -68,7 +89,7 @@ namespace BBX.Dialogue.GUI
             var textInfo = TMProText.textInfo;
             var totalVisibleCharacters = textInfo.characterCount;
             _visibleCount = 0;
-
+            yield return new WaitForSeconds(1);
             // Wait a frame because parent layout elements do something to the first character
             yield return new WaitForEndOfFrame();
 
@@ -86,6 +107,9 @@ namespace BBX.Dialogue.GUI
                 yield return new WaitForSeconds(textParseSpeed);
                 Debug.Log("saucisse");
             }
+            yield return new WaitForSeconds(nextDialogueDelay);
+            _currentDialogueCount++;
+            StartTextRead();
         }
 
         

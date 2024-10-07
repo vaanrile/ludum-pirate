@@ -4292,6 +4292,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 994672470}
+  - {fileID: 1573345252}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &382118972
@@ -7376,9 +7377,8 @@ GameObject:
   - component: {fileID: 669348937}
   - component: {fileID: 669348939}
   - component: {fileID: 669348938}
-  - component: {fileID: 669348940}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TextAnimated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7400,8 +7400,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -127.4}
-  m_SizeDelta: {x: 850, y: 100}
+  m_AnchoredPosition: {x: 0, y: -236.5}
+  m_SizeDelta: {x: 2400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &669348938
 MonoBehaviour:
@@ -7451,8 +7451,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 140
+  m_fontSizeBase: 140
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7501,20 +7501,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669348936}
   m_CullTransparentMesh: 1
---- !u!114 &669348940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669348936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b38a8919a69a10843b4346c353360212, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TMProText: {fileID: 669348938}
-  textParseSpeed: 0.05
 --- !u!1001 &686546902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13233,8 +13219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -132.1}
-  m_SizeDelta: {x: 500, y: 105.31}
+  m_AnchoredPosition: {x: 0, y: -327}
+  m_SizeDelta: {x: 1500, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1145068628
 MonoBehaviour:
@@ -17320,6 +17306,8 @@ GameObject:
   - component: {fileID: 1573345251}
   - component: {fileID: 1573345250}
   - component: {fileID: 1573345249}
+  - component: {fileID: 1573345253}
+  - component: {fileID: 1573345254}
   m_Layer: 5
   m_Name: CanvasText
   m_TagString: Untagged
@@ -17356,7 +17344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
@@ -17404,13 +17392,44 @@ RectTransform:
   m_Children:
   - {fileID: 1145068627}
   - {fileID: 669348937}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 382118971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1573345253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573345248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b38a8919a69a10843b4346c353360212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TMProText: {fileID: 669348938}
+  textParseSpeed: 0.05
+  DialogueArray:
+  - Damn <shake> mosquitoes </shake> ruining my <wave> precious </wave> night again
+    !
+  - Better kill them until my alarm rings out at 7AM !
+  nextDialogueDelay: 2
+--- !u!225 &1573345254
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573345248}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1580251187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22380,4 +22399,3 @@ SceneRoots:
   - {fileID: 719181477}
   - {fileID: 937160507}
   - {fileID: 569573162}
-  - {fileID: 1573345252}
