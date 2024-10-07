@@ -753,4 +753,9 @@ public class Moskito : MonoBehaviour
         yield return new WaitForSeconds(duration);
         moskitoController.ResetSpeed();
     }
+
+    public void playerCriFuite()
+    {
+
+    }
 }

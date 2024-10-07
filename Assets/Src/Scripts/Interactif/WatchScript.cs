@@ -35,9 +35,7 @@ public class WatchScript : MonoBehaviour
     }
 
     private void AnalogTimeFunction()
-    {
-        //Debug.Log("World Seconds = " + timing * 600);
-        
+    {        
         _minutesArrow.DOLocalRotate(new Vector3(0, 360, 0), timing*60, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart);
         _hourArrow.DOLocalRotate(new Vector3(0, 360, 0), timing*720, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).SetLoops(-1,LoopType.Restart);
     }
@@ -84,6 +82,11 @@ public class WatchScript : MonoBehaviour
             }
 
             timeText.text = "<mspace=0.5em>"+ hoursText + minutesText;
+
+            if (hours >= 7)
+            {
+                GameManager.instance.LoseCondition();
+            }
           
         }
     }
@@ -94,7 +97,6 @@ public class WatchScript : MonoBehaviour
         {
             remainingMinutes = 0;
             remainingHours++;
-            //_hourArrow.DOLocalRotate(new Vector3(0, _hourArrow.localEulerAngles.y + 30, 0), 0.01f);
         }
 
         string minutesText = "";
