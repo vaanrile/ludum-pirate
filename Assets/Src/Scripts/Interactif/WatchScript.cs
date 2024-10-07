@@ -24,7 +24,6 @@ public class WatchScript : MonoBehaviour
 
     void Start()
     {
-        StartTime();
     }
 
     public void StartTime()
@@ -84,8 +83,9 @@ public class WatchScript : MonoBehaviour
 
             timeText.text = "<mspace=0.5em>"+ hoursText + minutesText;
 
-            if (hours >= 7)
+            if (remainingHours >= 7)
             {
+                Debug.Log("7h passé !");
                 GameManager.instance.LoseCondition();
             }
           
@@ -120,5 +120,10 @@ public class WatchScript : MonoBehaviour
         }
 
         timeText.text = "<mspace=0.5em>" + hoursText + minutesText;
+
+        if (remainingHours >= 7)
+        {
+            GameManager.instance.LoseCondition();
+        }
     }
 }

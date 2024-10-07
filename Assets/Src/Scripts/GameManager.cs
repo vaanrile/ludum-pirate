@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
         {
             mos.StartMove();
         }
-        
+        Time.StartTime();
     }
 
     public void MoskitoKill(Moskito kito)
@@ -155,8 +155,6 @@ public class GameManager : MonoBehaviour
         moskitoList.Remove(kito);
         if(nbMoskitos == 0)
         {
-
-            Debug.Log("WINNNNN");
             var heure = Time.remainingHours;
             var minutes = Time.remainingMinutes;
 
