@@ -17,6 +17,7 @@ public class S_Lumiere : S_AbsInteractive
     {
         base.Kicked();
         isOn = !isOn;
+        GameManager.instance.lightSet(isOn);
         lumiere.SetActive(isOn);
         pc.setCamera(isOn);
         _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Light_Click"));

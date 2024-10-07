@@ -84,6 +84,7 @@ public class Moskito : MonoBehaviour
 
     private ParticleSystem bzzbzz;
 
+    private bool isInvisible = false;
 
     [SerializeField]
     private bool forceStatus;
@@ -527,7 +528,10 @@ public class Moskito : MonoBehaviour
     }
     private void FadeInAudio()
     {
-        bzzbzz.Play();
+        if(!isInvisible)
+        {
+            bzzbzz.Play();
+        }
         AudioManager.instance.FadeSound(_audioSource, fadeAudioDuration, 1);
     }
     private void FadeOutAudio()
@@ -713,6 +717,11 @@ public class Moskito : MonoBehaviour
     public void SetMoskitoBox(BoxCollider _moskitoBox)
     {
         moskitoBox = _moskitoBox;
+    }
+
+    public void setParticle(bool isOn)
+    {
+        isInvisible = isOn;
     }
 
     public BoxCollider GetMoskitoBox()
