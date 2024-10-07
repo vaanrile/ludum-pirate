@@ -28,8 +28,13 @@ public class S_TV : S_AbsInteractive
 
     private void Off()
     {
-        StopCoroutine(_screenCoroutine);
-        onEffect.SetActive(false);
+        if (onEffect.activeSelf)
+        {
+            _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Tv_Turning_Off"));
+            StopCoroutine(_screenCoroutine);
+            onEffect.SetActive(false);            
+        }
+       
     }
 
     public override void Kicked()
