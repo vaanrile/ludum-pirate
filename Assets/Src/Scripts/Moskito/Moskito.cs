@@ -78,7 +78,7 @@ public class Moskito : MonoBehaviour
 
     BoxCollider moskitoBox;
 
-
+    private ParticleSystem bzzbzz;
 
 
     [SerializeField]
@@ -140,7 +140,7 @@ public class Moskito : MonoBehaviour
         moskitoTouchDetector = GetComponent<MoskitoTouchDetector>();
         _audioSource = GetComponent<AudioSource>();
         Invoke("Aaah", 0.3f);
-        
+        bzzbzz = GetComponent<ParticleSystem>();
     }
     private void Aaah()
     {
@@ -480,10 +480,12 @@ public class Moskito : MonoBehaviour
     }
     private void FadeInAudio()
     {
+        bzzbzz.Play();
         AudioManager.instance.FadeSound(_audioSource, fadeAudioDuration, 1);
     }
     private void FadeOutAudio()
     {
+        bzzbzz.Stop();
         AudioManager.instance.FadeSound(_audioSource, fadeAudioDuration, 0);
     }
 
