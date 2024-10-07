@@ -155,6 +155,7 @@ MonoBehaviour:
   timePatrollingMax: 6
   forceStatus: 0
   closeToEncens: 0
+  fadeAudioDuration: 0.5
 --- !u!114 &7701588272984354719
 MonoBehaviour:
   m_ObjectHideFlags: 0

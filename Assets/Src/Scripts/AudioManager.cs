@@ -26,6 +26,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] swatterArray;
     public AudioClip[] hitArray;
 
+    private Tween _currentTween;
+
     private void Awake()
     {
         if(instance == null)
@@ -95,7 +97,11 @@ public class AudioManager : MonoBehaviour
     }
     public void FadeSound(AudioSource audioToFade, float timeToFade, float targetVolume)
     {
-        DOTween.To(() => audioToFade.volume, x => audioToFade.volume = x, targetVolume, timeToFade);
+        if (_currentTween != null)
+        {
+            audioToFade.DOKill();
+        }        
+        _currentTween = DOTween.To(() => audioToFade.volume, x => audioToFade.volume = x, targetVolume, timeToFade);
     }
     public AudioClip findAudioClip(string soundName)
     {
