@@ -161,4 +161,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LoseCondition()
+    {
+        Debug.Log("WIN CONDITION");
+    }
+
 }
