@@ -33,13 +33,15 @@ public class PlayerController : MonoBehaviour
 
     private Player player;
 
-    private bool _canMoveCamera=true;
+    private bool _canMoveCamera;
 
     private S_Tapette tapette;
 
     private AudioSource _audioSource;
     public float footstepTimerInit;
     private float _footstepCurrent;
+
+    private bool _canMove;
 
     private void Start()
     {
@@ -48,6 +50,12 @@ public class PlayerController : MonoBehaviour
         tapette = GetComponentInChildren<S_Tapette>();
         _audioSource = GetComponent<AudioSource>();
         _footstepCurrent = footstepTimerInit;
+    }
+
+    public void StartMove()
+    {
+        _canMove = true;
+        _canMoveCamera = true;
     }
 
     private void Update()
@@ -75,13 +83,13 @@ public class PlayerController : MonoBehaviour
         {
             // AudioManager.instance?.PlayLol();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _canMoveCamera = !_canMoveCamera;
-        }
         if (!_canMoveCamera)
         {
             return;   
+        }
+        if (!_canMove)
+        {
+            return;
         }
 
         //Calculer la vélocité du mouvement de notre joueur
