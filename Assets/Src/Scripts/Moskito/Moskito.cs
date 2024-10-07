@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
 using static Player;
+using UnityEngine.Device;
 
 public class Moskito : MonoBehaviour
 {
@@ -94,6 +95,7 @@ public class Moskito : MonoBehaviour
     private float fadeAudioDuration;
 
     private bool _canMove;
+    private bool _isAlive = true;
 
     public enum MoskitoZone
     {
@@ -144,7 +146,6 @@ public class Moskito : MonoBehaviour
     }
     private void Aaah()
     {
-        Debug.Log(AudioManager.instance);
         _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Moskito_Init"),2);
     }
 
@@ -665,4 +666,24 @@ public class Moskito : MonoBehaviour
     {
         return moskitoBox;
     }
+
+    public void Kiecked()
+    {
+        _canMove = false;
+        if (_isAlive)
+        {
+            _isAlive = false;
+            _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Tv_Turning_Off"));
+            Debug.Log("METTRE SON MOUSTIQUE MORT");
+            StartCoroutine(WaitToDie());
+        }
+            
+    }
+    IEnumerator WaitToDie()
+    {
+        yield return new WaitForSeconds(5f);
+        GameManager.instance.MoskitoKill(this);
+        Destroy(gameObject);
+    }
+
 }

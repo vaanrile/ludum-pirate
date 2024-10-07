@@ -46,7 +46,6 @@ namespace BBX.Dialogue.GUI
         {
             if (_currentDialogueCount > (DialogueArray.Length - 1))
             {
-                Debug.Log("End Dialogue");
                 _canvasGroup.DOFade(0, 0.5f);
                 GameManager.instance.GameStart();
                 return;
