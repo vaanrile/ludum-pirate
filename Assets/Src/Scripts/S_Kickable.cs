@@ -17,7 +17,6 @@ public class S_Kickable : S_AbsInteractive
 
     public override void Kicked()
     {
-        Debug.Log("zzzz");
         if (mode == 0)
         {
             _audioSource.PlayOneShot(AudioManager.instance.hitArray[Random.Range(0, AudioManager.instance.hitArray.Length-1)]);
@@ -25,7 +24,6 @@ public class S_Kickable : S_AbsInteractive
         else if (mode == 1)
         {
             _audioSource.PlayOneShot(AudioManager.instance.findAudioClip(audioName));
-            Debug.Log(audioName);
         }
         else
         {

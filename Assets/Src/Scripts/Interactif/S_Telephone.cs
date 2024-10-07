@@ -77,7 +77,6 @@ public class S_Telephone : S_AbsInteractive
             dring();
         }
         isActive = false;
-        Debug.Log("Son : Fin dring");
         particle.Stop();
     }
 }
