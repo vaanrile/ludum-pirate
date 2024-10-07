@@ -18,6 +18,12 @@ public class S_Radiateur : S_AbsInteractive
     public GameObject screenActif;
     public ParticleSystem hotTrails;
 
+    private AudioSource _audioSource;
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -39,6 +45,7 @@ public class S_Radiateur : S_AbsInteractive
         if (!isActive)
         {
             isActive = true;
+            _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Radiator_Turn_On"));
             screenInactif.SetActive(false);
             screenActif.SetActive(true);
             hotTrails.Play();

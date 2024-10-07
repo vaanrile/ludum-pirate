@@ -17,6 +17,13 @@ public class Encens : S_AbsInteractive
     public ParticleSystem actifTrait;
     public ParticleSystem actifSmoke;
 
+    private AudioSource _audioSource;
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -37,6 +44,7 @@ public class Encens : S_AbsInteractive
     {
         if (!isActive)
         {
+            _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Encens_Turn_On"));
             isActive = true;
             actifTrait.Play();
             actifSmoke.Play();

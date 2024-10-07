@@ -2830,7 +2830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 649fcc70a4fef2248a6642ea5672a995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbMoskitos: 3
+  nbMoskitos: 1
   mostikoPrefab: {fileID: 2914310192392344847, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
   player: {fileID: 2117208842}
   encens: {fileID: 1351848377}
@@ -9952,8 +9952,6 @@ MonoBehaviour:
     audioClipName: Trap_Turn_On
   - audioClip: {fileID: 8300000, guid: cd3c52a46e25bf5428eb851da6cfa05a, type: 3}
     audioClipName: Phone_Ring
-  - audioClip: {fileID: 8300000, guid: 774c3704353962c43b72376cdf966e88, type: 3}
-    audioClipName: Radiator_Turn_On
   footstepArray:
   - {fileID: 8300000, guid: d246a9e7b18c10c44bdae5c78d5cf84b, type: 3}
   - {fileID: 8300000, guid: 4ad9b672abbf3474598db0c23c7fc273, type: 3}
@@ -20512,7 +20510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8901772240675661107, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
       propertyPath: hitBox
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8901772240675661107, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
       propertyPath: cameraLight

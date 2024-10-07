@@ -16,8 +16,11 @@ public class S_Tapette : MonoBehaviour
         {
             Rigidbody rb = collider.attachedRigidbody;
             if (rb != null && rb != GetComponent<Rigidbody>() && collider.gameObject.tag != "Tapette" && collider.gameObject.tag != "Player")
-            {
-                Debug.Log(collider.gameObject.tag);
+            {  
+                if(collider.gameObject.tag == "Moskito")
+                {
+                    Debug.Log("Moskito Kill !!!");
+                }
                 //dire force
                 Vector3 direction = collider.transform.position - transform.position;
                 direction.Normalize();

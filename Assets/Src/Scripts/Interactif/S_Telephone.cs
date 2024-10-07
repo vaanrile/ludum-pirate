@@ -21,6 +21,8 @@ public class S_Telephone : S_AbsInteractive
     public ParticleSystem particle;
 
     private float timeBetweenDring;
+
+    private AudioSource _audioSource;
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -30,6 +32,7 @@ public class S_Telephone : S_AbsInteractive
     private void Awake()
     {
         timeBetweenDring = duration / (nbDringSound-1);
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public float GetRadius()
@@ -61,7 +64,6 @@ public class S_Telephone : S_AbsInteractive
 
     private void dring()
     {
-        Debug.Log("Son : Dring");
         transform.DOShakeRotation(1f, 10, 10, 10, true, ShakeRandomnessMode.Harmonic);
     }
 
@@ -70,6 +72,7 @@ public class S_Telephone : S_AbsInteractive
         dring();
         for (int i = 0; i < nbDringSound-1; i++)
         {
+            _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Phone_Ring"));
             yield return new WaitForSeconds(timeBetweenDring);
             dring();
         }
