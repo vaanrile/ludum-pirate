@@ -63,7 +63,7 @@ namespace BBX.Dialogue.GUI
         private void Parse()
         {
             _defaultShakeVertices.Clear();
-            TMProText.textInfo.Clear();
+            TMProText.textInfo.ClearAllMeshInfo();
             var inputText = DialogueArray[_currentDialogueCount];
 
             const string re1 = "(<)";
