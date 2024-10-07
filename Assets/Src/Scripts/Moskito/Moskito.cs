@@ -110,6 +110,7 @@ public class Moskito : MonoBehaviour
         Danger,
         Far,
         Encens,
+        Telephone,
         None
     }
 
@@ -122,6 +123,7 @@ public class Moskito : MonoBehaviour
         GoSafe,
         GoBehind,
         Encens,
+        Telephone,
         LightMod,
         GoOutsidePhoneLight,
         StayFar,
@@ -316,13 +318,20 @@ public class Moskito : MonoBehaviour
         }
         else
         {
-          
-        }
 
+        }
+        
         if (closeToEncens && encens.IsActive())
         {
             SetMoskitoStatus(MoskitoStatus.Encens);
             patrollingZone = MoskitoZone.Encens;
+            return;
+        }
+
+        if (closeToTelephone && tel.IsActive())
+        {
+            SetMoskitoStatus(MoskitoStatus.Telephone);
+            patrollingZone = MoskitoZone.Telephone;
             return;
         }
 
@@ -509,6 +518,9 @@ public class Moskito : MonoBehaviour
             case MoskitoStatus.StayDanger:
                 FadeInAudio();
                 break;
+            case MoskitoStatus.Telephone:
+                FadeInAudio();
+                break;
             default:
                 break;
         }
@@ -693,6 +705,10 @@ public class Moskito : MonoBehaviour
     public void SetRadiateur(S_Radiateur rad)
     {
         radiateur = rad;
+    }
+    public void SetTel(S_Telephone t)
+    {
+        tel = t;
     }
 
     public void SetMoskitoBox(BoxCollider _moskitoBox)

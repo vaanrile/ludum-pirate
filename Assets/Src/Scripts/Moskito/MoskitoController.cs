@@ -92,6 +92,12 @@ public class MoskitoController : MonoBehaviour
             case Moskito.MoskitoStatus.Encens:
                 UpdateTarget(moskito.GetEncens().transform);
                 break;
+            case Moskito.MoskitoStatus.Telephone:
+
+                GameObject randomTarget = GameManager.instance.SetRandomTargetMoskito();
+
+                UpdateTarget(randomTarget.transform);
+                break;
         }
 
 

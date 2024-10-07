@@ -2830,8 +2830,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nbMoskitos: 3
   mostikoPrefab: {fileID: 2914310192392344847, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
+  randomTargetMoskito: {fileID: 5167731687704723505}
   player: {fileID: 2117208842}
   encens: {fileID: 1351848377}
+  radiateur: {fileID: 0}
   moskitoBox: {fileID: 937160506}
   nbStingBeforeLose: 1
   moskitoList: []
@@ -21997,6 +21999,68 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
+--- !u!1001 &5167731687704723504
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2318318806479301790, guid: 667c1012dd9a4e94db1114b1b7c86e80, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.0973225
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318318806479301790, guid: 667c1012dd9a4e94db1114b1b7c86e80, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.65877414
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318318806479301790, guid: 667c1012dd9a4e94db1114b1b7c86e80, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.092968
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318318806479301790, guid: 667c1012dd9a4e94db1114b1b7c86e80, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318318806479301790, guid: 667c1012dd9a4e94db1114b1b7c86e80, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318318806479301790, guid: 667c1012dd9a4e94db1114b1b7c86e80, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318318806479301790, guid: 667c1012dd9a4e94db1114b1b7c86e80, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318318806479301790, guid: 667c1012dd9a4e94db1114b1b7c86e80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318318806479301790, guid: 667c1012dd9a4e94db1114b1b7c86e80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318318806479301790, guid: 667c1012dd9a4e94db1114b1b7c86e80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5185746501886016120, guid: 667c1012dd9a4e94db1114b1b7c86e80, type: 3}
+      propertyPath: m_Name
+      value: TagetMoskito
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 667c1012dd9a4e94db1114b1b7c86e80, type: 3}
+--- !u!1 &5167731687704723505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5185746501886016120, guid: 667c1012dd9a4e94db1114b1b7c86e80, type: 3}
+  m_PrefabInstance: {fileID: 5167731687704723504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8810884365292814036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22127,3 +22191,4 @@ SceneRoots:
   - {fileID: 1343206458}
   - {fileID: 719181477}
   - {fileID: 937160507}
+  - {fileID: 5167731687704723504}
