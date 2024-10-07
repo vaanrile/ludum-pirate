@@ -22,7 +22,7 @@ public class S_Pïege : S_AbsInteractive
 
     public GameObject particleHit;
 
-
+    private AudioSource _audioSource;
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
@@ -32,6 +32,7 @@ public class S_Pïege : S_AbsInteractive
     private void Awake()
     {
         GetComponent<SphereCollider>().radius = radius;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public float GetRadius()
@@ -49,6 +50,7 @@ public class S_Pïege : S_AbsInteractive
         if (!isActive)
         {
             isActive = true;
+            _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Trap_Turn_On"));
             objetEmissive.GetComponent<Renderer>().material = matActif;
             StartCoroutine(WaitForEndOfActive());
             GetComponent<SphereCollider>().enabled=true;

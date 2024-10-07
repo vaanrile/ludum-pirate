@@ -9952,6 +9952,8 @@ MonoBehaviour:
     audioClipName: Trap_Turn_On
   - audioClip: {fileID: 8300000, guid: cd3c52a46e25bf5428eb851da6cfa05a, type: 3}
     audioClipName: Phone_Ring
+  - audioClip: {fileID: 8300000, guid: 774c3704353962c43b72376cdf966e88, type: 3}
+    audioClipName: Radiator_Turn_On
   footstepArray:
   - {fileID: 8300000, guid: d246a9e7b18c10c44bdae5c78d5cf84b, type: 3}
   - {fileID: 8300000, guid: 4ad9b672abbf3474598db0c23c7fc273, type: 3}
