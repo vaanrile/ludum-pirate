@@ -139,7 +139,6 @@ public class Moskito : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         moskitoTouchDetector = GetComponent<MoskitoTouchDetector>();
         _audioSource = GetComponent<AudioSource>();
-        Debug.Log(_audioSource);
         Invoke("Aaah", 0.3f);
         
     }
