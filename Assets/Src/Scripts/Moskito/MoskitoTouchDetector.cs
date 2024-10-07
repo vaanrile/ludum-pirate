@@ -25,12 +25,13 @@ public class MoskitoTouchDetector : MonoBehaviour
     [SerializeField]
     private float timeAttachedMin = 2, timeAttachedMax = 3;
 
-
+    private float initialProbabilityAttach;
 
     private void Awake()
     {
         moskito = GetComponent<Moskito>();
         StartCoroutine(FlushAllAttachedObjectEveryXseconds(30));
+        initialProbabilityAttach = attachToObjectProbability;
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -57,6 +58,16 @@ public class MoskitoTouchDetector : MonoBehaviour
             }
             coWaitForAttachedObject = StartCoroutine(WaitForStopAttachingObject(UnityEngine.Random.Range(timeAttachedMin,timeAttachedMax)));
         }
+    }
+
+    public void SetattachToObjectProbability(float value)
+    {
+        attachToObjectProbability = value;
+    }
+
+    public void ResetattachToObjectProbability()
+    {
+        attachToObjectProbability = initialProbabilityAttach;
     }
 
     public bool IsAttachedToObject()

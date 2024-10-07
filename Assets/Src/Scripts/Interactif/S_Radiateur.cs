@@ -14,6 +14,9 @@ public class S_Radiateur : S_AbsInteractive
     [SerializeField]
     private float duration;
 
+    [Range(0, 1)]
+    public float attachToObjectProbabilityRadiateur = 0.9f;
+
     public GameObject screenInactif;
     public GameObject screenActif;
     public ParticleSystem hotTrails;

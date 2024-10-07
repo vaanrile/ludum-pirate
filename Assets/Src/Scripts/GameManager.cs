@@ -14,12 +14,19 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject mostikoPrefab;
 
+    public GameObject randomTargetMoskito;
 
     [SerializeField]
     private Player player;
 
     [SerializeField]
     private Encens encens;
+
+    [SerializeField]
+    private S_Radiateur radiateur;
+
+    [SerializeField]
+    private S_Telephone tel;
 
     [SerializeField]
     private BoxCollider moskitoBox;
@@ -57,11 +64,32 @@ public class GameManager : MonoBehaviour
                 var moskito = Instantiate(mostikoPrefab, randomLocInBox, Quaternion.identity).GetComponent<Moskito>();
                 moskito.SetPlayer(player);
                 moskito.SetEncens(encens);
+                moskito.SetRadiateur(radiateur);
+                moskito.SetTel(tel);
                 moskito.SetMoskitoBox(moskitoBox);
                 moskitoList.Add(moskito);
             }
         }
         
+    }
+
+    public GameObject SetRandomTargetMoskito()
+    {
+        var bounds = moskitoBox.bounds;
+
+        Vector3 newpos = new Vector3(
+            Random.Range(bounds.min.x, bounds.max.x),
+            Random.Range(bounds.min.y, bounds.max.y),
+            Random.Range(bounds.min.z, bounds.max.z));
+
+        if((newpos - tel.transform.position).magnitude < tel.GetRadius())
+        {
+            newpos = radiateur.transform.position;
+        }
+
+        randomTargetMoskito.transform.position = newpos;
+
+        return randomTargetMoskito;
     }
 
     public void GameStart()
