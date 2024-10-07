@@ -9457,8 +9457,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 16.222105, y: 4.8952417, z: 16.822575}
-  m_Center: {x: -0.2035284, y: -0.99462175, z: 1.6164126}
+  m_Size: {x: 16.222105, y: 4.8952417, z: 16.755861}
+  m_Center: {x: -0.2035284, y: -0.99462175, z: 1.5830564}
 --- !u!4 &937160507
 Transform:
   m_ObjectHideFlags: 0
@@ -9493,8 +9493,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3674774, y: 5.8070974, z: 4.9488854}
-  m_Center: {x: -7.8162613, y: -0.983354, z: -2.8659065}
+  m_Size: {x: 1.530714, y: 6.0357265, z: 5.1051393}
+  m_Center: {x: -7.734643, y: -0.86903954, z: -2.9883797}
 --- !u!1001 &962765569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18590,7 +18590,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.025
+      value: -0.21739246
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18598,23 +18598,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.372
+      value: -0.9843731
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6532827
+      value: 0.9238798
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.27059746
+      value: -0.3826828
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.6532807
+      value: 0.00000008195638
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.27059776
+      value: -0.0000007152557
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -18622,7 +18622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -18645,6 +18645,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1856843092}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1856843093}
   m_SourcePrefab: {fileID: 100100000, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
 --- !u!4 &1856843086 stripped
 Transform:
@@ -18673,7 +18676,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -18721,6 +18724,27 @@ MonoBehaviour:
   _onlyTriggeredByTapette: 0
   _audioSource: {fileID: 0}
   audioName: 
+--- !u!65 &1856843093
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856843087}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.07062, y: 0.52829903, z: 1.5743798}
+  m_Center: {x: -0.008490326, y: 0.073300116, z: 0.057577677}
 --- !u!1001 &1859767522
 PrefabInstance:
   m_ObjectHideFlags: 0
