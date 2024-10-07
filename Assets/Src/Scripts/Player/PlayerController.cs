@@ -1,4 +1,5 @@
 
+using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMotor))]
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         _canMove = true;
         _canMoveCamera = true;
+        tapette.transform.DOLocalMove(new Vector3(0, 0.3f, -0.27f), 0.5f);
     }
 
     private void Update()
