@@ -65,7 +65,7 @@ public class MoskitoController : MonoBehaviour
         }
         if (!moskito.GetMoskitoBox().bounds.Contains(moskito.transform.position))
         {
-            moskito.transform.position = RandomLocInMoskitoBox();
+            moskito.transform.position = NearLocInMoskitoBox();
         }
 
         if (moskito.GetTouchDetector().IsAttachedToObject())
@@ -173,6 +173,40 @@ public class MoskitoController : MonoBehaviour
             Random.Range(bounds.min.x, bounds.max.x),
             Random.Range(bounds.min.y, bounds.max.y),
             Random.Range(bounds.min.z, bounds.max.z));
+    }
+    private Vector3 NearLocInMoskitoBox()
+    {
+        var bounds = moskito.GetMoskitoBox().bounds;
+        var vec = transform.position;
+
+        if (vec.x < bounds.min.x)
+        {
+            vec.x = bounds.min.x;
+        }
+        else if (vec.x > bounds.max.x)
+        {
+            vec.x = bounds.max.x;
+        }
+
+        if (vec.y < bounds.min.y)
+        {
+            vec.y = bounds.min.y;
+        }
+        else if (vec.y > bounds.max.y)
+        {
+            vec.y = bounds.max.y;
+        }
+
+        if (vec.z < bounds.min.z)
+        {
+            vec.z = bounds.min.z;
+        }
+        else if (vec.z > bounds.max.z)
+        {
+            vec.z = bounds.max.z;
+        }
+
+        return vec;
     }
 }
 
