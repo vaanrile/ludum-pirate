@@ -66,6 +66,5 @@ public class S_Radiateur : S_AbsInteractive
         screenInactif.SetActive(true);
         screenActif.SetActive(false);
         hotTrails.Stop();
-        Debug.Log("Radiateur Stop");
     }
 }

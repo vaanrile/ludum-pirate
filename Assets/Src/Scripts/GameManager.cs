@@ -71,4 +71,15 @@ public class GameManager : MonoBehaviour
             mos.StartMove();
         }
     }
+
+    public void MoskitoKill(Moskito kito)
+    {
+        nbMoskitos--;
+        moskitoList.Remove(kito);
+        if(nbMoskitos == 0)
+        {
+            Debug.Log("WIN CONDITION");
+        }
+    }
+
 }
