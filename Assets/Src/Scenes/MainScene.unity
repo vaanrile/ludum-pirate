@@ -3264,7 +3264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8627451}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3343,23 +3343,28 @@ MonoBehaviour:
   player: {fileID: 2117208842}
   encens: {fileID: 1351848377}
   radiateur: {fileID: 1917321942}
-  Time: {fileID: 0}
+  Time: {fileID: 1329096964}
   tel: {fileID: 2091670918}
   moskitoBox: {fileID: 937160506}
   nbStingBeforeLose: 1
   moskitoList: []
   textMeshAnimator: {fileID: 1573345253}
   canvasGroupMainMenu: {fileID: 1072489987}
-  canvasGroupWin: {fileID: 0}
-  canvasGroupLose: {fileID: 0}
+  canvasGroupWin: {fileID: 312047965}
+  canvasGroupLose: {fileID: 237158733}
   playerAnim: {fileID: 1319957493}
   textStat: {fileID: 1545362260}
   textFun: {fileID: 1410220511}
   resultText:
-  - Mosquito Slayer ! XXXX
-  - 1h-3h
-  - 3h-5h
-  - 5-7
+  - You are a true Mosquito Slayer !<br> You slept more than necessary and are ready
+    to conquer the world with your gained rest !
+  - You slept like a baby !<br> You rested enough and those annoying mosquitoes were
+    nothing more but a short annoyance as of right now !
+  - You could have slept better, but still, better than nothing !<br> Maybe next
+    night will go a bit better (unless mosquitoes come in your room once again) !
+  - What a rough night (if you can even call it that) !<br> Your back hurts like
+    crazy and you can't keep your eyes open for more than 10 minutes (a bit of a
+    constrait for your field of work)
 --- !u!1001 &382300486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12909,7 +12914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8627451}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14299,12 +14304,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc195a70cf40b6408f1fb0f66daa2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timing: 2
+  timing: 0.75
   hours: 0
   minutes: 0
   timeText: {fileID: 452683801}
-  _hourArrow: {fileID: 2035976332}
-  _minutesArrow: {fileID: 1500535089}
+  remainingHours: 0
+  remainingMinutes: 0
+  remainingSeconds: 0
+  _hourArrow: {fileID: 1500535089}
+  _minutesArrow: {fileID: 2035976332}
   _secondsArrow: {fileID: 1960252950}
 --- !u!1 &1332470743
 GameObject:

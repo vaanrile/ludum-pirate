@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI textFun;
     public List<string> resultText;
 
+    private bool _endGame;
 
     private void Awake()
     {
@@ -114,7 +115,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameQuit()
     {
-
+        Application.Quit();
     }
     public void GameReload()
     {
@@ -184,6 +185,7 @@ public class GameManager : MonoBehaviour
                 textFun.text = resultText[3];
             }
             canvasGroupWin.DOFade(1, 1);
+            _endGame = true;
         }
     }
 
@@ -204,11 +206,24 @@ public class GameManager : MonoBehaviour
             StartMenu();
             _leftMainMenu = true;
         }
+        if (!_endGame)
+        {
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameReload();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameQuit();
+        }
     }
 
     public void LoseCondition()
     {
         canvasGroupLose.DOFade(1, 1);
+        _endGame = true;
     }
 
 }
