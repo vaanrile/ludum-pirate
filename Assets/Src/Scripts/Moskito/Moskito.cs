@@ -154,7 +154,7 @@ public class Moskito : MonoBehaviour
     }
     private void Aaah()
     {
-        _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Moskito_Init"),2);
+        //_audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Moskito_Init"),2);
     }
 
     public void StartMove()
@@ -711,8 +711,11 @@ public class Moskito : MonoBehaviour
         if (_isAlive)
         {
             _isAlive = false;
-            _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Tv_Turning_Off"));
-            Debug.Log("METTRE SON MOUSTIQUE MORT");
+            Destroy(_audioSource);
+            _audioSource = gameObject.AddComponent<AudioSource>();
+            _audioSource.volume = 1;
+            _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Moskito_Dying"),2);
+            //Debug.Log("METTRE SON MOUSTIQUE MORT");
             StartCoroutine(WaitToDie());
         }
             

@@ -71,6 +71,7 @@ public class S_Pïege : S_AbsInteractive
     {
         Debug.Log("Son : moustique taser");
         moskito.GetComponent<Moskito>().Stunned(speedStunned, durationStun);
+        _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Eletric_Zap"));
         StartCoroutine(WaitForEndFlashParticle(moskito));
     }
 
