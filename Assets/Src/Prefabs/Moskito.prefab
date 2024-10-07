@@ -91,9 +91,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9da1d28165814540b077be6f46a0721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 1
   isFrenetic: 0
-  randomMoveIntensity: 32.1
+  randomMoveIntensity: 10
   freneticIntensity: 0.555
   randomDirection: {x: 0, y: 0, z: 0}
 --- !u!135 &5635989886794446379
@@ -141,18 +141,18 @@ MonoBehaviour:
   lastPatrollingZone: 4
   player: {fileID: 0}
   encens: {fileID: 0}
-  distanceZoneDanger: 4
-  distanceZoneConfort: 10
+  distanceZoneDanger: 2
+  distanceZoneConfort: 4
   faceMoskitoAngle: 0
   timeAfterAttack: 2
-  timeBeforeGoingBackWhenFarMin: 3
+  timeBeforeGoingBackWhenFarMin: 5
   timeBeforeGoingBackWhenFarMax: 7
   timeSneakingMin: 5
   timeSneakingMax: 15
   timePreparingAttackMin: 4
   timePreparingAttackMax: 6
-  timePatrollingMin: 4
-  timePatrollingMax: 6
+  timePatrollingMin: 8
+  timePatrollingMax: 9
   forceStatus: 0
   closeToEncens: 0
   fadeAudioDuration: 0.5
@@ -168,10 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c3f6f363208e99489527f48b48a12fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachToObjectProbability: 0.001
+  attachToObjectProbability: 0.8
   isAttachedToObject: 0
-  timeAttachedMin: 1
-  timeAttachedMax: 3
+  timeAttachedMin: 5
+  timeAttachedMax: 7
 --- !u!82 &2398929601859572899
 AudioSource:
   m_ObjectHideFlags: 0

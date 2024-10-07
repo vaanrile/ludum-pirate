@@ -2827,7 +2827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 649fcc70a4fef2248a6642ea5672a995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbMoskitos: 1
+  nbMoskitos: 3
   mostikoPrefab: {fileID: 2914310192392344847, guid: e5af6fb8790b22049b04966a4da331ce, type: 3}
   player: {fileID: 2117208842}
   encens: {fileID: 1351848377}
@@ -20469,7 +20469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8901772240675661107, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
       propertyPath: hitBox
-      value: 1.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8901772240675661107, guid: 2ec0e5d7520e1de4dbe79fb2c17d274d, type: 3}
       propertyPath: cameraLight
