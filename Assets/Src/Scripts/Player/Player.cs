@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
 
     public void Cri()
     {
+
         Debug.Log("son : Aaaaargh ! Fuck !");
     }
 
