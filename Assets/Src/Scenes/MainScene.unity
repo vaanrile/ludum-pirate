@@ -10000,6 +10000,10 @@ MonoBehaviour:
     audioClipName: Radiator_Turn_On
   - audioClip: {fileID: 8300000, guid: 4585c85b4a50b9f4d9fe53c906f51bf8, type: 3}
     audioClipName: Eletric_Zap
+  - audioClip: {fileID: 8300000, guid: c1af33996ee2a1f4f9438b876794de58, type: 3}
+    audioClipName: Moskito_Dying
+  - audioClip: {fileID: 8300000, guid: 4b3dda7e411c5694db0773a06aa288bf, type: 3}
+    audioClipName: Wake_Up
   footstepArray:
   - {fileID: 8300000, guid: d246a9e7b18c10c44bdae5c78d5cf84b, type: 3}
   - {fileID: 8300000, guid: 4ad9b672abbf3474598db0c23c7fc273, type: 3}
@@ -10040,7 +10044,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

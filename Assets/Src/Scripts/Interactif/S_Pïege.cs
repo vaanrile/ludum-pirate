@@ -67,6 +67,7 @@ public class S_Pïege : S_AbsInteractive
     public void PiegeHitMoskito(GameObject moskito)
     {
         Debug.Log("Son : moustique taser");
+        _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Eletric_Zap"));
         StartCoroutine(WaitForEndFlashParticle(moskito));
     }
 

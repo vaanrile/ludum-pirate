@@ -41,13 +41,13 @@ public class GameManager : MonoBehaviour
             Debug.LogError("There is already an instance of GameManager in the scene, only one can be instanciated.");
         }
 
-        if(mostikoPrefab == null)
+        if (mostikoPrefab == null)
         {
             Debug.LogError("MoskitoPrefab is not referenced, please add moskito prefab in game manager.");
         }
         else
         {
-            for(int i = 0; i < nbMoskitos; i++)
+            for (int i = 0; i < nbMoskitos; i++)
             {
                 var bounds = moskitoBox.bounds;
                 Vector3 randomLocInBox = new Vector3(
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
                 moskitoList.Add(moskito);
             }
         }
+        
     }
 
     public void GameStart()
@@ -70,6 +71,7 @@ public class GameManager : MonoBehaviour
         {
             mos.StartMove();
         }
+        
     }
 
     public void MoskitoKill(Moskito kito)
