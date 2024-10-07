@@ -35,7 +35,8 @@ namespace BBX.Dialogue.GUI
         /// 2. Hide all the text
         /// 3. Start displaying text
         /// </summary>
-        private void Start()
+
+        public void InitRead()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
             _canvasGroup.DOFade(1, 0.5f).From(0);
@@ -62,7 +63,7 @@ namespace BBX.Dialogue.GUI
         private void Parse()
         {
             _defaultShakeVertices.Clear();
-            TMProText.textInfo.Clear();
+            TMProText.textInfo.ClearAllMeshInfo();
             var inputText = DialogueArray[_currentDialogueCount];
 
             const string re1 = "(<)";

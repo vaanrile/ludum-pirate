@@ -9,6 +9,9 @@ public class S_Pïege : S_AbsInteractive
     [SerializeField]
     private float radius;
 
+    public float speedStunned = 2f;
+    public float durationStun = 2f;
+
     [SerializeField]
     private bool isActive;
 
@@ -67,6 +70,8 @@ public class S_Pïege : S_AbsInteractive
     public void PiegeHitMoskito(GameObject moskito)
     {
         Debug.Log("Son : moustique taser");
+        moskito.GetComponent<Moskito>().Stunned(speedStunned, durationStun);
+        _audioSource.PlayOneShot(AudioManager.instance.findAudioClip("Eletric_Zap"));
         StartCoroutine(WaitForEndFlashParticle(moskito));
     }
 

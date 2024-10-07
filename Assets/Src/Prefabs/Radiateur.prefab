@@ -5502,6 +5502,7 @@ GameObject:
   - component: {fileID: 8212668895055748595}
   - component: {fileID: 6765979264655289585}
   - component: {fileID: 7745698719828188477}
+  - component: {fileID: 6140998469734278761}
   m_Layer: 0
   m_Name: Radiateur
   m_TagString: Untagged
@@ -5641,6 +5642,7 @@ MonoBehaviour:
   radius: 0
   isActive: 0
   duration: 0
+  attachToObjectProbabilityRadiateur: 0.9
   screenInactif: {fileID: 8552705140681438571}
   screenActif: {fileID: 1921571363870177002}
   hotTrails: {fileID: 9106218373822445848}
@@ -5740,6 +5742,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!135 &6140998469734278761
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043650525752367238}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8552705140681438571
 GameObject:
   m_ObjectHideFlags: 0
