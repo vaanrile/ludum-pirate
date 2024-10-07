@@ -50,7 +50,7 @@ public class S_Pïege : S_AbsInteractive
         {
             isActive = true;
             objetEmissive.GetComponent<Renderer>().material = matActif;
-            StartCoroutine(WaitForEndOfEncens());
+            StartCoroutine(WaitForEndOfActive());
             GetComponent<SphereCollider>().enabled=true;
             particleLight.Play();
         }
@@ -75,7 +75,7 @@ public class S_Pïege : S_AbsInteractive
         Destroy(particleCurrent);
     }
 
-    IEnumerator WaitForEndOfEncens()
+    IEnumerator WaitForEndOfActive()
     {
         yield return new WaitForSeconds(duration);
         isActive = false;

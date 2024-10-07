@@ -93,6 +93,8 @@ public class Moskito : MonoBehaviour
     [SerializeField]
     private float fadeAudioDuration;
 
+    private bool _canMove;
+
     public enum MoskitoZone
     {
         Confort,
@@ -139,8 +141,17 @@ public class Moskito : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
+    public void StartMove()
+    {
+        _canMove = true;
+    }
+
     private void Update()
     {
+        if (!_canMove) 
+        {
+            return;            
+        }
         UpdateEncensZone();
         UpdateMoskitoZone();
         UpdatePlayerDirection();
