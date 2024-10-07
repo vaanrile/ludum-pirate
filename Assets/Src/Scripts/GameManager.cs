@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject mostikoPrefab;
 
-    public GameObject randomTargetMoskito;
 
     [SerializeField]
     private Player player;
@@ -36,6 +35,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private List <Moskito> moskitoList = new List<Moskito>();
+
+    private int nbPiqure = 0;
 
     private void Awake()
     {
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public GameObject SetRandomTargetMoskito()
+    public void SetRandomTargetMoskito(GameObject randomTargetMoskito)
     {
         var bounds = moskitoBox.bounds;
 
@@ -88,8 +89,6 @@ public class GameManager : MonoBehaviour
         }
 
         randomTargetMoskito.transform.position = newpos;
-
-        return randomTargetMoskito;
     }
 
     public void GameStart()
@@ -110,6 +109,16 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("WIN CONDITION");
         }
+    }
+
+    public void PlayerScream()
+    {
+
+    }
+
+    public void PlayerPique()
+    {
+        nbPiqure++;
     }
 
 }

@@ -547,8 +547,7 @@ public class Moskito : MonoBehaviour
         if (timeSincePreparingAttack > timePreparingAttack)
         {
             SetMoskitoStatus(MoskitoStatus.AfterAttack);
-            // HERE DEAL POSSIBLE DAMAGE => THE MOSKITO A PIQUé !
-                // ...
+            GameManager.instance.PlayerPique();
         }
         else
         {

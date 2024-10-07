@@ -29,6 +29,10 @@ public class MoskitoController : MonoBehaviour
 
     private Transform target;
 
+    private GameObject randomTargetMoskito;
+
+    public GameObject prefabInstantiate;
+
     private Moskito moskito;
     private MoskitoMotor motor;
 
@@ -45,6 +49,8 @@ public class MoskitoController : MonoBehaviour
         randomNormalizedVector = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
         initialSpeed = speed;
         StartCoroutine(GenerateRandomNormalizedVector3EachXseconds(2));
+
+        randomTargetMoskito = Instantiate(prefabInstantiate);
     }
 
     IEnumerator GenerateRandomNormalizedVector3EachXseconds(float duration)
@@ -94,9 +100,9 @@ public class MoskitoController : MonoBehaviour
                 break;
             case Moskito.MoskitoStatus.Telephone:
 
-                GameObject randomTarget = GameManager.instance.SetRandomTargetMoskito();
+                GameManager.instance.SetRandomTargetMoskito(randomTargetMoskito);
 
-                UpdateTarget(randomTarget.transform);
+                UpdateTarget(randomTargetMoskito.transform);
                 break;
         }
 

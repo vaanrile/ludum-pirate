@@ -2833,7 +2833,8 @@ MonoBehaviour:
   randomTargetMoskito: {fileID: 5167731687704723505}
   player: {fileID: 2117208842}
   encens: {fileID: 1351848377}
-  radiateur: {fileID: 0}
+  radiateur: {fileID: 1947953050}
+  tel: {fileID: 2091670906}
   moskitoBox: {fileID: 937160506}
   nbStingBeforeLose: 1
   moskitoList: []
@@ -20009,6 +20010,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb1ab2cf94336f04aa91a387fab7c401, type: 3}
+--- !u!114 &1947953050 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6765979264655289585, guid: cb1ab2cf94336f04aa91a387fab7c401, type: 3}
+  m_PrefabInstance: {fileID: 1947953049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e76871000bc1ea4a8c619b43ece4bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1957730399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21401,6 +21413,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.67302006, y: 0.74382734, z: 0.677223}
   m_Center: {x: 0.086509824, y: -0.12808633, z: -0.33861232}
+--- !u!114 &2091670906 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6974177902087414476, guid: e3fb540517782c44590e6fec04299e59, type: 3}
+  m_PrefabInstance: {fileID: 2091670903}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091670904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10b36a0df911cd446b5a18bc07183fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2091670914 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1208245060268648857, guid: e3fb540517782c44590e6fec04299e59, type: 3}
