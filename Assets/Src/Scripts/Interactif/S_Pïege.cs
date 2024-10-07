@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class S_Pïege : S_AbsInteractive
@@ -19,12 +20,18 @@ public class S_Pïege : S_AbsInteractive
     public GameObject objetEmissive;
     public ParticleSystem particleLight;
 
-    private Coroutine _lightCoroutine;
+    public GameObject particleHit;
+
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
+    private void Awake()
+    {
+        GetComponent<SphereCollider>().radius = radius;
     }
 
     public float GetRadius()
@@ -42,9 +49,9 @@ public class S_Pïege : S_AbsInteractive
         if (!isActive)
         {
             isActive = true;
-            Debug.Log("Piege Actif");
             objetEmissive.GetComponent<Renderer>().material = matActif;
             StartCoroutine(WaitForEndOfEncens());
+            GetComponent<SphereCollider>().enabled=true;
             particleLight.Play();
         }
     }
@@ -55,20 +62,34 @@ public class S_Pïege : S_AbsInteractive
         SetActive();
     }
 
-    public void PiegeHitMoskito()
+    public void PiegeHitMoskito(GameObject moskito)
     {
-        StopCoroutine(_lightCoroutine);
         Debug.Log("Son : moustique taser");
+        StartCoroutine(WaitForEndFlashParticle(moskito));
     }
 
-
+    IEnumerator WaitForEndFlashParticle(GameObject moskito)
+    {
+        GameObject particleCurrent = Instantiate(particleHit, moskito.transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(4f);
+        Destroy(particleCurrent);
+    }
 
     IEnumerator WaitForEndOfEncens()
     {
         yield return new WaitForSeconds(duration);
         isActive = false;
+        GetComponent<SphereCollider>().enabled = false;
         particleLight.Stop();
         objetEmissive.GetComponent<Renderer>().material = matInactif;
-        StopCoroutine(_lightCoroutine);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Moskito")
+        {
+            PiegeHitMoskito(other.gameObject);
+        }
+    }
+
 }

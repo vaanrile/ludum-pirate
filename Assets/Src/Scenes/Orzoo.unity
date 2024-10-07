@@ -6845,6 +6845,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 526b927668a04174fb6f30485aaea6ce, type: 3}
+--- !u!1001 &565603074
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3718104268345278943, guid: ae8c314af7751094d85523ce02907104, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718104268345278943, guid: ae8c314af7751094d85523ce02907104, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.987
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718104268345278943, guid: ae8c314af7751094d85523ce02907104, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.411
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718104268345278943, guid: ae8c314af7751094d85523ce02907104, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718104268345278943, guid: ae8c314af7751094d85523ce02907104, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718104268345278943, guid: ae8c314af7751094d85523ce02907104, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718104268345278943, guid: ae8c314af7751094d85523ce02907104, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718104268345278943, guid: ae8c314af7751094d85523ce02907104, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718104268345278943, guid: ae8c314af7751094d85523ce02907104, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718104268345278943, guid: ae8c314af7751094d85523ce02907104, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8240029428680977653, guid: ae8c314af7751094d85523ce02907104, type: 3}
+      propertyPath: m_Name
+      value: FlashMoskitoHited
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae8c314af7751094d85523ce02907104, type: 3}
 --- !u!1 &605542689 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 577a4e387500e4d40b1bc8f495009a78, type: 3}
@@ -9703,6 +9760,10 @@ PrefabInstance:
     - target: {fileID: 373902774584863663, guid: cdd1fceef20edb444a43daaaccaf7ce0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 821720251041389481, guid: cdd1fceef20edb444a43daaaccaf7ce0, type: 3}
+      propertyPath: m_Radius
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2498839681911627811, guid: cdd1fceef20edb444a43daaaccaf7ce0, type: 3}
       propertyPath: m_IsActive
@@ -27485,3 +27546,4 @@ SceneRoots:
   - {fileID: 719181477}
   - {fileID: 1844780059}
   - {fileID: 5635504888563211921}
+  - {fileID: 565603074}
