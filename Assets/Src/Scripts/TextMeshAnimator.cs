@@ -15,9 +15,9 @@ namespace BBX.Dialogue.GUI
         private int _visibleCount;
         private int _frameCount;
 
-        private const float WaveAmount = 0.5f;
-        private const float WaveSpeed = 0.5f;
-        private const float WaveSeparation = 40;
+        private const float WaveAmount = 0.2f;
+        private const float WaveSpeed = 0.2f;
+        private const float WaveSeparation = 20;
         private const float DefaultShakeAmount = 3f;
 
         private readonly Dictionary<int, Vector3[]> _defaultShakeVertices = new Dictionary<int, Vector3[]>();
@@ -48,6 +48,7 @@ namespace BBX.Dialogue.GUI
             {
                 Debug.Log("End Dialogue");
                 _canvasGroup.DOFade(0, 0.5f);
+                GameManager.instance.GameStart();
                 return;
             }
             Parse();
@@ -62,6 +63,7 @@ namespace BBX.Dialogue.GUI
         private void Parse()
         {
             _defaultShakeVertices.Clear();
+            TMProText.textInfo.Clear();
             var inputText = DialogueArray[_currentDialogueCount];
 
             const string re1 = "(<)";

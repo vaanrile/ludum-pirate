@@ -9668,6 +9668,8 @@ MonoBehaviour:
     audioClipName: Remote_Click
   - audioClip: {fileID: 8300000, guid: b6f266809bccc6948b1e936d42d31da3, type: 3}
     audioClipName: Light_Click
+  - audioClip: {fileID: 8300000, guid: 12283dbe088eedd46baacdc763c06759, type: 3}
+    audioClipName: Tv_Turning_Off
   footstepArray:
   - {fileID: 8300000, guid: d246a9e7b18c10c44bdae5c78d5cf84b, type: 3}
   - {fileID: 8300000, guid: 4ad9b672abbf3474598db0c23c7fc273, type: 3}
@@ -9691,6 +9693,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 52d025bb6cd4be048a0b71c90d4ba90b, type: 3}
   - {fileID: 8300000, guid: 067f56871d0f81145b3f891378deedbc, type: 3}
   - {fileID: 8300000, guid: 0eb2c456471a984469f847943e66330e, type: 3}
+  hitArray: []
 --- !u!82 &994672472
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15042,12 +15045,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TMProText: {fileID: 669348938}
-  textParseSpeed: 0.05
+  textParseSpeed: 0.03
   DialogueArray:
   - Damn <shake> mosquitoes </shake> ruining my <wave> precious </wave> night again
     !
   - Better kill them until my alarm rings out at 7AM !
-  nextDialogueDelay: 2
+  nextDialogueDelay: 1
 --- !u!225 &1573345254
 CanvasGroup:
   m_ObjectHideFlags: 0
