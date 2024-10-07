@@ -1082,6 +1082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleHit: {fileID: 8240029428680977653, guid: b524164095820db479584b5418b1ba58, type: 3}
+  particleKill: {fileID: 8240029428680977653, guid: 9fe4008dd33046440a4f9e8b8bd53245, type: 3}
 --- !u!1 &7066495551720350977
 GameObject:
   m_ObjectHideFlags: 0
