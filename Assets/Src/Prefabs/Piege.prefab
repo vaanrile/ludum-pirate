@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 8212668895055748595}
   - component: {fileID: 8942780151214724012}
   - component: {fileID: 5279229856357170969}
+  - component: {fileID: 8494306342811474384}
   m_Layer: 0
   m_Name: Piege
   m_TagString: Untagged
@@ -272,6 +273,22 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8494306342811474384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043650525752367238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef6be42c64adb03479c6d7718839809f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  _onlyTriggeredByTapette: 1
+  _audioSource: {fileID: 0}
+  audioName: Trap_Turn_On
 --- !u!1001 &1871728191127515341
 PrefabInstance:
   m_ObjectHideFlags: 0

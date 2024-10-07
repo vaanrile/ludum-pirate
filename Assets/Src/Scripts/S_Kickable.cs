@@ -5,26 +5,27 @@ using UnityEngine;
 public class S_Kickable : S_AbsInteractive
 {
     public int mode = 0;
+    [SerializeField] private bool _onlyTriggeredByTapette;
     [SerializeField] private AudioSource _audioSource;
     public string audioName;
 
     private void Awake()
     {
         _audioSource = gameObject.AddComponent<AudioSource>();
-        _audioSource.spatialBlend = 1;
-        
+        _audioSource.spatialBlend = 1;        
     }
 
     public override void Kicked()
     {
+        Debug.Log("zzzz");
         if (mode == 0)
         {
             _audioSource.PlayOneShot(AudioManager.instance.hitArray[Random.Range(0, AudioManager.instance.hitArray.Length-1)]);
         }
         else if (mode == 1)
         {
-
             _audioSource.PlayOneShot(AudioManager.instance.findAudioClip(audioName));
+            Debug.Log(audioName);
         }
         else
         {
@@ -35,6 +36,10 @@ public class S_Kickable : S_AbsInteractive
     }
     private void OnCollisionEnter(Collision collision)
     {
+        if (_onlyTriggeredByTapette) 
+        {
+            return;
+        }
         if (collision.gameObject.CompareTag("Player"))
         {
             Kicked();

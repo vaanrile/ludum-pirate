@@ -107,7 +107,6 @@ namespace BBX.Dialogue.GUI
                 _visibleCount += 1;
 
                 yield return new WaitForSeconds(textParseSpeed);
-                Debug.Log("saucisse");
             }
             yield return new WaitForSeconds(nextDialogueDelay);
             _currentDialogueCount++;
