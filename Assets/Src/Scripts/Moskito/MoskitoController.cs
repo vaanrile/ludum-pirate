@@ -179,31 +179,33 @@ public class MoskitoController : MonoBehaviour
         var bounds = moskito.GetMoskitoBox().bounds;
         var vec = transform.position;
 
+        float offset = 2f;
+
         if (vec.x < bounds.min.x)
         {
-            vec.x = bounds.min.x;
+            vec.x = bounds.min.x+offset;
         }
         else if (vec.x > bounds.max.x)
         {
-            vec.x = bounds.max.x;
+            vec.x = bounds.max.x-offset;
         }
 
         if (vec.y < bounds.min.y)
         {
-            vec.y = bounds.min.y;
+            vec.y = bounds.min.y+offset;
         }
         else if (vec.y > bounds.max.y)
         {
-            vec.y = bounds.max.y;
+            vec.y = bounds.max.y-offset;
         }
 
         if (vec.z < bounds.min.z)
         {
-            vec.z = bounds.min.z;
+            vec.z = bounds.min.z+offset;
         }
         else if (vec.z > bounds.max.z)
         {
-            vec.z = bounds.max.z;
+            vec.z = bounds.max.z-offset;
         }
 
         return vec;
