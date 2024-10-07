@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int nbStingBeforeLose = 3;
 
-
+    [SerializeField]
+    private List <Moskito> moskitoList = new List<Moskito>();
 
     private void Awake()
     {
@@ -57,7 +58,17 @@ public class GameManager : MonoBehaviour
                 moskito.SetPlayer(player);
                 moskito.SetEncens(encens);
                 moskito.SetMoskitoBox(moskitoBox);
+                moskitoList.Add(moskito);
             }
+        }
+    }
+
+    public void GameStart()
+    {
+        player.StartMove();
+        foreach(Moskito mos in moskitoList)
+        {
+            mos.StartMove();
         }
     }
 }

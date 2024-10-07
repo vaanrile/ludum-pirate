@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Transform behindPlayer;
 
+    
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -45,6 +47,10 @@ public class Player : MonoBehaviour
     public PlayerStatus GetCurrentPlayerStatus()
     {
         return status;
+    }
+    public void StartMove()
+    {
+        controller.StartMove();
     }
 
     private void Update()
