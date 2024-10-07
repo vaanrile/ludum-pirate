@@ -12994,7 +12994,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Moskitos !!!
 
-    <size=50%>Vengeance Of The Terror From The Night'
+    <size=40%>Vengeance Of The Terror From The Sleepless
+    Night'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edd726622134fed4187c8e5f006ed919, type: 2}
   m_sharedMaterial: {fileID: 8498633837792473845, guid: edd726622134fed4187c8e5f006ed919, type: 2}
