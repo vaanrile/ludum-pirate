@@ -11346,14 +11346,16 @@ MonoBehaviour:
   - {fileID: 264007866}
   - {fileID: 872825798}
   audioClipsArray:
-  - audioClip: {fileID: 8300000, guid: 8290a2c4d51c7544eb0ea7dd4159c6d8, type: 3}
-    audioClipName: lol
   - audioClip: {fileID: 8300000, guid: 15a4bf2e98184be439dec32176dc3296, type: 3}
     audioClipName: Tv_Turning_On
   - audioClip: {fileID: 8300000, guid: 5bc244e637eab3c45b0eeb8f94a53d74, type: 3}
     audioClipName: Remote_Click
   - audioClip: {fileID: 8300000, guid: b6f266809bccc6948b1e936d42d31da3, type: 3}
     audioClipName: Light_Click
+  - audioClip: {fileID: 8300000, guid: 12283dbe088eedd46baacdc763c06759, type: 3}
+    audioClipName: Tv_Turning_Off
+  - audioClip: {fileID: 8300000, guid: c6c90f0eaa5db6c48874497fa47888d6, type: 3}
+    audioClipName: Encens_TurnOn
   footstepArray:
   - {fileID: 8300000, guid: d246a9e7b18c10c44bdae5c78d5cf84b, type: 3}
   - {fileID: 8300000, guid: 4ad9b672abbf3474598db0c23c7fc273, type: 3}
@@ -11377,6 +11379,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 52d025bb6cd4be048a0b71c90d4ba90b, type: 3}
   - {fileID: 8300000, guid: 067f56871d0f81145b3f891378deedbc, type: 3}
   - {fileID: 8300000, guid: 0eb2c456471a984469f847943e66330e, type: 3}
+  hitArray:
+  - {fileID: 8300000, guid: fae48a025b42a004ca1eb3c6f0fe16ac, type: 3}
+  - {fileID: 8300000, guid: 15a1d012895c8be4d9b5682a8d534720, type: 3}
+  - {fileID: 8300000, guid: 66abd9944d8bbdd4c85cfbae52f7cea1, type: 3}
+  - {fileID: 8300000, guid: 03654fdfb141661478f9809585088be2, type: 3}
 --- !u!82 &994672472
 AudioSource:
   m_ObjectHideFlags: 0
@@ -21867,7 +21874,7 @@ PrefabInstance:
       objectReference: {fileID: 1531230124}
     - target: {fileID: 2830221275656604138, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_VersionIndex
-      value: 2069
+      value: 2078
       objectReference: {fileID: 0}
     - target: {fileID: 3236200168658682752, guid: 70da1b910a47bea4a88f5a763c983c0e, type: 3}
       propertyPath: m_Name
