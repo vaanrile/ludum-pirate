@@ -146,7 +146,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d75b07ae73da6304195104e7b09c2db4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -680,7 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onEffect: {fileID: 2528611550899278591}
-  lightTV: {fileID: 0}
+  lightTV: {fileID: 9119442823497754562}
   tvScreen: {fileID: 6025663393802653396}
   tvAnimDelay: 0.1
   _audioSource: {fileID: 8867260035885534790}
