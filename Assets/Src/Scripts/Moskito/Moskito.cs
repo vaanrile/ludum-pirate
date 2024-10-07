@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
 using static Player;
 
 public class Moskito : MonoBehaviour
@@ -88,6 +89,10 @@ public class Moskito : MonoBehaviour
 
     private Coroutine forceStatusCoroutine;
 
+    private AudioSource _audioSource;
+    [SerializeField]
+    private float fadeAudioDuration;
+
     public enum MoskitoZone
     {
         Confort,
@@ -131,6 +136,7 @@ public class Moskito : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         moskitoTouchDetector = GetComponent<MoskitoTouchDetector>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -407,6 +413,59 @@ public class Moskito : MonoBehaviour
             patrollingZone = MoskitoZone.None;
         }
         moskitoStatus = _newStatus;
+        SetAudioBasedOnStatus();
+    }
+    private void SetAudioBasedOnStatus()
+    {
+        switch (moskitoStatus)
+        {
+            case MoskitoStatus.GoClose:
+                FadeInAudio();
+                break;
+            case MoskitoStatus.PrepareToAttack:
+                FadeInAudio();
+                break;
+            case MoskitoStatus.AfterAttack:
+                FadeOutAudio();
+                break;
+            case MoskitoStatus.Sneak:
+                FadeOutAudio();
+                break;
+            case MoskitoStatus.GoSafe:
+                FadeOutAudio();
+                break;
+            case MoskitoStatus.GoBehind:
+                FadeOutAudio();
+                break;
+            case MoskitoStatus.Encens:
+                FadeInAudio();
+                break;
+            case MoskitoStatus.LightMod:
+                FadeOutAudio();
+                break;
+            case MoskitoStatus.GoOutsidePhoneLight:
+                FadeInAudio();
+                break;
+            case MoskitoStatus.StayFar:
+                FadeOutAudio();
+                break;
+            case MoskitoStatus.StayConfort:
+                FadeInAudio();
+                break;
+            case MoskitoStatus.StayDanger:
+                FadeInAudio();
+                break;
+            default:
+                break;
+        }
+    }
+    private void FadeInAudio()
+    {
+        AudioManager.instance.FadeSound(_audioSource, fadeAudioDuration, 1);
+    }
+    private void FadeOutAudio()
+    {
+        AudioManager.instance.FadeSound(_audioSource, fadeAudioDuration, 0);
     }
 
     private void PrepareToAttack()
