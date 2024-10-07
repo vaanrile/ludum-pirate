@@ -249,6 +249,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 032e4983a3fd44f4d942c1f140470038, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 02af28fe4439b4d49aaf0a3093778b99, type: 2}
     - target: {fileID: 919132149155446097, guid: 032e4983a3fd44f4d942c1f140470038, type: 3}
       propertyPath: m_Name
       value: MeubleTV
@@ -2212,6 +2216,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d58a55dfb92d3b24483eddf150c67338, type: 2}
     - target: {fileID: 919132149155446097, guid: a739a2dcf26d5df46a3fde18ecf2dff2, type: 3}
       propertyPath: m_Name
       value: Coussin02
@@ -2505,6 +2513,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7c36c19d522884a43a9d2764fc9c9419, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 02af28fe4439b4d49aaf0a3093778b99, type: 2}
     - target: {fileID: 919132149155446097, guid: 7c36c19d522884a43a9d2764fc9c9419, type: 3}
       propertyPath: m_Name
       value: Commode
@@ -10244,6 +10256,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 577a4e387500e4d40b1bc8f495009a78, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d58a55dfb92d3b24483eddf150c67338, type: 2}
     - target: {fileID: 919132149155446097, guid: 577a4e387500e4d40b1bc8f495009a78, type: 3}
       propertyPath: m_Name
       value: Coussin03
@@ -11704,6 +11720,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9a40b9bd4600ac84e89f12ad54302bd5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c787dd8a8449b544083060779c3b672f, type: 2}
     - target: {fileID: 919132149155446097, guid: 9a40b9bd4600ac84e89f12ad54302bd5, type: 3}
       propertyPath: m_Name
       value: Chaise
@@ -12336,6 +12356,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0095df8f8c685e44aa92120c3f885491, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c787dd8a8449b544083060779c3b672f, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 0095df8f8c685e44aa92120c3f885491, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c787dd8a8449b544083060779c3b672f, type: 2}
     - target: {fileID: 919132149155446097, guid: 0095df8f8c685e44aa92120c3f885491, type: 3}
       propertyPath: m_Name
       value: Bureau
@@ -12905,6 +12933,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6dcc3ba2cfb6b52469f9fe9f723ce0ac, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 02af28fe4439b4d49aaf0a3093778b99, type: 2}
     - target: {fileID: 919132149155446097, guid: 6dcc3ba2cfb6b52469f9fe9f723ce0ac, type: 3}
       propertyPath: m_Name
       value: Table
@@ -13076,6 +13108,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fde34fabcc2624a47914d439f22c8d1b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c787dd8a8449b544083060779c3b672f, type: 2}
     - target: {fileID: 919132149155446097, guid: fde34fabcc2624a47914d439f22c8d1b, type: 3}
       propertyPath: m_Name
       value: "Biblioth\xE8que"
@@ -13643,6 +13679,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f4931003519ff444abf21b1e81b8e166, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d58a55dfb92d3b24483eddf150c67338, type: 2}
     - target: {fileID: 919132149155446097, guid: f4931003519ff444abf21b1e81b8e166, type: 3}
       propertyPath: m_Name
       value: Lit
@@ -17130,6 +17170,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8c55a54d20eb00d41ac7e382dd59f64f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c787dd8a8449b544083060779c3b672f, type: 2}
     - target: {fileID: 919132149155446097, guid: 8c55a54d20eb00d41ac7e382dd59f64f, type: 3}
       propertyPath: m_Name
       value: Armoire
@@ -17482,6 +17526,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d0c03062029bd1047842c17eee851bd0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 02af28fe4439b4d49aaf0a3093778b99, type: 2}
     - target: {fileID: 919132149155446097, guid: d0c03062029bd1047842c17eee851bd0, type: 3}
       propertyPath: m_Name
       value: TableChevet (1)
@@ -19932,6 +19980,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b98e2bd805da90b439359361d6f4a15a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d58a55dfb92d3b24483eddf150c67338, type: 2}
     - target: {fileID: 919132149155446097, guid: b98e2bd805da90b439359361d6f4a15a, type: 3}
       propertyPath: m_Name
       value: Coussin01
