@@ -13,6 +13,7 @@ public class MoskitoController : MonoBehaviour
     [Header("__Game Design Variables")]
     [SerializeField]
     private float speed = 3;
+    private float initialSpeed;
 
     [Header("__Dev Variables")]
     [SerializeField]
@@ -42,7 +43,7 @@ public class MoskitoController : MonoBehaviour
         motor = GetComponent<MoskitoMotor>();
         target = transform;
         randomNormalizedVector = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-
+        initialSpeed = speed;
         StartCoroutine(GenerateRandomNormalizedVector3EachXseconds(2));
     }
 
@@ -90,6 +91,12 @@ public class MoskitoController : MonoBehaviour
                 break;
             case Moskito.MoskitoStatus.Encens:
                 UpdateTarget(moskito.GetEncens().transform);
+                break;
+            case Moskito.MoskitoStatus.Telephone:
+
+                GameObject randomTarget = GameManager.instance.SetRandomTargetMoskito();
+
+                UpdateTarget(randomTarget.transform);
                 break;
         }
 
@@ -164,6 +171,15 @@ public class MoskitoController : MonoBehaviour
     public void UpdateTarget(Transform _newTarget)
     {
         target = _newTarget;
+    }
+
+    public void SetSpeed(float newSpeed)
+    {
+       speed = newSpeed;
+    }
+    public void ResetSpeed()
+    {
+        speed = initialSpeed;
     }
 
     private Vector3 RandomLocInMoskitoBox()
