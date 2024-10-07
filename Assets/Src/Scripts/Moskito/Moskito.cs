@@ -25,7 +25,10 @@ public class Moskito : MonoBehaviour
     [Header("__OTHER GameObjects")]
     [SerializeField] Player player;
     [SerializeField] Encens encens;
+    [SerializeField] S_Radiateur radiateur;
+    [SerializeField] S_Telephone tel;
     MoskitoTouchDetector moskitoTouchDetector;
+    MoskitoController moskitoController;
 
     private Rigidbody rb;
 
@@ -88,6 +91,10 @@ public class Moskito : MonoBehaviour
     [SerializeField]
     private bool closeToEncens;
 
+    [SerializeField]
+    private bool closeToTelephone;
+
+
     private Coroutine forceStatusCoroutine;
 
     private AudioSource _audioSource;
@@ -142,6 +149,7 @@ public class Moskito : MonoBehaviour
         moskitoTouchDetector = GetComponent<MoskitoTouchDetector>();
         _audioSource = GetComponent<AudioSource>();
         Invoke("Aaah", 0.3f);
+        moskitoController = GetComponent<MoskitoController>();
         bzzbzz = GetComponent<ParticleSystem>();
     }
     private void Aaah()
@@ -162,6 +170,8 @@ public class Moskito : MonoBehaviour
             return;            
         }
         UpdateEncensZone();
+        UpdateTelZone();
+        UpdateRadiateurZone();
         UpdateMoskitoZone();
         UpdatePlayerDirection();
         UpdatePlayerOrientation();
@@ -187,8 +197,32 @@ public class Moskito : MonoBehaviour
         {
             closeToEncens = true;
         }
-        else { 
+        else
+        {
             closeToEncens = false;
+        }
+    }
+    private void UpdateTelZone()
+    {
+        if ((transform.position - tel.transform.position).magnitude < tel.GetRadius())
+        {
+            closeToTelephone = true;
+        }
+        else
+        {
+            closeToTelephone = false;
+        }
+    }
+
+    private void UpdateRadiateurZone()
+    {
+        if ((transform.position - radiateur.transform.position).magnitude < radiateur.GetRadius())
+        {
+            moskitoTouchDetector.SetattachToObjectProbability(radiateur.attachToObjectProbabilityRadiateur);
+        }
+        else
+        {
+            moskitoTouchDetector.ResetattachToObjectProbability();
         }
     }
 
@@ -656,6 +690,10 @@ public class Moskito : MonoBehaviour
     {
         encens = _encens;
     }
+    public void SetRadiateur(S_Radiateur rad)
+    {
+        radiateur = rad;
+    }
 
     public void SetMoskitoBox(BoxCollider _moskitoBox)
     {
@@ -686,4 +724,15 @@ public class Moskito : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void Stunned(float newSpeed, float duration)
+    {
+        moskitoController.SetSpeed(newSpeed);
+        StartCoroutine(StunnedTime(duration));
+    }
+
+    IEnumerator StunnedTime(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        moskitoController.ResetSpeed();
+    }
 }

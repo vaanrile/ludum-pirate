@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     private Encens encens;
 
     [SerializeField]
+    private S_Radiateur radiateur;
+
+    [SerializeField]
     private BoxCollider moskitoBox;
 
     [SerializeField]
@@ -57,6 +60,7 @@ public class GameManager : MonoBehaviour
                 var moskito = Instantiate(mostikoPrefab, randomLocInBox, Quaternion.identity).GetComponent<Moskito>();
                 moskito.SetPlayer(player);
                 moskito.SetEncens(encens);
+                moskito.SetRadiateur(radiateur);
                 moskito.SetMoskitoBox(moskitoBox);
                 moskitoList.Add(moskito);
             }
