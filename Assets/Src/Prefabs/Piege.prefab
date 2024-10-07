@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 8006785495781678931}
   - component: {fileID: 8212668895055748595}
   - component: {fileID: 8942780151214724012}
+  - component: {fileID: 5279229856357170969}
   m_Layer: 0
   m_Name: Piege
   m_TagString: Untagged
@@ -128,8 +129,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2194114631960631078}
   - {fileID: 6622536065989367519}
+  - {fileID: 2194114631960631078}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4768348636349873593
@@ -250,6 +251,27 @@ MonoBehaviour:
   objetEmissive: {fileID: 8551687574607467378}
   particleLight: {fileID: 4292435242827742609}
   particleHit: {fileID: 8240029428680977653, guid: ae8c314af7751094d85523ce02907104, type: 3}
+--- !u!135 &5279229856357170969
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8043650525752367238}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1871728191127515341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -302,6 +324,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PiegeMoustique
       objectReference: {fileID: 0}
+    - target: {fileID: 1701933603928303294, guid: d6e4464b9036439418ceb49435aa6dc0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a6291f920eea89a4e8ab50925e7e5c37, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -333,6 +359,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 373902774584863663}
     m_Modifications:
+    - target: {fileID: 44416922863957270, guid: dc52e0e2f2871894ebb784839fe171c5, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5010200497221289248, guid: dc52e0e2f2871894ebb784839fe171c5, type: 3}
       propertyPath: m_Name
       value: ParticleLight
@@ -343,11 +373,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6983955601974713944, guid: dc52e0e2f2871894ebb784839fe171c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000000059604645
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6983955601974713944, guid: dc52e0e2f2871894ebb784839fe171c5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.00000023841858
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6983955601974713944, guid: dc52e0e2f2871894ebb784839fe171c5, type: 3}
       propertyPath: m_LocalRotation.w
