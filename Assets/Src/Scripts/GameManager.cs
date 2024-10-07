@@ -1,7 +1,10 @@
+using BBX.Dialogue.GUI;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,6 +41,12 @@ public class GameManager : MonoBehaviour
 
     private int nbPiqure = 0;
 
+    public TextMeshAnimator textMeshAnimator;
+    private bool _leftMainMenu;
+    public CanvasGroup canvasGroupMainMenu;
+    public Animator playerAnim;
+
+
     private void Awake()
     {
         if (instance == null)
@@ -71,7 +80,29 @@ public class GameManager : MonoBehaviour
                 moskitoList.Add(moskito);
             }
         }
-        
+        playerAnim.speed = 0;
+
+    }
+
+    public void StartMenu()
+    {
+        textMeshAnimator.InitRead();
+        AudioManager.instance.StartSound();
+        canvasGroupMainMenu.DOFade(0, 1).OnComplete(() =>
+        {
+            canvasGroupMainMenu.gameObject.SetActive(false);
+            playerAnim.speed = 1;
+        });
+    }
+
+    public void GameQuit()
+    {
+
+    }
+    public void GameReload()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 
     public void SetRandomTargetMoskito(GameObject randomTargetMoskito)
@@ -119,6 +150,15 @@ public class GameManager : MonoBehaviour
     public void PlayerPique()
     {
         nbPiqure++;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)&&!_leftMainMenu) 
+        {
+            StartMenu();
+            _leftMainMenu = true;
+        }
     }
 
 }
